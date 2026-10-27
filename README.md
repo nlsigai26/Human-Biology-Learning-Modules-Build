@@ -2,6 +2,8 @@
 
 A standalone Human Biology Learn module styled after the supplied 2.0 UI. Seven stages, 20 teaching cards, 18 checkpoint screens, 16 practice points and 9 auto-marked final-check points. The written explanation is self-checked separately.
 
+![Learn module preview](docs/preview.png)
+
 ## Open the module
 
 Open **`dist/index.html`** in a modern browser. It contains the complete application, images, reference transcript, styles and fonts. It needs no internet connection, account, backend or package installation. Progress is saved in that browser where local storage is available; if storage is blocked, the lesson continues for the current session. Browser handling of storage for local files varies; serve the file from one stable origin for consistent persistence.
