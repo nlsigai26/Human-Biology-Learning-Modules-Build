@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "steps": 38,
+  "stats": {
+    "final": {
+      "total": 9,
+      "tried": 9,
+      "correct": 9,
+      "corrected": 0
+    },
+    "practice": {
+      "total": 16,
+      "tried": 16,
+      "correct": 15,
+      "corrected": 1
+    },
+    "p": {
+      "count": 38,
+      "total": 38,
+      "pct": 100
+    },
+    "written": [
+      true,
+      true
+    ]
+  },
+  "checks": "Full journey, blank attempt, wrong answer, retries, case/space handling, strict answers, matching per-pair score, browser persistence, reference assets, mobile layout, marker alignment, practice reset, full restart."
+}

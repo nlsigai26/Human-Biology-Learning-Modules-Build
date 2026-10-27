@@ -1,0 +1,6 @@
+work/
+node_modules/
+__pycache__/
+.DS_Store
+*.tar.gz
+!resources/source-pack.zip
