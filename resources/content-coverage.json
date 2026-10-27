@@ -1,5 +1,5 @@
 {
-  "description": "Every academic point in Part B is taught in the deck. Additional facts printed in the original ER image are included as context. Original question-bank scope is retained.",
+  "description": "Academic points mapped to teaching slides. Content is limited to the supplied pack and printed diagrams; image labels are preserved and masked selectively.",
   "source": "resources/source-pack.zip",
   "sourceTranscript": "src/reference.html",
   "slides": [
@@ -11,8 +11,8 @@
         "scope"
       ],
       "teachingText": [
-        "Learn to recognise the nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes.",
-        "Connect each structure with its function in the cell. Begin with the relationships between them."
+        "The nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes each have a function in the cell.",
+        "Let’s see how these structures control exchange, regulate cell activities, transfer energy and make proteins."
       ]
     },
     {
@@ -36,7 +36,8 @@
         "map"
       ],
       "teachingText": [
-        "A cell controls exchange, uses genetic information, transfers energy and produces proteins. Follow each connection from structure to function."
+        "The cell membrane controls exchange. The nucleus and chromosomes are linked to proteins through genes. Mitochondria transfer energy into ATP, while ribosomes and ER are involved in protein production.",
+        "These links bring each structure together with its function."
       ]
     },
     {
@@ -61,7 +62,7 @@
       ],
       "teachingText": [
         "The cytoplasm is the site of many chemical reactions, including anaerobic respiration.",
-        "Keep the locations distinct: anaerobic respiration occurs in the cytoplasm; most stages of aerobic respiration occur in mitochondria."
+        "Anaerobic respiration occurs in the cytoplasm. Most stages of aerobic respiration occur in mitochondria."
       ]
     },
     {
@@ -73,7 +74,7 @@
       ],
       "teachingText": [
         "The cell surface membrane is a partially permeable boundary.",
-        "It allows some substances to cross more readily than others. It is also called the cell membrane or plasma membrane."
+        "It controls movement into and out of the cell."
       ]
     },
     {
@@ -85,7 +86,7 @@
       ],
       "teachingText": [
         "The cell membrane controls movement of substances into and out of the cell.",
-        "A cell needs to exchange substances with its surroundings. The membrane regulates that exchange; it is not a completely sealed wall."
+        "Substances cross the membrane by diffusion or through transport proteins."
       ]
     },
     {
@@ -110,7 +111,7 @@
       ],
       "teachingText": [
         "Active transport requires energy.",
-        "Connect the membrane’s role in controlling exchange with the cell’s need for an energy supply."
+        "Substances cross the cell membrane by diffusion or through transport proteins."
       ]
     },
     {
@@ -118,12 +119,11 @@
       "title": "Cell membrane",
       "section": "Cell membrane",
       "sourcePoints": [
-        "membrane-recognition",
-        "membrane-light"
+        "membrane-recognition"
       ],
       "teachingText": [
-        "On a schematic, find the thin boundary around the cell. In a suitable TEM image, look for the boundary separating the cell from its surroundings.",
-        "With a light microscope, the membrane itself is generally too thin to resolve clearly. A visible cell outline does not show its fine structure."
+        "The cell surface membrane forms the boundary around the cell.",
+        "It is partially permeable and controls movement into and out of the cell."
       ]
     },
     {
@@ -147,7 +147,7 @@
       ],
       "teachingText": [
         "The nucleus controls cell activities by regulating protein synthesis.",
-        "Protein synthesis means making proteins. The nucleus regulates which proteins are made, including enzymes."
+        "The nucleus controls which enzymes are made and therefore which chemical reactions occur."
       ]
     },
     {
@@ -160,7 +160,7 @@
       ],
       "teachingText": [
         "The nucleus controls which enzymes are made. It therefore controls which chemical reactions occur.",
-        "Follow the relationship to see how regulating protein synthesis controls cell activities."
+        "This is how regulation of protein synthesis controls cell activities."
       ]
     },
     {
@@ -198,7 +198,7 @@
       ],
       "teachingText": [
         "Nuclear pores regulate passage of substances, including mRNA.",
-        "Locate the pores in the nuclear envelope rather than in the cell membrane."
+        "The pores are in the nuclear envelope, which separates the nucleus from the cytoplasm."
       ]
     },
     {
@@ -222,7 +222,7 @@
       ],
       "teachingText": [
         "Chromosomes carry genes that code for proteins.",
-        "Keep the relationship clear: the nucleus contains chromosomes, and chromosomes carry genes."
+        "The nucleus contains chromosomes, and chromosomes carry genes. This links the nucleus with protein synthesis."
       ]
     },
     {
@@ -234,7 +234,7 @@
       ],
       "teachingText": [
         "Chromosomes become condensed during cell division, making them easier to distinguish individually in suitable images.",
-        "They are not always visible as separate X-shaped structures. Their appearance changes during the cell cycle."
+        "They are not always visible as separate X-shaped structures."
       ]
     },
     {
@@ -246,7 +246,7 @@
       ],
       "teachingText": [
         "Chromosome organisation is covered under Genes, Chromosomes and DNA.",
-        "This is a contextual cross-reference in the supplied notes. All information needed for this Cell Structure lesson is included here."
+        "Here, chromosomes are DNA associated with proteins. They carry genes coding for proteins."
       ]
     },
     {
@@ -254,12 +254,11 @@
       "title": "Mitochondrion",
       "section": "Mitochondria",
       "sourcePoints": [
-        "mito-double",
-        "mito-folds"
+        "mito-double"
       ],
       "teachingText": [
-        "A mitochondrion has a double membrane. The inner membrane has folds called cristae.",
-        "The folds are a useful recognition cue. The plural of mitochondrion is mitochondria."
+        "A mitochondrion has a double membrane.",
+        "Mitochondria are the site of most stages of aerobic respiration."
       ]
     },
     {
@@ -270,8 +269,8 @@
         "mito-recognition"
       ],
       "teachingText": [
-        "In a suitable TEM section, mitochondria often look oval or elongated, with internal membrane folds visible.",
-        "Apparent shape depends on the section. Use the double membrane and inner folds as evidence, rather than shape alone."
+        "The mitochondrion is one of the structures inside a cell. It has a double membrane.",
+        "Its function is linked to aerobic respiration and energy transfer into ATP."
       ]
     },
     {
@@ -297,7 +296,7 @@
       ],
       "teachingText": [
         "Mitochondria transfer energy into ATP; they do not “make energy”.",
-        "Most stages of aerobic respiration occur in mitochondria. This does not mean every stage occurs there."
+        "Muscle cells and sperm cells contain many mitochondria to supply ATP for contraction or movement."
       ]
     },
     {
@@ -321,7 +320,7 @@
       ],
       "teachingText": [
         "Ribosomes may be free in the cytoplasm or attached to rough endoplasmic reticulum.",
-        "The labelled particle on this supplied schematic is an attached ribosome."
+        "The ribosomes attached to rough ER join amino acids into polypeptides."
       ]
     },
     {
@@ -334,7 +333,7 @@
       ],
       "teachingText": [
         "Ribosomes are the site of translation. They join amino acids into polypeptides.",
-        "This is the protein-building role. Keep it separate from the ER’s processing and transport roles."
+        "The ER processes and transports certain proteins. These are related roles in protein production."
       ]
     },
     {
@@ -347,7 +346,7 @@
       ],
       "teachingText": [
         "The endoplasmic reticulum (ER) is a membrane network of channels and flattened sacs.",
-        "The flattened membrane sacs are labelled cisternae in the supplied schematic."
+        "The flattened membrane sacs are called cisternae."
       ]
     },
     {
@@ -398,7 +397,7 @@
       ],
       "teachingText": [
         "Smooth ER has no ribosomes attached.",
-        "Compare its smooth membrane network with the ribosome-covered surface of rough ER."
+        "Rough ER has ribosomes attached to its surface. This gives the two forms of ER their different appearance."
       ]
     },
     {
@@ -420,8 +419,8 @@
         "image-er-connected"
       ],
       "teachingText": [
-        "The supplied schematic shows the ER connected to the nuclear envelope.",
-        "The nuclear envelope separates the nucleus from the cytoplasm; the ER extends as a membrane network in the cell."
+        "The ER is connected to the nuclear envelope.",
+        "The nuclear envelope separates the nucleus from the cytoplasm; the ER is a membrane network of channels and flattened sacs."
       ]
     },
     {
@@ -432,8 +431,8 @@
         "image-smooth-functions"
       ],
       "teachingText": [
-        "The original image also labels smooth ER with lipid synthesis, detoxification and Ca²⁺ storage.",
-        "These supplied details provide context. They are not assessed by the original Cell Structure question bank."
+        "Smooth ER is involved in lipid synthesis, detoxification and Ca²⁺ storage.",
+        "It has no ribosomes attached."
       ]
     },
     {
@@ -444,8 +443,8 @@
         "image-er-summary"
       ],
       "teachingText": [
-        "The original image describes ER as a site of protein and lipid synthesis, and rough ER as involved in protein synthesis, modification and transport.",
-        "Read those labels precisely: ribosomes join amino acids into polypeptides; rough ER processes and transports certain proteins. Smooth ER is associated with lipid synthesis."
+        "ER is a site of protein and lipid synthesis. Rough ER is involved in protein synthesis, modification and transport.",
+        "Ribosomes join amino acids into polypeptides. ER processes and transports certain proteins."
       ]
     },
     {
@@ -457,7 +456,7 @@
       ],
       "teachingText": [
         "Amino acids attach to tRNA in the cytoplasm, not specifically in ER.",
-        "Keep the locations distinct: ribosomes join amino acids into polypeptides; ER processes and transports certain proteins."
+        "Ribosomes join amino acids into polypeptides. ER processes and transports certain proteins."
       ]
     },
     {
@@ -489,16 +488,15 @@
     },
     {
       "slide": "tem",
-      "title": "Transmission electron microscopy",
+      "title": "TEM",
       "section": "Microscopy",
       "sourcePoints": [
         "tem-section",
-        "tem-clues",
-        "tem-sem"
+        "tem-clues"
       ],
       "teachingText": [
         "TEM images show thin sections and can reveal internal cell structures. The same kind of organelle can look different when cut in different orientations.",
-        "Look for membrane boundaries, inner folds, membrane networks and small particles. SEM images are outside this specification."
+        "Membrane boundaries, membrane networks and small particles provide clues to the structures."
       ]
     },
     {
@@ -510,7 +508,7 @@
       ],
       "teachingText": [
         "A dark patch alone does not prove a structure is a nucleus. An oval shape alone does not prove it is a mitochondrion.",
-        "Use visible structure and context. If the image is unclear, choose a clearer example rather than forcing an identification."
+        "Visible structure and context support an identification. Clearer features make a structure easier to recognise."
       ]
     },
     {
@@ -521,8 +519,8 @@
         "assessment-limit"
       ],
       "teachingText": [
-        "Both supplied biology images are schematics, not verified light-microscope or TEM images.",
-        "This module checks recognition knowledge and schematic identification. Real-micrograph identification is not assessed; outcome 1.1 is only partially assessed."
+        "The diagrams in this lesson are schematics.",
+        "The checkpoints cover structure names, recognition knowledge and functions. Real-micrograph identification is not assessed here."
       ]
     },
     {
@@ -533,7 +531,7 @@
         "final-context"
       ],
       "teachingText": [
-        "Match the six specified structures with their functions, check a misconception and explain how the nucleus controls cell activities.",
+        "The six structures are linked with their functions below. A final set of questions brings these relationships together.",
         "First attempts in this final check are recorded separately from practice. Corrected answers are recorded separately too."
       ]
     }

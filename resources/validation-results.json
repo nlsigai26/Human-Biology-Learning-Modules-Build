@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "teachingSlides": 43,
-  "coveragePoints": 63,
+  "coveragePoints": 60,
   "learningSteps": 69,
   "layoutViewports": [
     {
@@ -57,7 +57,7 @@
     "Touch/focus outline",
     "Keyboard navigation",
     "Reduced motion",
-    "Responsive annotation alignment",
+    "Responsive original-image crop alignment",
     "Practice reset and full restart"
   ]
 }

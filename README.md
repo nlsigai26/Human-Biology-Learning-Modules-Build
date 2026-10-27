@@ -16,7 +16,7 @@ Progress is stored in the current browser when local storage is available. A sta
 
 - Organelle names are slide titles; structure, function and recognition appear on separate slides.
 - Key terms are emphasised. Function statements have an animated underline, shown immediately when reduced motion is enabled.
-- Teaching figures reveal the relevant label and a leader arrow. Assessment figures hide answer labels. All biology images are supplied originals or crops; connecting lines and labels are interface annotations.
+- Teaching figures retain the labels and arrows printed in the two original images. CSS crops focus the image, and plain rectangular masks hide unrelated labels. Assessment figures cover answer labels; no new names, arrows or letter markers are added.
 - A connected cell mindmap and labelled relationship chains explain structure–function links.
 - The horizontal outline stays quiet until hover or keyboard focus. On phones, “Sections” reveals the same outline for touch navigation.
 - The original question bank is retained. Matching questions use one pair per slide, with independently shuffled pair order and descriptions. Scores remain one point per pair.
@@ -29,9 +29,9 @@ Both supplied images are **schematics**. Real-micrograph identification is not a
 
 ## Academic coverage
 
-`resources/content-coverage.json` maps 63 coverage entries to the 43 teaching slides. Every point in the Part B transcript appears in the teaching sequence, including nuclear pores and mRNA, the chromosome-organisation cross-reference, vesicle transport and protein destinations, the high-energy-demand example, tRNA attachment in the cytoplasm and the energy-transfer clarification.
+`resources/content-coverage.json` maps 60 coverage entries to the 43 teaching slides. Every point in the Part B transcript appears in the teaching sequence, including nuclear pores and mRNA, the chromosome-organisation cross-reference, vesicle transport and protein destinations, the high-energy-demand example, tRNA attachment in the cytoplasm and the energy-transfer clarification.
 
-Additional details printed in the supplied ER image are taught as source context: cisternae, the connection with the nuclear envelope, lipid synthesis, detoxification, Ca²⁺ storage and the image’s broad protein/lipid synthesis labels. The distinction between ribosomal polypeptide assembly and ER processing/transport is explicit. The original assessment scope remains unchanged.
+The ER teaching also includes cisternae, the connection with the nuclear envelope, lipid synthesis, detoxification, Ca²⁺ storage and the image’s broad protein/lipid synthesis labels. Ribosomal polypeptide assembly, ER processing/transport and the ER image’s function labels are taught directly. The original assessment scope remains unchanged.
 
 `src/reference.html` is the unchanged original Part B transcript. `resources/source-pack.zip` preserves the original supplied archive. Both complete original images remain unchanged in `assets/`.
 
@@ -52,7 +52,7 @@ Run `python3 build.py` after editing, then commit the updated `dist/index.html` 
 
 Newsreader and Hanken Grotesk are bundled with their SIL Open Font Licences. Hanken Grotesk substitutes for the supplied “Hansen Grotesk” name; exact Hansen font files were not supplied.
 
-New crops: the nucleus crop uses CS-01 coordinates `(480,360)–(790,650)`; the smooth-ER crop uses CS-02 coordinates `(595,245)–(875,555)`. Existing cell/ER crops remove peripheral labels in otherwise blank margins. No replacement biological illustrations are generated.
+The active diagram views use CSS crop windows into the two untouched original images. Mask coordinates are stored with the printed labels in `src/app.js`. Crops from earlier revisions remain in the asset archive; active teaching and quiz views preserve the printed labels or cover them for assessment. No replacement biological illustrations are generated.
 
 ## Integration and hosting
 
@@ -67,3 +67,7 @@ Install the test dependencies with `npm install`, install Chromium with `npx pla
 The suite checks the entire lesson journey, all slide types at five desktop/portrait viewport sizes, feedback after incorrect attempts, exact-answer rules, per-pair first attempts, persistence, review-and-return navigation, touch/focus outline, arrow keys, reduced motion, annotation alignment, original-image loading, the offline reference download, practice reset and full restart. `resources/validation-results.json` records the latest result.
 
 Rights to supplied academic content and illustrations remain with their respective owners. No additional licence is asserted over them.
+
+## Content rules
+
+Teaching uses only the supplied academic content and diagrams, stated directly. It contains no attribution lead-ins, outside-science additions or corrective commentary about the academic material. Learning relationships are explained in the presentation rather than assigned as instructions. Original image labels are retained; other labels are covered by plain rectangles. The teaching deck adds zero image labels.

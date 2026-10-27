@@ -1,116 +1,1427 @@
-// Coverage IDs connect every source point to teaching slides.
-const sections=['Cell structure','Cell membrane','Nucleus & chromosomes','Mitochondria','ER & ribosomes','Microscopy','Final check'];
+// Content is restricted to the supplied Cell Structure pack.
 const term=s=>`<strong class="term">${s}</strong>`;
 const fn=s=>`<span class="function">${s}</span>`;
-const img=(asset,focus)=>({type:'image',asset,focus});
-const flow=(nodes,links=[])=>({type:'flow',nodes,links});
-function teach(id,section,title,subtitle,body,visual,coverage=[]){return {id,kind:'teach',section,title,subtitle,body,visual,coverage}}
-const lessonSlides=[
- teach('scope',0,'Cell structure','RECOGNITION & FUNCTION',[
- `Learn to recognise the ${term('nucleus')}, ${term('chromosomes')}, ${term('cell membrane')}, ${term('mitochondria')}, ${term('endoplasmic reticulum')} and ${term('ribosomes')}.`,
- `Connect each structure with its ${fn('function in the cell')}. Begin with the relationships between them.`],img('cell','overview'),['scope']),
- teach('cell',0,'Cells and organelles','THE BASIC UNITS OF LIFE',[
- `${term('Cells')} are the basic units of living organisms.`,`${term('Organelles')} are structures inside cells with specific functions. Together, they keep the cell functioning.`],img('cell','cell'),['cells','organelles']),
- teach('cell-map',0,'Cell structure','HOW THE STRUCTURES WORK TOGETHER',[
- `A cell controls exchange, uses genetic information, transfers energy and produces proteins. Follow each connection from ${term('structure')} to ${fn('function')}.`],{type:'mindmap'},['map']),
- teach('cytoplasm-structure',0,'Cytoplasm','STRUCTURE & LOCATION',[
- `The ${term('cytoplasm')} is jelly-like material ${term('outside the nucleus')}.`, `It ${fn('contains organelles')}; the cell membrane forms the boundary around the whole cell.`],img('cell','cytoplasm'),['cytoplasm-structure','cytoplasm-organelles']),
- teach('cytoplasm-function',0,'Cytoplasm','FUNCTION',[
- `The cytoplasm is the ${fn('site of many chemical reactions')}, including ${term('anaerobic respiration')}.`, `Keep the locations distinct: anaerobic respiration occurs in the cytoplasm; most stages of aerobic respiration occur in mitochondria.`],flow(['Cytoplasm','Many chemical reactions','Including anaerobic respiration'],['is the site of','including']),['cytoplasm-reactions']),
- teach('membrane-structure',1,'Cell membrane','STRUCTURE',[
- `The ${term('cell surface membrane')} is a ${term('partially permeable boundary')}.`, `It allows some substances to cross more readily than others. It is also called the cell membrane or plasma membrane.`],img('cell','membrane'),['membrane-structure']),
- teach('membrane-function',1,'Cell membrane','FUNCTION',[
- `The cell membrane ${fn('controls movement of substances into and out of the cell')}.`, `A cell needs to exchange substances with its surroundings. The membrane regulates that exchange; it is not a completely sealed wall.`],flow(['Surroundings','Cell membrane','Cell contents'],['regulated exchange','regulated exchange']),['membrane-function']),
- teach('membrane-transport',1,'Cell membrane','HOW SUBSTANCES CROSS',[
- `Substances cross the membrane by ${term('diffusion')} or through ${term('transport proteins')}.`, `These are ways of moving substances across the cell’s boundary.`],flow(['Substances','Cell membrane','Diffusion or transport proteins'],['cross the','by']),['membrane-diffusion','membrane-proteins']),
- teach('membrane-active',1,'Cell membrane','ACTIVE TRANSPORT',[
- `${term('Active transport')} ${fn('requires energy')}.`, `Connect the membrane’s role in controlling exchange with the cell’s need for an energy supply.`],flow(['Energy supply','Active transport','Movement across the membrane'],['is needed for','moves substances across']),['membrane-active']),
- teach('membrane-recognition',1,'Cell membrane','RECOGNITION',[
- `On a ${term('schematic')}, find the thin boundary around the cell. In a suitable ${term('TEM image')}, look for the boundary separating the cell from its surroundings.`, `With a light microscope, the membrane itself is generally too thin to resolve clearly. A visible cell outline does not show its fine structure.`],img('cell','membrane'),['membrane-recognition','membrane-light']),
- teach('nucleus-structure',2,'Nucleus','STRUCTURE',[
- `The ${term('nucleus')} ${fn('contains chromosomes')}.`, `The nuclear envelope separates it from the surrounding cytoplasm.`],img('cell','nucleus'),['nucleus-chromosomes']),
- teach('nucleus-function',2,'Nucleus','FUNCTION',[
- `The nucleus ${fn('controls cell activities by regulating protein synthesis')}.`, `Protein synthesis means making proteins. The nucleus regulates which proteins are made, including enzymes.`],flow(['Nucleus','Protein synthesis','Cell activities'],['regulates','helps control']),['nucleus-protein']),
- teach('nucleus-enzymes',2,'Nucleus','FROM PROTEINS TO CELL ACTIVITIES',[
- `The nucleus ${fn('controls which enzymes are made')}. It therefore ${fn('controls which chemical reactions occur')}.`, `Follow the relationship to see how regulating protein synthesis controls cell activities.`],flow(['Regulation of protein synthesis','Which enzymes are made','Which reactions occur','Cell activities'],['determines','controls','shape']),['nucleus-enzymes','nucleus-reactions']),
- teach('nucleus-recognition',2,'Nucleus','RECOGNITION',[
- `A stained nucleus can often be recognised with a ${term('light microscope')}. It is often a prominent rounded or oval structure.`, `Appearance varies between cells and images. In a suitable TEM section, a ${term('nuclear envelope')} may be visible around it.`],img('nucleus','nucleusClose'),['nucleus-recognition']),
- teach('envelope',2,'Nuclear envelope','STRUCTURE & FUNCTION',[
- `The ${term('nuclear envelope')} ${fn('separates the nucleus from the cytoplasm')}. It contains ${term('nuclear pores')}.`, `This boundary surrounds the nucleus. The cell membrane surrounds the whole cell.`],img('er','envelope'),['envelope-boundary','envelope-pores']),
- teach('pores',2,'Nuclear pores','FUNCTION',[
- `${term('Nuclear pores')} ${fn('regulate passage of substances')}, including ${term('mRNA')}.`, `Locate the pores in the nuclear envelope rather than in the cell membrane.`],img('er','pore'),['pores-passage','pores-mrna']),
- teach('chromosome-composition',2,'Chromosomes','COMPOSITION',[
- `${term('Chromosomes')} consist of ${term('DNA associated with proteins')}.`, `They are contained in the nucleus and carry genes.`],flow(['Nucleus','Chromosomes','DNA associated with proteins'],['contains','consist of']),['chromosome-dna']),
- teach('chromosome-function',2,'Chromosomes','FUNCTION',[
- `Chromosomes ${fn('carry genes that code for proteins')}.`, `Keep the relationship clear: the nucleus contains chromosomes, and chromosomes carry genes.`],flow(['Nucleus','Chromosomes','Genes','Proteins'],['contains','carry','code for']),['chromosome-genes']),
- teach('chromosome-recognition',2,'Chromosomes','RECOGNITION DURING CELL DIVISION',[
- `Chromosomes become ${term('condensed during cell division')}, making them easier to distinguish individually in suitable images.`, `They are not always visible as separate X-shaped structures. Their appearance changes during the cell cycle.`],flow(['Cell division','Chromosome condensation','Easier to distinguish individually'],['involves','makes chromosomes']),['chromosome-visibility']),
- teach('chromosome-context',2,'Chromosomes','WHERE THE DETAIL FITS',[
- `Chromosome organisation is covered under ${term('Genes, Chromosomes and DNA')}.`, `This is a contextual cross-reference in the supplied notes. All information needed for this Cell Structure lesson is included here.`],flow(['Cell Structure','Genes, Chromosomes and DNA'],['organisation is studied further in']),['chromosome-context']),
- teach('mito-structure',3,'Mitochondrion','STRUCTURE',[
- `A ${term('mitochondrion')} has a ${term('double membrane')}. The inner membrane has folds called ${term('cristae')}.`, `The folds are a useful recognition cue. The plural of mitochondrion is mitochondria.`],img('mito','mitochondrion'),['mito-double','mito-folds']),
- teach('mito-recognition',3,'Mitochondrion','RECOGNITION',[
- `In a suitable ${term('TEM section')}, mitochondria often look oval or elongated, with internal membrane folds visible.`, `Apparent shape depends on the section. Use the double membrane and inner folds as evidence, rather than shape alone.`],img('mito','cristae'),['mito-recognition']),
- teach('mito-function',3,'Mitochondria','FUNCTION',[
- `Mitochondria are the ${fn('site of most stages of aerobic respiration')}.`, `Energy released through respiration is ${fn('transferred into ATP')}, which supplies energy for cellular work.`],flow(['Aerobic respiration','Energy transferred into ATP','Cellular work'],['supports','supplies energy for']),['mito-aerobic','mito-atp']),
- teach('mito-transfer',3,'Mitochondria','ENERGY TRANSFER',[
- `Mitochondria ${fn('transfer energy into ATP')}; they do not “make energy”.`, `Most stages of aerobic respiration occur in mitochondria. This does not mean every stage occurs there.`],flow(['Energy released in respiration','ATP','Energy for cellular work'],['is transferred into','supplies']),['mito-not-create','mito-most']),
- teach('mito-demand',3,'Mitochondria','HIGH ENERGY DEMAND',[
- `${term('Muscle cells')} and ${term('sperm cells')} contain many mitochondria.`, `These ${fn('supply ATP for contraction or movement')}. A high demand for movement creates a high demand for ATP.`],flow(['Many mitochondria','ATP supply','Contraction or movement'],['support','provides energy for']),['mito-demand']),
- teach('ribosome-location',4,'Ribosomes','LOCATION',[
- `${term('Ribosomes')} may be ${term('free in the cytoplasm')} or ${term('attached to rough endoplasmic reticulum')}.`, `The labelled particle on this supplied schematic is an attached ribosome.`],img('er','ribosome'),['ribosome-locations']),
- teach('ribosome-function',4,'Ribosomes','FUNCTION',[
- `Ribosomes are the ${fn('site of translation')}. They ${fn('join amino acids into polypeptides')}.`, `This is the protein-building role. Keep it separate from the ER’s processing and transport roles.`],flow(['Amino acids','Ribosomes · translation','Polypeptide'],['are joined at','to make a']),['ribosome-translation','ribosome-polypeptide']),
- teach('er-structure',4,'Endoplasmic reticulum','STRUCTURE',[
- `The ${term('endoplasmic reticulum (ER)')} is a ${term('membrane network of channels and flattened sacs')}.`, `The flattened membrane sacs are labelled ${term('cisternae')} in the supplied schematic.`],img('er','er'),['er-network','er-cisternae']),
- teach('rough-er-structure',4,'Rough ER','RECOGNITION',[
- `${term('Rough ER')} has ${term('ribosomes attached to its surface')}, giving it its rough appearance.`, `In TEM, look for parallel membrane profiles with small dark particles attached. The attached particles are ribosomes.`],img('er','roughER'),['rough-ribosomes','rough-recognition']),
- teach('rough-er-function',4,'Rough ER','FUNCTION',[
- `Rough ER ${fn('helps fold and process proteins')} made by its attached ribosomes.`, `These proteins may be destined for ${term('secretion')} or ${term('cell membranes')}. Ribosomes build the polypeptides; the ER processes certain proteins.`],flow(['Attached ribosomes','Polypeptides','Rough ER'],['make','are folded/processed by']),['rough-fold','rough-destinations']),
- teach('rough-er-transport',4,'Rough ER','TRANSPORT',[
- `Rough ER ${fn('supports transport of certain proteins in vesicles')}.`, `Assembly, processing and transport are related steps, with different structures responsible for each role.`],flow(['Ribosomes','Rough ER','Vesicles','Secretion or cell membranes'],['build; processing follows in','supports transport in','transport proteins for']),['rough-vesicles','rough-separation']),
- teach('smooth-er',4,'Smooth ER','STRUCTURE & RECOGNITION',[
- `${term('Smooth ER')} has ${term('no ribosomes attached')}.`, `Compare its smooth membrane network with the ribosome-covered surface of rough ER.`],img('smoothER','smoothER'),['smooth-no-ribosomes']),
- teach('er-comparison',4,'Endoplasmic reticulum','ROUGH ER & SMOOTH ER',[
- `The key visible distinction is the ${term('presence or absence of attached ribosomes')}.`],{type:'comparison'},['er-table']),
- teach('er-envelope-connection',4,'Endoplasmic reticulum','CONNECTION TO THE NUCLEUS',[
- `The supplied schematic shows the ${term('ER connected to the nuclear envelope')}.`, `The nuclear envelope separates the nucleus from the cytoplasm; the ER extends as a membrane network in the cell.`],img('er','connection'),['image-er-connected']),
- teach('smooth-er-context',4,'Smooth ER','ADDITIONAL DETAIL IN THE SUPPLIED IMAGE',[
- `The original image also labels smooth ER with ${fn('lipid synthesis')}, ${fn('detoxification')} and ${fn('Ca²⁺ storage')}.`, `These supplied details provide context. They are not assessed by the original Cell Structure question bank.`],img('smoothER','smoothER'),['image-smooth-functions']),
- teach('er-synthesis-context',4,'Endoplasmic reticulum','READING THE SOURCE IMAGE PRECISELY',[
- `The original image describes ER as a site of ${term('protein and lipid synthesis')}, and rough ER as involved in protein synthesis, modification and transport.`, `Read those labels precisely: ${fn('ribosomes join amino acids into polypeptides')}; rough ER processes and transports certain proteins. Smooth ER is associated with lipid synthesis.`],{type:'synthesis'},['image-er-summary']),
- teach('trna',4,'Cytoplasm','AMINO ACIDS & tRNA',[
- `${term('Amino acids')} ${fn('attach to tRNA in the cytoplasm')}, not specifically in ER.`, `Keep the locations distinct: ribosomes join amino acids into polypeptides; ER processes and transports certain proteins.`],flow(['Cytoplasm','Amino acids attach to tRNA'],['is where']),['trna-cytoplasm']),
- teach('ribosome-resolution',4,'Ribosomes and ER','MICROSCOPE RESOLUTION',[
- `Individual ${term('ribosomes')} and ${term('ER membranes')} are not resolved by an ordinary light microscope.`, `In suitable TEM images, ribosomes may appear as small dark particles, free in the cytoplasm or attached to rough ER.`],flow(['Ordinary light microscope','Individual ribosomes & ER membranes','TEM'],['cannot resolve','need greater resolution, such as']),['ribosome-resolution','ribosome-tem']),
- teach('light-microscopy',5,'Light microscopy','WHAT YOU CAN RECOGNISE',[
- `A ${term('stained nucleus')} can often be recognised with a light microscope. ${term('Condensed chromosomes')} may be visible in suitable dividing cells.`, `Individual ribosomes, transport proteins and fine ER membrane details require greater resolution.`],{type:'light'},['light-nucleus','light-chromosomes','light-resolution']),
- teach('tem',5,'Transmission electron microscopy','THIN SECTIONS',[
- `${term('TEM')} images show ${term('thin sections')} and can reveal internal cell structures. The same kind of organelle can look different when cut in different orientations.`, `Look for membrane boundaries, inner folds, membrane networks and small particles. SEM images are outside this specification.`],{type:'recognition'},['tem-section','tem-clues','tem-sem']),
- teach('evidence',5,'Microscope recognition','EVIDENCE BEFORE LABELS',[
- `A dark patch alone does not prove a structure is a nucleus. An oval shape alone does not prove it is a mitochondrion.`, `Use ${term('visible structure and context')}. If the image is unclear, choose a clearer example rather than forcing an identification.`],flow(['Observe the visible features','Connect features with recognition cues','Make a supported identification'],['then','then']),['evidence']),
- teach('microscopy-limit',5,'Microscope recognition','WHAT THIS MODULE ASSESSES',[
- `Both supplied biology images are ${term('schematics')}, not verified light-microscope or TEM images.`, `This module checks recognition knowledge and schematic identification. ${term('Real-micrograph identification is not assessed')}; outcome 1.1 is only partially assessed.`],flow(['Supplied schematics','Schematic identification & recognition knowledge'],['support practice of']),['assessment-limit']),
- teach('final-context',6,'Cell structure','CONNECT STRUCTURE WITH FUNCTION',[
- `Match the six specified structures with their functions, check a misconception and explain how the nucleus controls cell activities.`, `First attempts in this final check are recorded separately from practice. Corrected answers are recorded separately too.`],{type:'summary'},['final-context'])
+const sections = [
+  "Cell structure",
+  "Cell membrane",
+  "Nucleus & chromosomes",
+  "Mitochondria",
+  "ER & ribosomes",
+  "Microscopy",
+  "Final check"
 ];
-const outcomes='1.1 recognise cell structures as seen with a light microscope and electron microscope (TEM images only), including nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes\n\n1.2 describe the functions of the cell structures:\n• nucleus\n• chromosomes\n• cell membrane\n• mitochondria\n• endoplasmic reticulum\n• ribosomes.';
-const questions = [[{"id": "S1", "type": "mc", "q": "Which statement best describes an organelle?", "options": ["A group of organs working together", "A structure inside a cell with a particular function", "Any substance that enters a cell", "A complete living organism"], "answer": 1, "feedback": "An organelle is a structure inside a cell with a particular job. An organ system is a group of organs, not an organelle.", "skill": "function", "review": 1}], [{"id": "S2A", "type": "mc", "q": "What is the main function of the cell membrane?", "options": ["Making polypeptides", "Carrying genes", "Controlling movement into and out of the cell", "Carrying out most stages of aerobic respiration"], "answer": 2, "feedback": "The membrane controls exchange. Ribosomes make polypeptides, chromosomes carry genes and mitochondria carry out most stages of aerobic respiration.", "skill": "function", "review": 0}, {"id": "S2B", "type": "text", "q": "Name structure A.", "accepted": ["cell membrane", "cell surface membrane", "plasma membrane"], "image": "boundaryQuiz", "feedback": "This is the cell membrane, the partially permeable boundary controlling movement into and out of the cell.", "skill": "diagram", "review": 1}], [{"id": "S3A", "type": "match", "q": "Match the structure to its description.", "pairs": [["Nucleus", "Contains chromosomes and regulates protein synthesis to control cell activities."], ["Chromosomes", "DNA associated with proteins; carry genes coding for proteins."], ["Cell membrane", "Controls movement into and out of the whole cell."]], "feedback": "Keep the container, information and boundary separate: nucleus, chromosomes and cell membrane have different roles.", "skill": "function", "review": 1}, {"id": "S3B", "type": "mc", "q": "Which statement about chromosomes is correct?", "options": ["They are always separate X-shaped structures in every microscope image.", "They carry genes coding for proteins.", "They are the boundary around the whole cell.", "They make ATP directly by joining amino acids."], "answer": 1, "feedback": "Chromosomes carry genes. Their visibility changes during the cell cycle, so the familiar X shape is not their appearance in every cell.", "skill": "recognition", "review": 2}], [{"id": "S4A", "type": "mc", "q": "Why do cells with a high demand for movement often contain many mitochondria?", "options": ["Mitochondria store every gene in the cell.", "Mitochondria prevent all substances entering the cell.", "Mitochondria support ATP supply through aerobic respiration.", "Mitochondria join amino acids into polypeptides."], "answer": 2, "feedback": "Movement requires energy transferred by ATP. Mitochondria carry out most stages of aerobic respiration and support ATP supply.", "skill": "function", "review": 1}, {"id": "S4B", "type": "mc", "q": "Which structure has a double membrane and folds of its inner membrane?", "options": ["Nucleus", "Mitochondrion", "Ribosome", "Cell membrane"], "answer": 1, "feedback": "The internal folds and double membrane support identification as a mitochondrion. Use structural evidence, not shape alone.", "skill": "recognition", "review": 0}], [{"id": "S5A", "type": "text", "q": "The structures that join amino acids into polypeptides are ______.", "accepted": ["ribosomes", "ribosome"], "feedback": "Ribosomes make polypeptides. Do not give rough ER as the structure that directly joins the amino acids.", "skill": "function", "review": 0}, {"id": "S5B", "type": "mc", "q": "Which feature distinguishes rough ER from smooth ER?", "options": ["Rough ER has attached ribosomes.", "Smooth ER contains chromosomes.", "Rough ER is the cell’s outer boundary.", "Smooth ER always has more ribosomes."], "answer": 0, "feedback": "Attached ribosomes give rough ER its rough appearance. Smooth ER has no ribosomes attached.", "skill": "recognition", "review": 1}, {"id": "S5C", "type": "match", "q": "Match the markers to rough ER and ribosome.", "pairs": [["B", "Rough ER"], ["C", "Ribosome"]], "feedback": "The ER is the membrane network. The small attached particles are ribosomes.", "skill": "diagram", "review": 1, "image": "erQuiz"}], [{"id": "S6A", "type": "mc", "q": "Which structure can often be recognised in a stained cell using a light microscope?", "options": ["Individual ribosome", "Nucleus", "Fine structure of an ER membrane", "Individual transport protein"], "answer": 1, "feedback": "A stained nucleus can often be seen with a light microscope. Individual ribosomes and fine membrane details require greater resolution.", "skill": "recognition", "review": 0}, {"id": "S6B", "type": "mc", "q": "When are chromosomes generally easier to distinguish individually?", "options": ["When condensed during cell division", "Only when outside the cell", "Only when attached to rough ER", "At all times as separate X-shaped structures"], "answer": 0, "feedback": "Condensation during cell division makes chromosomes easier to distinguish. They are not always visible as separate X-shaped structures.", "skill": "recognition", "review": 0}, {"id": "S6C", "type": "mc", "q": "Which observation would support identifying a region in a TEM image as rough ER?", "options": ["Membrane profiles with small particles attached", "A visible whole-cell outline alone", "An X-shaped chromosome", "A smooth boundary around the entire cell"], "answer": 0, "feedback": "Membrane profiles with attached ribosomes support identifying rough ER. A boundary alone is not sufficient evidence.", "skill": "recognition", "review": 1}], [{"id": "F1", "type": "match", "q": "Connect each structure to its function.", "pairs": [["Nucleus", "Contains chromosomes; controls cell activities by regulating protein synthesis."], ["Chromosomes", "Carry genes coding for proteins."], ["Cell membrane", "Controls movement into and out of the cell."], ["Mitochondria", "Site of most stages of aerobic respiration; support energy transfer into ATP."], ["Endoplasmic reticulum", "Processes and transports certain proteins, especially through rough ER."], ["Ribosomes", "Join amino acids into polypeptides."]], "feedback": "Each structure contributes a different job to a working cell.", "skill": "function", "review": 0}, {"id": "F2", "type": "mc", "q": "A student says, “Rough ER joins amino acids into polypeptides.” Which correction is best?", "options": ["Chromosomes join amino acids; ER stores genes.", "Ribosomes join amino acids; rough ER helps process and transport certain proteins.", "The membrane joins amino acids; ribosomes control entry into cells.", "Mitochondria join amino acids; ER creates energy."], "answer": 1, "feedback": "Separate protein assembly from processing and transport: ribosomes build polypeptides; rough ER supports processing and transport.", "skill": "function", "review": 0}, {"id": "F3", "type": "written", "q": "Describe how the nucleus controls cell activities.", "model": "The nucleus controls cell activities by regulating protein synthesis, including which enzymes are made. This controls which chemical reactions occur in the cell.", "skill": "written", "review": 0}, {"id": "F4A", "type": "mc", "q": "Part A · Identify the structure shown.", "options": ["Nucleus", "Mitochondrion", "Rough ER", "Ribosome"], "answer": 1, "feedback": "Internal membrane folds help identify the mitochondrion. This is a crop of the supplied schematic, not a micrograph.", "skill": "diagram", "review": 0, "image": "mitoQuiz"}, {"id": "F4B", "type": "mc", "q": "Part B · What is the function of the structure you just identified?", "options": ["Carries genes", "Controls the cell boundary", "Most stages of aerobic respiration and ATP supply", "Joins amino acids into polypeptides"], "answer": 2, "feedback": "Identification and function are separate skills. The mitochondrion supports aerobic respiration and ATP supply.", "skill": "function", "review": 0}]];
-const reviewByQuestion={S1:'cell',S2A:'membrane-function',S2B:'membrane-recognition',S3A:'nucleus-function',S3B:'chromosome-function',S4A:'mito-demand',S4B:'mito-structure',S5A:'ribosome-function',S5B:'rough-er-structure',S5C:'er-structure',S6A:'light-microscopy',S6B:'chromosome-recognition',S6C:'rough-er-structure',F1:'cell-map',F2:'rough-er-function',F3:'nucleus-enzymes',F4A:'mito-structure',F4B:'mito-function'};
-const reviewByStructure={'Nucleus':'nucleus-function','Chromosomes':'chromosome-function','Cell membrane':'membrane-function','Mitochondria':'mito-function','Endoplasmic reticulum':'rough-er-function','Ribosomes':'ribosome-function','B':'er-structure','C':'ribosome-function'};
-const referenceSlides=[
- {title:'Learning outcomes',body:[outcomes],plain:true},
- {title:'Cells and organelles',body:['Cells:','Basic units of living organisms.','Organelles:','Structures inside cells with specific functions.']},
- {title:'Cells and organelles',image:'originalCell'},
- {title:'Cytoplasm',body:['Structure:','Jelly-like material outside the nucleus.','Contains organelles.','Function:','Site of many chemical reactions, including anaerobic respiration.']},
- {title:'Cell surface membrane',body:['Structure: partially permeable boundary.','Function: controls movement into and out of the cell.','Substances cross by diffusion or through transport proteins.','Active transport requires energy.']},
- {title:'Nucleus',body:['Contains chromosomes.','Controls cell activities by regulating protein synthesis.','Controls which enzymes are made.','Therefore controls which reactions occur.']},
- {title:'Nuclear envelope',body:['Separates the nucleus from the cytoplasm.','Contains nuclear pores.','Regulate passage of substances, including mRNA.']},
- {title:'Chromosomes',body:['DNA associated with proteins.','Carry genes coding for proteins.','Their organisation is covered under Genes, Chromosomes and DNA.']},
- {title:'Mitochondria',body:['Function:','Site of most stages of aerobic respiration.','Transfer energy into ATP.','Structure:','Double membrane.']},
- {title:'Example — high energy demand',body:['Muscle cells and sperm cells contain many mitochondria to supply ATP for contraction or movement.']},
- {title:'Endoplasmic reticulum and ribosomes',body:['Endoplasmic reticulum (ER):','Membrane network of channels and flattened sacs.','Ribosomes:','Site of translation.','Join amino acids into polypeptides.','Found free in cytoplasm or attached to rough ER.']},
- {title:'Rough ER and smooth ER',comparison:true},
- {title:'Endoplasmic reticulum and ribosomes',image:'originalER'},
- {title:'Hotspot — organelle functions',body:['Ribosomes make polypeptides; ER processes and transports certain proteins.','Amino acids attach to tRNA in the cytoplasm, not specifically in ER.','Mitochondria transfer energy into ATP; they do not “make energy”.']}
+
+const lessonSlides = [
+  {
+    "id": "scope",
+    "kind": "teach",
+    "section": 0,
+    "title": "Cell structure",
+    "subtitle": "RECOGNITION & FUNCTION",
+    "body": [
+      "The <strong class=\"term\">nucleus</strong>, <strong class=\"term\">chromosomes</strong>, <strong class=\"term\">cell membrane</strong>, <strong class=\"term\">mitochondria</strong>, <strong class=\"term\">endoplasmic reticulum</strong> and <strong class=\"term\">ribosomes</strong> each have a function in the cell.",
+      "Let’s see how these structures <span class=\"function\">control exchange, regulate cell activities, transfer energy and make proteins</span>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "cell",
+      "focus": "overview"
+    },
+    "coverage": [
+      "scope"
+    ]
+  },
+  {
+    "id": "cell",
+    "kind": "teach",
+    "section": 0,
+    "title": "Cells and organelles",
+    "subtitle": "THE BASIC UNITS OF LIFE",
+    "body": [
+      "<strong class=\"term\">Cells</strong> are the basic units of living organisms.",
+      "<strong class=\"term\">Organelles</strong> are structures inside cells with specific functions. Together, they keep the cell functioning."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "cell",
+      "focus": "cell"
+    },
+    "coverage": [
+      "cells",
+      "organelles"
+    ]
+  },
+  {
+    "id": "cell-map",
+    "kind": "teach",
+    "section": 0,
+    "title": "Cell structure",
+    "subtitle": "HOW THE STRUCTURES WORK TOGETHER",
+    "body": [
+      "The cell membrane controls exchange. The nucleus and chromosomes are linked to proteins through genes. Mitochondria transfer energy into ATP, while ribosomes and ER are involved in protein production.",
+      "These links bring each <strong class=\"term\">structure</strong> together with its <span class=\"function\">function</span>."
+    ],
+    "visual": {
+      "type": "mindmap"
+    },
+    "coverage": [
+      "map"
+    ]
+  },
+  {
+    "id": "cytoplasm-structure",
+    "kind": "teach",
+    "section": 0,
+    "title": "Cytoplasm",
+    "subtitle": "STRUCTURE & LOCATION",
+    "body": [
+      "The <strong class=\"term\">cytoplasm</strong> is jelly-like material <strong class=\"term\">outside the nucleus</strong>.",
+      "It <span class=\"function\">contains organelles</span>; the cell membrane forms the boundary around the whole cell."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "cell",
+      "focus": "cytoplasm"
+    },
+    "coverage": [
+      "cytoplasm-structure",
+      "cytoplasm-organelles"
+    ]
+  },
+  {
+    "id": "cytoplasm-function",
+    "kind": "teach",
+    "section": 0,
+    "title": "Cytoplasm",
+    "subtitle": "FUNCTION",
+    "body": [
+      "The cytoplasm is the <span class=\"function\">site of many chemical reactions</span>, including <strong class=\"term\">anaerobic respiration</strong>.",
+      "Anaerobic respiration occurs in the cytoplasm. Most stages of aerobic respiration occur in mitochondria."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Cytoplasm",
+        "Many chemical reactions",
+        "Including anaerobic respiration"
+      ],
+      "links": [
+        "is the site of",
+        "including"
+      ]
+    },
+    "coverage": [
+      "cytoplasm-reactions"
+    ]
+  },
+  {
+    "id": "membrane-structure",
+    "kind": "teach",
+    "section": 1,
+    "title": "Cell membrane",
+    "subtitle": "STRUCTURE",
+    "body": [
+      "The <strong class=\"term\">cell surface membrane</strong> is a <strong class=\"term\">partially permeable boundary</strong>.",
+      "It <span class=\"function\">controls movement into and out of the cell</span>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "cell",
+      "focus": "membrane"
+    },
+    "coverage": [
+      "membrane-structure"
+    ]
+  },
+  {
+    "id": "membrane-function",
+    "kind": "teach",
+    "section": 1,
+    "title": "Cell membrane",
+    "subtitle": "FUNCTION",
+    "body": [
+      "The cell membrane <span class=\"function\">controls movement of substances into and out of the cell</span>.",
+      "Substances cross the membrane by diffusion or through transport proteins."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Surroundings",
+        "Cell membrane",
+        "Cell contents"
+      ],
+      "links": [
+        "regulated exchange",
+        "regulated exchange"
+      ]
+    },
+    "coverage": [
+      "membrane-function"
+    ]
+  },
+  {
+    "id": "membrane-transport",
+    "kind": "teach",
+    "section": 1,
+    "title": "Cell membrane",
+    "subtitle": "HOW SUBSTANCES CROSS",
+    "body": [
+      "Substances cross the membrane by <strong class=\"term\">diffusion</strong> or through <strong class=\"term\">transport proteins</strong>.",
+      "These are ways of moving substances across the cell’s boundary."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Substances",
+        "Cell membrane",
+        "Diffusion or transport proteins"
+      ],
+      "links": [
+        "cross the",
+        "by"
+      ]
+    },
+    "coverage": [
+      "membrane-diffusion",
+      "membrane-proteins"
+    ]
+  },
+  {
+    "id": "membrane-active",
+    "kind": "teach",
+    "section": 1,
+    "title": "Cell membrane",
+    "subtitle": "ACTIVE TRANSPORT",
+    "body": [
+      "<strong class=\"term\">Active transport</strong> <span class=\"function\">requires energy</span>.",
+      "Substances cross the cell membrane by diffusion or through transport proteins."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Energy supply",
+        "Active transport",
+        "Movement across the membrane"
+      ],
+      "links": [
+        "is needed for",
+        "moves substances across"
+      ]
+    },
+    "coverage": [
+      "membrane-active"
+    ]
+  },
+  {
+    "id": "membrane-recognition",
+    "kind": "teach",
+    "section": 1,
+    "title": "Cell membrane",
+    "subtitle": "RECOGNITION",
+    "body": [
+      "The <strong class=\"term\">cell surface membrane</strong> forms the boundary around the cell.",
+      "It is partially permeable and <span class=\"function\">controls movement into and out of the cell</span>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "cell",
+      "focus": "membrane"
+    },
+    "coverage": [
+      "membrane-recognition"
+    ]
+  },
+  {
+    "id": "nucleus-structure",
+    "kind": "teach",
+    "section": 2,
+    "title": "Nucleus",
+    "subtitle": "STRUCTURE",
+    "body": [
+      "The <strong class=\"term\">nucleus</strong> <span class=\"function\">contains chromosomes</span>.",
+      "The nuclear envelope separates it from the surrounding cytoplasm."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "cell",
+      "focus": "nucleus"
+    },
+    "coverage": [
+      "nucleus-chromosomes"
+    ]
+  },
+  {
+    "id": "nucleus-function",
+    "kind": "teach",
+    "section": 2,
+    "title": "Nucleus",
+    "subtitle": "FUNCTION",
+    "body": [
+      "The nucleus <span class=\"function\">controls cell activities by regulating protein synthesis</span>.",
+      "The nucleus controls which enzymes are made and therefore which chemical reactions occur."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Nucleus",
+        "Protein synthesis",
+        "Cell activities"
+      ],
+      "links": [
+        "regulates",
+        "helps control"
+      ]
+    },
+    "coverage": [
+      "nucleus-protein"
+    ]
+  },
+  {
+    "id": "nucleus-enzymes",
+    "kind": "teach",
+    "section": 2,
+    "title": "Nucleus",
+    "subtitle": "FROM PROTEINS TO CELL ACTIVITIES",
+    "body": [
+      "The nucleus <span class=\"function\">controls which enzymes are made</span>. It therefore <span class=\"function\">controls which chemical reactions occur</span>.",
+      "This is how regulation of protein synthesis controls cell activities."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Regulation of protein synthesis",
+        "Which enzymes are made",
+        "Which reactions occur",
+        "Cell activities"
+      ],
+      "links": [
+        "determines",
+        "controls",
+        "shape"
+      ]
+    },
+    "coverage": [
+      "nucleus-enzymes",
+      "nucleus-reactions"
+    ]
+  },
+  {
+    "id": "nucleus-recognition",
+    "kind": "teach",
+    "section": 2,
+    "title": "Nucleus",
+    "subtitle": "RECOGNITION",
+    "body": [
+      "A stained nucleus can often be recognised with a <strong class=\"term\">light microscope</strong>. It is often a prominent rounded or oval structure.",
+      "Appearance varies between cells and images. In a suitable TEM section, a <strong class=\"term\">nuclear envelope</strong> may be visible around it."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "nucleus",
+      "focus": "nucleusClose"
+    },
+    "coverage": [
+      "nucleus-recognition"
+    ]
+  },
+  {
+    "id": "envelope",
+    "kind": "teach",
+    "section": 2,
+    "title": "Nuclear envelope",
+    "subtitle": "STRUCTURE & FUNCTION",
+    "body": [
+      "The <strong class=\"term\">nuclear envelope</strong> <span class=\"function\">separates the nucleus from the cytoplasm</span>. It contains <strong class=\"term\">nuclear pores</strong>.",
+      "This boundary surrounds the nucleus. The cell membrane surrounds the whole cell."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "er",
+      "focus": "envelope"
+    },
+    "coverage": [
+      "envelope-boundary",
+      "envelope-pores"
+    ]
+  },
+  {
+    "id": "pores",
+    "kind": "teach",
+    "section": 2,
+    "title": "Nuclear pores",
+    "subtitle": "FUNCTION",
+    "body": [
+      "<strong class=\"term\">Nuclear pores</strong> <span class=\"function\">regulate passage of substances</span>, including <strong class=\"term\">mRNA</strong>.",
+      "The pores are in the nuclear envelope, which separates the nucleus from the cytoplasm."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "er",
+      "focus": "pore"
+    },
+    "coverage": [
+      "pores-passage",
+      "pores-mrna"
+    ]
+  },
+  {
+    "id": "chromosome-composition",
+    "kind": "teach",
+    "section": 2,
+    "title": "Chromosomes",
+    "subtitle": "COMPOSITION",
+    "body": [
+      "<strong class=\"term\">Chromosomes</strong> consist of <strong class=\"term\">DNA associated with proteins</strong>.",
+      "They are contained in the nucleus and carry genes."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Nucleus",
+        "Chromosomes",
+        "DNA associated with proteins"
+      ],
+      "links": [
+        "contains",
+        "consist of"
+      ]
+    },
+    "coverage": [
+      "chromosome-dna"
+    ]
+  },
+  {
+    "id": "chromosome-function",
+    "kind": "teach",
+    "section": 2,
+    "title": "Chromosomes",
+    "subtitle": "FUNCTION",
+    "body": [
+      "Chromosomes <span class=\"function\">carry genes that code for proteins</span>.",
+      "The nucleus contains chromosomes, and chromosomes carry genes. This links the nucleus with protein synthesis."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Nucleus",
+        "Chromosomes",
+        "Genes",
+        "Proteins"
+      ],
+      "links": [
+        "contains",
+        "carry",
+        "code for"
+      ]
+    },
+    "coverage": [
+      "chromosome-genes"
+    ]
+  },
+  {
+    "id": "chromosome-recognition",
+    "kind": "teach",
+    "section": 2,
+    "title": "Chromosomes",
+    "subtitle": "RECOGNITION DURING CELL DIVISION",
+    "body": [
+      "Chromosomes become <strong class=\"term\">condensed during cell division</strong>, making them easier to distinguish individually in suitable images.",
+      "They are not always visible as separate X-shaped structures."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Cell division",
+        "Chromosome condensation",
+        "Easier to distinguish individually"
+      ],
+      "links": [
+        "involves",
+        "makes chromosomes"
+      ]
+    },
+    "coverage": [
+      "chromosome-visibility"
+    ]
+  },
+  {
+    "id": "chromosome-context",
+    "kind": "teach",
+    "section": 2,
+    "title": "Chromosomes",
+    "subtitle": "WHERE THE DETAIL FITS",
+    "body": [
+      "Chromosome organisation is covered under <strong class=\"term\">Genes, Chromosomes and DNA</strong>.",
+      "Here, chromosomes are DNA associated with proteins. They <span class=\"function\">carry genes coding for proteins</span>."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Cell Structure",
+        "Genes, Chromosomes and DNA"
+      ],
+      "links": [
+        "organisation is studied further in"
+      ]
+    },
+    "coverage": [
+      "chromosome-context"
+    ]
+  },
+  {
+    "id": "mito-structure",
+    "kind": "teach",
+    "section": 3,
+    "title": "Mitochondrion",
+    "subtitle": "STRUCTURE",
+    "body": [
+      "A <strong class=\"term\">mitochondrion</strong> has a <strong class=\"term\">double membrane</strong>.",
+      "Mitochondria are the <span class=\"function\">site of most stages of aerobic respiration</span>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "mito",
+      "focus": "mitochondrion"
+    },
+    "coverage": [
+      "mito-double"
+    ]
+  },
+  {
+    "id": "mito-recognition",
+    "kind": "teach",
+    "section": 3,
+    "title": "Mitochondrion",
+    "subtitle": "RECOGNITION",
+    "body": [
+      "The <strong class=\"term\">mitochondrion</strong> is one of the structures inside a cell. It has a <strong class=\"term\">double membrane</strong>.",
+      "Its function is linked to <span class=\"function\">aerobic respiration and energy transfer into ATP</span>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "mito",
+      "focus": "mitochondrion"
+    },
+    "coverage": [
+      "mito-recognition"
+    ]
+  },
+  {
+    "id": "mito-function",
+    "kind": "teach",
+    "section": 3,
+    "title": "Mitochondria",
+    "subtitle": "FUNCTION",
+    "body": [
+      "Mitochondria are the <span class=\"function\">site of most stages of aerobic respiration</span>.",
+      "Energy released through respiration is <span class=\"function\">transferred into ATP</span>, which supplies energy for cellular work."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Aerobic respiration",
+        "Energy transferred into ATP",
+        "Cellular work"
+      ],
+      "links": [
+        "supports",
+        "supplies energy for"
+      ]
+    },
+    "coverage": [
+      "mito-aerobic",
+      "mito-atp"
+    ]
+  },
+  {
+    "id": "mito-transfer",
+    "kind": "teach",
+    "section": 3,
+    "title": "Mitochondria",
+    "subtitle": "ENERGY TRANSFER",
+    "body": [
+      "Mitochondria <span class=\"function\">transfer energy into ATP</span>; they do not “make energy”.",
+      "Muscle cells and sperm cells contain many mitochondria to <span class=\"function\">supply ATP for contraction or movement</span>."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Energy released in respiration",
+        "ATP",
+        "Energy for cellular work"
+      ],
+      "links": [
+        "is transferred into",
+        "supplies"
+      ]
+    },
+    "coverage": [
+      "mito-not-create",
+      "mito-most"
+    ]
+  },
+  {
+    "id": "mito-demand",
+    "kind": "teach",
+    "section": 3,
+    "title": "Mitochondria",
+    "subtitle": "HIGH ENERGY DEMAND",
+    "body": [
+      "<strong class=\"term\">Muscle cells</strong> and <strong class=\"term\">sperm cells</strong> contain many mitochondria.",
+      "These <span class=\"function\">supply ATP for contraction or movement</span>. A high demand for movement creates a high demand for ATP."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Many mitochondria",
+        "ATP supply",
+        "Contraction or movement"
+      ],
+      "links": [
+        "support",
+        "provides energy for"
+      ]
+    },
+    "coverage": [
+      "mito-demand"
+    ]
+  },
+  {
+    "id": "ribosome-location",
+    "kind": "teach",
+    "section": 4,
+    "title": "Ribosomes",
+    "subtitle": "LOCATION",
+    "body": [
+      "<strong class=\"term\">Ribosomes</strong> may be <strong class=\"term\">free in the cytoplasm</strong> or <strong class=\"term\">attached to rough endoplasmic reticulum</strong>.",
+      "The ribosomes attached to rough ER <span class=\"function\">join amino acids into polypeptides</span>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "er",
+      "focus": "ribosome"
+    },
+    "coverage": [
+      "ribosome-locations"
+    ]
+  },
+  {
+    "id": "ribosome-function",
+    "kind": "teach",
+    "section": 4,
+    "title": "Ribosomes",
+    "subtitle": "FUNCTION",
+    "body": [
+      "Ribosomes are the <span class=\"function\">site of translation</span>. They <span class=\"function\">join amino acids into polypeptides</span>.",
+      "The ER <span class=\"function\">processes and transports certain proteins</span>. These are related roles in protein production."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Amino acids",
+        "Ribosomes · translation",
+        "Polypeptide"
+      ],
+      "links": [
+        "are joined at",
+        "to make a"
+      ]
+    },
+    "coverage": [
+      "ribosome-translation",
+      "ribosome-polypeptide"
+    ]
+  },
+  {
+    "id": "er-structure",
+    "kind": "teach",
+    "section": 4,
+    "title": "Endoplasmic reticulum",
+    "subtitle": "STRUCTURE",
+    "body": [
+      "The <strong class=\"term\">endoplasmic reticulum (ER)</strong> is a <strong class=\"term\">membrane network of channels and flattened sacs</strong>.",
+      "The flattened membrane sacs are called <strong class=\"term\">cisternae</strong>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "er",
+      "focus": "er"
+    },
+    "coverage": [
+      "er-network",
+      "er-cisternae"
+    ]
+  },
+  {
+    "id": "rough-er-structure",
+    "kind": "teach",
+    "section": 4,
+    "title": "Rough ER",
+    "subtitle": "RECOGNITION",
+    "body": [
+      "<strong class=\"term\">Rough ER</strong> has <strong class=\"term\">ribosomes attached to its surface</strong>, giving it its rough appearance.",
+      "In TEM, look for parallel membrane profiles with small dark particles attached. The attached particles are ribosomes."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "er",
+      "focus": "roughER"
+    },
+    "coverage": [
+      "rough-ribosomes",
+      "rough-recognition"
+    ]
+  },
+  {
+    "id": "rough-er-function",
+    "kind": "teach",
+    "section": 4,
+    "title": "Rough ER",
+    "subtitle": "FUNCTION",
+    "body": [
+      "Rough ER <span class=\"function\">helps fold and process proteins</span> made by its attached ribosomes.",
+      "These proteins may be destined for <strong class=\"term\">secretion</strong> or <strong class=\"term\">cell membranes</strong>. Ribosomes build the polypeptides; the ER processes certain proteins."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Attached ribosomes",
+        "Polypeptides",
+        "Rough ER"
+      ],
+      "links": [
+        "make",
+        "are folded/processed by"
+      ]
+    },
+    "coverage": [
+      "rough-fold",
+      "rough-destinations"
+    ]
+  },
+  {
+    "id": "rough-er-transport",
+    "kind": "teach",
+    "section": 4,
+    "title": "Rough ER",
+    "subtitle": "TRANSPORT",
+    "body": [
+      "Rough ER <span class=\"function\">supports transport of certain proteins in vesicles</span>.",
+      "Assembly, processing and transport are related steps, with different structures responsible for each role."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Ribosomes",
+        "Rough ER",
+        "Vesicles",
+        "Secretion or cell membranes"
+      ],
+      "links": [
+        "build; processing follows in",
+        "supports transport in",
+        "transport proteins for"
+      ]
+    },
+    "coverage": [
+      "rough-vesicles",
+      "rough-separation"
+    ]
+  },
+  {
+    "id": "smooth-er",
+    "kind": "teach",
+    "section": 4,
+    "title": "Smooth ER",
+    "subtitle": "STRUCTURE & RECOGNITION",
+    "body": [
+      "<strong class=\"term\">Smooth ER</strong> has <strong class=\"term\">no ribosomes attached</strong>.",
+      "Rough ER has ribosomes attached to its surface. This gives the two forms of ER their different appearance."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "smoothER",
+      "focus": "smoothER"
+    },
+    "coverage": [
+      "smooth-no-ribosomes"
+    ]
+  },
+  {
+    "id": "er-comparison",
+    "kind": "teach",
+    "section": 4,
+    "title": "Endoplasmic reticulum",
+    "subtitle": "ROUGH ER & SMOOTH ER",
+    "body": [
+      "The key visible distinction is the <strong class=\"term\">presence or absence of attached ribosomes</strong>."
+    ],
+    "visual": {
+      "type": "comparison"
+    },
+    "coverage": [
+      "er-table"
+    ]
+  },
+  {
+    "id": "er-envelope-connection",
+    "kind": "teach",
+    "section": 4,
+    "title": "Endoplasmic reticulum",
+    "subtitle": "CONNECTION TO THE NUCLEUS",
+    "body": [
+      "The <strong class=\"term\">ER</strong> is <strong class=\"term\">connected to the nuclear envelope</strong>.",
+      "The nuclear envelope separates the nucleus from the cytoplasm; the ER is a membrane network of channels and flattened sacs."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "er",
+      "focus": "connection"
+    },
+    "coverage": [
+      "image-er-connected"
+    ]
+  },
+  {
+    "id": "smooth-er-context",
+    "kind": "teach",
+    "section": 4,
+    "title": "Smooth ER",
+    "subtitle": "FUNCTION",
+    "body": [
+      "Smooth ER is involved in <span class=\"function\">lipid synthesis</span>, <span class=\"function\">detoxification</span> and <span class=\"function\">Ca²⁺ storage</span>.",
+      "It has <strong class=\"term\">no ribosomes attached</strong>."
+    ],
+    "visual": {
+      "type": "image",
+      "asset": "smoothER",
+      "focus": "smoothER"
+    },
+    "coverage": [
+      "image-smooth-functions"
+    ]
+  },
+  {
+    "id": "er-synthesis-context",
+    "kind": "teach",
+    "section": 4,
+    "title": "Endoplasmic reticulum",
+    "subtitle": "FUNCTION",
+    "body": [
+      "ER is a site of <strong class=\"term\">protein and lipid synthesis</strong>. Rough ER is involved in <span class=\"function\">protein synthesis, modification and transport</span>.",
+      "Ribosomes <span class=\"function\">join amino acids into polypeptides</span>. ER <span class=\"function\">processes and transports certain proteins</span>."
+    ],
+    "visual": {
+      "type": "synthesis"
+    },
+    "coverage": [
+      "image-er-summary"
+    ]
+  },
+  {
+    "id": "trna",
+    "kind": "teach",
+    "section": 4,
+    "title": "Cytoplasm",
+    "subtitle": "AMINO ACIDS & tRNA",
+    "body": [
+      "<strong class=\"term\">Amino acids</strong> <span class=\"function\">attach to tRNA in the cytoplasm</span>, not specifically in ER.",
+      "Ribosomes join amino acids into polypeptides. ER processes and transports certain proteins."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Cytoplasm",
+        "Amino acids attach to tRNA"
+      ],
+      "links": [
+        "is where"
+      ]
+    },
+    "coverage": [
+      "trna-cytoplasm"
+    ]
+  },
+  {
+    "id": "ribosome-resolution",
+    "kind": "teach",
+    "section": 4,
+    "title": "Ribosomes and ER",
+    "subtitle": "MICROSCOPE RESOLUTION",
+    "body": [
+      "Individual <strong class=\"term\">ribosomes</strong> and <strong class=\"term\">ER membranes</strong> are not resolved by an ordinary light microscope.",
+      "In suitable TEM images, ribosomes may appear as small dark particles, free in the cytoplasm or attached to rough ER."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Ordinary light microscope",
+        "Individual ribosomes & ER membranes",
+        "TEM"
+      ],
+      "links": [
+        "cannot resolve",
+        "need greater resolution, such as"
+      ]
+    },
+    "coverage": [
+      "ribosome-resolution",
+      "ribosome-tem"
+    ]
+  },
+  {
+    "id": "light-microscopy",
+    "kind": "teach",
+    "section": 5,
+    "title": "Light microscopy",
+    "subtitle": "WHAT YOU CAN RECOGNISE",
+    "body": [
+      "A <strong class=\"term\">stained nucleus</strong> can often be recognised with a light microscope. <strong class=\"term\">Condensed chromosomes</strong> may be visible in suitable dividing cells.",
+      "Individual ribosomes, transport proteins and fine ER membrane details require greater resolution."
+    ],
+    "visual": {
+      "type": "light"
+    },
+    "coverage": [
+      "light-nucleus",
+      "light-chromosomes",
+      "light-resolution"
+    ]
+  },
+  {
+    "id": "tem",
+    "kind": "teach",
+    "section": 5,
+    "title": "TEM",
+    "subtitle": "THIN SECTIONS",
+    "body": [
+      "<strong class=\"term\">TEM</strong> images show <strong class=\"term\">thin sections</strong> and can reveal internal cell structures. The same kind of organelle can look different when cut in different orientations.",
+      "Membrane boundaries, membrane networks and small particles provide clues to the structures."
+    ],
+    "visual": {
+      "type": "recognition"
+    },
+    "coverage": [
+      "tem-section",
+      "tem-clues"
+    ]
+  },
+  {
+    "id": "evidence",
+    "kind": "teach",
+    "section": 5,
+    "title": "Microscope recognition",
+    "subtitle": "EVIDENCE BEFORE LABELS",
+    "body": [
+      "A dark patch alone does not prove a structure is a nucleus. An oval shape alone does not prove it is a mitochondrion.",
+      "<strong class=\"term\">Visible structure and context</strong> support an identification. Clearer features make a structure easier to recognise."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Visible features",
+        "Recognition clues",
+        "Supported identification"
+      ],
+      "links": [
+        "provide",
+        "support"
+      ]
+    },
+    "coverage": [
+      "evidence"
+    ]
+  },
+  {
+    "id": "microscopy-limit",
+    "kind": "teach",
+    "section": 5,
+    "title": "Microscope recognition",
+    "subtitle": "WHAT THIS MODULE ASSESSES",
+    "body": [
+      "The diagrams in this lesson are <strong class=\"term\">schematics</strong>.",
+      "The checkpoints cover structure names, recognition knowledge and functions. <strong class=\"term\">Real-micrograph identification is not assessed here</strong>."
+    ],
+    "visual": {
+      "type": "flow",
+      "nodes": [
+        "Cell diagrams",
+        "Structure names and functions"
+      ],
+      "links": [
+        "bring together"
+      ]
+    },
+    "coverage": [
+      "assessment-limit"
+    ]
+  },
+  {
+    "id": "final-context",
+    "kind": "teach",
+    "section": 6,
+    "title": "Cell structure",
+    "subtitle": "STRUCTURE & FUNCTION",
+    "body": [
+      "The six structures are linked with their functions below. A final set of questions brings these relationships together.",
+      "First attempts in this final check are recorded separately from practice. Corrected answers are recorded separately too."
+    ],
+    "visual": {
+      "type": "summary"
+    },
+    "coverage": [
+      "final-context"
+    ]
+  }
 ];
+
+const questions = [
+  [
+    {
+      "id": "S1",
+      "type": "mc",
+      "q": "Which statement best describes an organelle?",
+      "options": [
+        "A group of organs working together",
+        "A structure inside a cell with a particular function",
+        "Any substance that enters a cell",
+        "A complete living organism"
+      ],
+      "answer": 1,
+      "feedback": "An organelle is a structure inside a cell with a particular function.",
+      "skill": "function",
+      "review": 1
+    }
+  ],
+  [
+    {
+      "id": "S2A",
+      "type": "mc",
+      "q": "What is the main function of the cell membrane?",
+      "options": [
+        "Making polypeptides",
+        "Carrying genes",
+        "Controlling movement into and out of the cell",
+        "Carrying out most stages of aerobic respiration"
+      ],
+      "answer": 2,
+      "feedback": "The membrane controls exchange. Ribosomes make polypeptides, chromosomes carry genes and mitochondria carry out most stages of aerobic respiration.",
+      "skill": "function",
+      "review": 0
+    },
+    {
+      "id": "S2B",
+      "type": "text",
+      "q": "Which cell structure is shown?",
+      "accepted": [
+        "cell membrane",
+        "cell surface membrane",
+        "plasma membrane"
+      ],
+      "image": "boundaryQuiz",
+      "feedback": "This is the cell membrane, the partially permeable boundary controlling movement into and out of the cell.",
+      "skill": "diagram",
+      "review": 1
+    }
+  ],
+  [
+    {
+      "id": "S3A",
+      "type": "match",
+      "q": "Which description goes with this structure?",
+      "pairs": [
+        [
+          "Nucleus",
+          "Contains chromosomes and regulates protein synthesis to control cell activities."
+        ],
+        [
+          "Chromosomes",
+          "DNA associated with proteins; carry genes coding for proteins."
+        ],
+        [
+          "Cell membrane",
+          "Controls movement into and out of the whole cell."
+        ]
+      ],
+      "feedback": "The nucleus contains chromosomes, chromosomes carry genes, and the cell membrane controls exchange.",
+      "skill": "function",
+      "review": 1
+    },
+    {
+      "id": "S3B",
+      "type": "mc",
+      "q": "Which statement about chromosomes is correct?",
+      "options": [
+        "They are always separate X-shaped structures in every microscope image.",
+        "They carry genes coding for proteins.",
+        "They are the boundary around the whole cell.",
+        "They make ATP directly by joining amino acids."
+      ],
+      "answer": 1,
+      "feedback": "Chromosomes carry genes coding for proteins. Condensed chromosomes are easier to distinguish during cell division.",
+      "skill": "recognition",
+      "review": 2
+    }
+  ],
+  [
+    {
+      "id": "S4A",
+      "type": "mc",
+      "q": "Why do cells with a high demand for movement often contain many mitochondria?",
+      "options": [
+        "Mitochondria store every gene in the cell.",
+        "Mitochondria prevent all substances entering the cell.",
+        "Mitochondria support ATP supply through aerobic respiration.",
+        "Mitochondria join amino acids into polypeptides."
+      ],
+      "answer": 2,
+      "feedback": "Movement requires energy transferred by ATP. Mitochondria carry out most stages of aerobic respiration and support ATP supply.",
+      "skill": "function",
+      "review": 1
+    },
+    {
+      "id": "S4B",
+      "type": "mc",
+      "q": "Which structure has a double membrane?",
+      "options": [
+        "Nucleus",
+        "Mitochondrion",
+        "Ribosome",
+        "Cell membrane"
+      ],
+      "answer": 1,
+      "feedback": "A mitochondrion has a double membrane.",
+      "skill": "recognition",
+      "review": 0
+    }
+  ],
+  [
+    {
+      "id": "S5A",
+      "type": "text",
+      "q": "The structures that join amino acids into polypeptides are ______.",
+      "accepted": [
+        "ribosomes",
+        "ribosome"
+      ],
+      "feedback": "Ribosomes join amino acids into polypeptides. ER processes and transports certain proteins.",
+      "skill": "function",
+      "review": 0
+    },
+    {
+      "id": "S5B",
+      "type": "mc",
+      "q": "Which feature distinguishes rough ER from smooth ER?",
+      "options": [
+        "Rough ER has attached ribosomes.",
+        "Smooth ER contains chromosomes.",
+        "Rough ER is the cell’s outer boundary.",
+        "Smooth ER always has more ribosomes."
+      ],
+      "answer": 0,
+      "feedback": "Attached ribosomes give rough ER its rough appearance. Smooth ER has no ribosomes attached.",
+      "skill": "recognition",
+      "review": 1
+    },
+    {
+      "id": "S5C",
+      "type": "match",
+      "q": "Which name fits the structure shown?",
+      "pairs": [
+        [
+          "B",
+          "Rough ER"
+        ],
+        [
+          "C",
+          "Ribosome"
+        ]
+      ],
+      "feedback": "Rough ER is a membrane network. Ribosomes are attached to its surface.",
+      "skill": "diagram",
+      "review": 1,
+      "image": "erQuiz"
+    }
+  ],
+  [
+    {
+      "id": "S6A",
+      "type": "mc",
+      "q": "Which structure can often be recognised in a stained cell using a light microscope?",
+      "options": [
+        "Individual ribosome",
+        "Nucleus",
+        "Fine structure of an ER membrane",
+        "Individual transport protein"
+      ],
+      "answer": 1,
+      "feedback": "A stained nucleus can often be seen with a light microscope. Individual ribosomes and fine membrane details require greater resolution.",
+      "skill": "recognition",
+      "review": 0
+    },
+    {
+      "id": "S6B",
+      "type": "mc",
+      "q": "When are chromosomes generally easier to distinguish individually?",
+      "options": [
+        "When condensed during cell division",
+        "Only when outside the cell",
+        "Only when attached to rough ER",
+        "At all times as separate X-shaped structures"
+      ],
+      "answer": 0,
+      "feedback": "Condensation during cell division makes chromosomes easier to distinguish. They are not always visible as separate X-shaped structures.",
+      "skill": "recognition",
+      "review": 0
+    },
+    {
+      "id": "S6C",
+      "type": "mc",
+      "q": "Which observation would support identifying a region in a TEM image as rough ER?",
+      "options": [
+        "Membrane profiles with small particles attached",
+        "A visible whole-cell outline alone",
+        "An X-shaped chromosome",
+        "A smooth boundary around the entire cell"
+      ],
+      "answer": 0,
+      "feedback": "Membrane profiles with attached ribosomes support identifying rough ER. A boundary alone is not sufficient evidence.",
+      "skill": "recognition",
+      "review": 1
+    }
+  ],
+  [
+    {
+      "id": "F1",
+      "type": "match",
+      "q": "Which function goes with this structure?",
+      "pairs": [
+        [
+          "Nucleus",
+          "Contains chromosomes; controls cell activities by regulating protein synthesis."
+        ],
+        [
+          "Chromosomes",
+          "Carry genes coding for proteins."
+        ],
+        [
+          "Cell membrane",
+          "Controls movement into and out of the cell."
+        ],
+        [
+          "Mitochondria",
+          "Site of most stages of aerobic respiration; support energy transfer into ATP."
+        ],
+        [
+          "Endoplasmic reticulum",
+          "Processes and transports certain proteins, especially through rough ER."
+        ],
+        [
+          "Ribosomes",
+          "Join amino acids into polypeptides."
+        ]
+      ],
+      "feedback": "Each structure contributes a different job to a working cell.",
+      "skill": "function",
+      "review": 0
+    },
+    {
+      "id": "F2",
+      "type": "mc",
+      "q": "A student says, “Rough ER joins amino acids into polypeptides.” Which correction is best?",
+      "options": [
+        "Chromosomes join amino acids; ER stores genes.",
+        "Ribosomes join amino acids; rough ER helps process and transport certain proteins.",
+        "The membrane joins amino acids; ribosomes control entry into cells.",
+        "Mitochondria join amino acids; ER creates energy."
+      ],
+      "answer": 1,
+      "feedback": "Ribosomes join amino acids into polypeptides. Rough ER helps fold, process and transport certain proteins.",
+      "skill": "function",
+      "review": 0
+    },
+    {
+      "id": "F3",
+      "type": "written",
+      "q": "How does the nucleus control cell activities?",
+      "model": "The nucleus controls cell activities by regulating protein synthesis, including which enzymes are made. This controls which chemical reactions occur in the cell.",
+      "skill": "written",
+      "review": 0
+    },
+    {
+      "id": "F4A",
+      "type": "mc",
+      "q": "Which structure is shown?",
+      "options": [
+        "Nucleus",
+        "Mitochondrion",
+        "Rough ER",
+        "Ribosome"
+      ],
+      "answer": 1,
+      "feedback": "A mitochondrion has a double membrane and transfers energy into ATP.",
+      "skill": "diagram",
+      "review": 0,
+      "image": "mitoQuiz"
+    },
+    {
+      "id": "F4B",
+      "type": "mc",
+      "q": "Part B · What is the function of the structure you just identified?",
+      "options": [
+        "Carries genes",
+        "Controls the cell boundary",
+        "Most stages of aerobic respiration and ATP supply",
+        "Joins amino acids into polypeptides"
+      ],
+      "answer": 2,
+      "feedback": "Identification and function are separate skills. The mitochondrion supports aerobic respiration and ATP supply.",
+      "skill": "function",
+      "review": 0
+    }
+  ]
+];
+
+const reviewByQuestion = {
+  "S1": "cell",
+  "S2A": "membrane-function",
+  "S2B": "membrane-recognition",
+  "S3A": "nucleus-function",
+  "S3B": "chromosome-function",
+  "S4A": "mito-demand",
+  "S4B": "mito-structure",
+  "S5A": "ribosome-function",
+  "S5B": "rough-er-structure",
+  "S5C": "er-structure",
+  "S6A": "light-microscopy",
+  "S6B": "chromosome-recognition",
+  "S6C": "rough-er-structure",
+  "F1": "cell-map",
+  "F2": "rough-er-function",
+  "F3": "nucleus-enzymes",
+  "F4A": "mito-structure",
+  "F4B": "mito-function"
+};
+
+const reviewByStructure = {
+  "Nucleus": "nucleus-function",
+  "Chromosomes": "chromosome-function",
+  "Cell membrane": "membrane-function",
+  "Mitochondria": "mito-function",
+  "Endoplasmic reticulum": "rough-er-function",
+  "Ribosomes": "ribosome-function",
+  "B": "er-structure",
+  "C": "ribosome-function"
+};
+
+const referenceSlides = [
+  {
+    "title": "Learning outcomes",
+    "body": [
+      "1.1 recognise cell structures as seen with a light microscope and electron microscope (TEM images only), including nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes\n\n1.2 describe the functions of the cell structures:\n• nucleus\n• chromosomes\n• cell membrane\n• mitochondria\n• endoplasmic reticulum\n• ribosomes."
+    ],
+    "plain": true
+  },
+  {
+    "title": "Cells and organelles",
+    "body": [
+      "Cells:",
+      "Basic units of living organisms.",
+      "Organelles:",
+      "Structures inside cells with specific functions."
+    ]
+  },
+  {
+    "title": "Cells and organelles",
+    "image": "originalCell"
+  },
+  {
+    "title": "Cytoplasm",
+    "body": [
+      "Structure:",
+      "Jelly-like material outside the nucleus.",
+      "Contains organelles.",
+      "Function:",
+      "Site of many chemical reactions, including anaerobic respiration."
+    ]
+  },
+  {
+    "title": "Cell surface membrane",
+    "body": [
+      "Structure: partially permeable boundary.",
+      "Function: controls movement into and out of the cell.",
+      "Substances cross by diffusion or through transport proteins.",
+      "Active transport requires energy."
+    ]
+  },
+  {
+    "title": "Nucleus",
+    "body": [
+      "Contains chromosomes.",
+      "Controls cell activities by regulating protein synthesis.",
+      "Controls which enzymes are made.",
+      "Therefore controls which reactions occur."
+    ]
+  },
+  {
+    "title": "Nuclear envelope",
+    "body": [
+      "Separates the nucleus from the cytoplasm.",
+      "Contains nuclear pores.",
+      "Regulate passage of substances, including mRNA."
+    ]
+  },
+  {
+    "title": "Chromosomes",
+    "body": [
+      "DNA associated with proteins.",
+      "Carry genes coding for proteins.",
+      "Their organisation is covered under Genes, Chromosomes and DNA."
+    ]
+  },
+  {
+    "title": "Mitochondria",
+    "body": [
+      "Function:",
+      "Site of most stages of aerobic respiration.",
+      "Transfer energy into ATP.",
+      "Structure:",
+      "Double membrane."
+    ]
+  },
+  {
+    "title": "Example — high energy demand",
+    "body": [
+      "Muscle cells and sperm cells contain many mitochondria to supply ATP for contraction or movement."
+    ]
+  },
+  {
+    "title": "Endoplasmic reticulum and ribosomes",
+    "body": [
+      "Endoplasmic reticulum (ER):",
+      "Membrane network of channels and flattened sacs.",
+      "Ribosomes:",
+      "Site of translation.",
+      "Join amino acids into polypeptides.",
+      "Found free in cytoplasm or attached to rough ER."
+    ]
+  },
+  {
+    "title": "Rough ER and smooth ER",
+    "comparison": true
+  },
+  {
+    "title": "Endoplasmic reticulum and ribosomes",
+    "image": "originalER"
+  },
+  {
+    "title": "Hotspot — organelle functions",
+    "body": [
+      "Ribosomes make polypeptides; ER processes and transports certain proteins.",
+      "Amino acids attach to tRNA in the cytoplasm, not specifically in ER.",
+      "Mitochondria transfer energy into ATP; they do not “make energy”."
+    ]
+  }
+];
+
+const outcomes = "1.1 recognise cell structures as seen with a light microscope and electron microscope (TEM images only), including nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes\n\n1.2 describe the functions of the cell structures:\n• nucleus\n• chromosomes\n• cell membrane\n• mitochondria\n• endoplasmic reticulum\n• ribosomes.";
