@@ -1,0 +1,46 @@
+{
+  "dimensions": [1536, 1024],
+  "labels": {
+    "cell": [
+      {"key":"nucleus","text":"nucleus","box":[44,381,244,100]},
+      {"key":"cytoplasm","text":"cytoplasm","box":[1135,124,305,102]},
+      {"key":"ribosomes","text":"ribosomes","box":[1187,440,289,102]},
+      {"key":"mitochondrion","text":"mitochondrion","box":[95,810,378,101]},
+      {"key":"membrane","text":"cell surface membrane","box":[1012,760,502,102]}
+    ],
+    "er": [
+      {"key":"heading","text":"Endoplasmic reticulum","box":[38,25,898,126]},
+      {"key":"nucleus","text":"nucleus","box":[94,193,195,82]},
+      {"key":"envelope","text":"nuclear envelope","box":[378,183,286,73]},
+      {"key":"pore","text":"nuclear pore","box":[24,319,221,73]},
+      {"key":"smooth","text":"smooth ER","box":[878,193,230,75]},
+      {"key":"lipid","text":"lipid synthesis","box":[902,274,285,52]},
+      {"key":"detox","text":"detoxification","box":[902,321,285,48]},
+      {"key":"storage","text":"Ca²⁺ storage","box":[902,367,285,56]},
+      {"key":"rough","text":"rough ER","box":[24,728,230,70]},
+      {"key":"roughFunctions","text":"protein synthesis; modification & transport","box":[25,796,426,116]},
+      {"key":"ribosomes","text":"ribosomes (on rough ER)","box":[516,812,273,96]},
+      {"key":"sacs","text":"cisternae (flattened membrane sacs)","box":[910,623,307,94]},
+      {"key":"keyPoints","text":"key points","box":[1190,192,345,469]}
+    ]
+  },
+  "views": {
+    "overview":{"asset":"cell","crop":[0,0,1536,1024],"reveal":"all"},
+    "cytoplasm":{"asset":"cell","crop":[765,95,1475,485],"reveal":["cytoplasm"]},
+    "membrane":{"asset":"cell","crop":[810,645,1520,885],"reveal":["membrane"]},
+    "nucleus":{"asset":"cell","crop":[34,340,795,655],"reveal":["nucleus"]},
+    "mitochondrion":{"asset":"cell","crop":[88,620,725,918],"reveal":["mitochondrion"]},
+    "freeRibosomes":{"asset":"cell","crop":[830,335,1480,565],"reveal":["ribosomes"]},
+    "envelope":{"asset":"er","crop":[240,170,690,580],"reveal":["envelope"]},
+    "pore":{"asset":"er","crop":[20,300,635,595],"reveal":["pore"]},
+    "rough":{"asset":"er","crop":[18,440,890,922],"reveal":["rough"]},
+    "roughFunctions":{"asset":"er","crop":[18,440,890,922],"reveal":["rough","roughFunctions"]},
+    "attachedRibosomes":{"asset":"er","crop":[390,595,825,924],"reveal":["ribosomes"]},
+    "sacs":{"asset":"er","crop":[570,505,1220,770],"reveal":["sacs"]},
+    "connection":{"asset":"er","crop":[18,170,1188,925],"reveal":["envelope","rough"]},
+    "smooth":{"asset":"er","crop":[585,185,1190,570],"reveal":["smooth"]},
+    "smoothLipid":{"asset":"er","crop":[585,185,1190,570],"reveal":["smooth","lipid"]},
+    "smoothDetox":{"asset":"er","crop":[585,185,1190,570],"reveal":["smooth","detox"]},
+    "smoothStorage":{"asset":"er","crop":[585,185,1190,570],"reveal":["smooth","storage"]}
+  }
+}

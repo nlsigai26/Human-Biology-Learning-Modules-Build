@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "standalone_html_loaded_offline": true,
+  "method": "exact HTML loaded into an offline document; managed-browser file URL policy blocks file navigation",
+  "embedded_images_and_fonts_loaded": true,
+  "navigation_works_offline": true,
+  "reduced_motion": true,
+  "touch_sections": true,
+  "review_layouts_at_100_150_200_percent": true,
+  "errors": []
+}

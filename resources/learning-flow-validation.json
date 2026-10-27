@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "teaching_units_visited": 53,
+  "question_units_attempted": 22,
+  "image_attempts_checked": 8,
+  "scores": {
+    "practice": {
+      "available": 14,
+      "attempted": 14,
+      "first": 13,
+      "corrected": 1
+    },
+    "final": {
+      "available": 11,
+      "attempted": 11,
+      "first": 11,
+      "corrected": 0
+    }
+  },
+  "source_text_survives_pagination": true,
+  "first_attempt_retry_persistence": true,
+  "review_returns": true,
+  "practice_reset_isolated": true,
+  "outline_clearance_at_100_percent": true,
+  "errors": []
+}

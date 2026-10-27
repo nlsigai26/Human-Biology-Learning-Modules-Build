@@ -1,13 +1,13 @@
 {
   "name": "cell-structure-learn",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Standalone offline Cell Structure learning module",
   "type": "module",
   "scripts": {
     "build": "python3 build.py",
     "dev": "python3 -m http.server 4173 --directory dist",
-    "test": "node tests/content-rules.mjs && node tests/learning-flow.mjs && node tests/matching-ui.mjs",
+    "test": "node tests/content-rules.mjs && node tests/learning-flow.mjs && node tests/matching-ui.mjs && node tests/layout.mjs && node tests/offline-accessibility.mjs",
     "test:content": "node tests/content-rules.mjs",
     "test:matching": "node tests/matching-ui.mjs"
   },

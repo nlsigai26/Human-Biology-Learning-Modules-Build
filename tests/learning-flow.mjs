@@ -1,67 +1,40 @@
-const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
-import assert from 'node:assert/strict';import fs from 'node:fs';
-const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
-const context=await browser.newContext({viewport:{width:1440,height:900}});const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-await page.goto(process.env.TEST_URL||'http://127.0.0.1:4173/');
-await page.evaluate(()=>{localStorage.clear();state=blank();deck=makeDeck();render()});
-const coverage=await page.evaluate(()=>({slides:lessonSlides.length,items:lessonSlides.flatMap(s=>s.coverage),missing:lessonSlides.filter(s=>!s.coverage.length).map(s=>s.id)}));assert.equal(coverage.missing.length,0);assert(coverage.items.includes('trna-cytoplasm'));assert(!coverage.items.includes('image-smooth-functions'));assert.equal(await page.evaluate(()=>/smooth\s*er|cisternae/i.test(JSON.stringify({lessonSlides,questions,referenceSlides}))),false);
-const layouts=[];
-for(const viewport of [{width:1440,height:900},{width:1366,height:768},{width:390,height:844},{width:375,height:667},{width:360,height:740}]){
- await page.setViewportSize(viewport);
- const failures=await page.evaluate(()=>{
-  state=blank();state.dragDrafts.F1=[0,1,2,3,4,5];questions.flat().forEach(q=>{const n=q.type==='match'?q.pairs.length:1;state.answers[q.id]={first:Array(n).fill(false),current:Array(n).fill(false),value:q.type==='match'?Array(n).fill('0'):'attempt',attempts:1}});deck=makeDeck();
-  const out=[];const check=(id)=>{const box=document.querySelector('.slide').getBoundingClientRect();const bad=[...document.querySelectorAll('.slide h1,.slide h2,.slide-copy,.anatomy-plot,.annotation-label,.figure-caption,.flow-node,.flow-link,.mindmap,.question-prompt,.answer-form,.feedback-message,.feedback-review,.score-row,.source-text,.comparison,.self-checks,.review-item,.clue-list,.results-note,.result-intro,.end-actions,.summary-list,.drag-intro,.drag-check,.drag-board,.answer-chip,.drop-slot,.drop-term,.group-feedback-row')].filter(e=>{const r=e.getBoundingClientRect();return r.width&&r.height&&(r.bottom>box.bottom+2||r.top<box.top-2||r.left<box.left-2||r.right>box.right+2)}).map(e=>({element:e.className,overflow:Math.ceil(e.getBoundingClientRect().bottom-box.bottom)}));if(bad.length)out.push({id,bad})};
-  const ids=deck.map(s=>s.id);for(const id of ids){state.index=deck.findIndex(s=>s.id===id);state.mode='lesson';state.feedback=false;render();check(id);if(current().kind==='quiz'){state.feedback=true;render();check(id+':feedback')}}
-  state.mode='reference';for(let i=0;i<referenceSlides.length;i++){state.referenceIndex=i;render();check('reference-'+i)}
-  return out;
- });layouts.push({viewport,failures});
-}
-fs.writeFileSync('work/layout-audit.json',JSON.stringify(layouts,null,2));assert(layouts.every(l=>!l.failures.length),JSON.stringify(layouts.filter(l=>l.failures.length)));
-await page.setViewportSize({width:1440,height:900});await page.evaluate(()=>{state=blank();deck=makeDeck();render()});
-let visited=0;
-while(await page.evaluate(()=>current().kind==='teach'||current().kind==='quiz')){
- const u=await page.evaluate(()=>current());
- if(u.kind==='quiz'){
-  await page.locator('#answerForm button[type=submit]').click();assert(await page.locator('#answerError').innerText());assert.equal(await page.evaluate(()=>state.feedback),false);
-  if(u.q.id==='S1'){
-   await page.locator('[name=answer][value="0"]').check();await page.locator('#answerForm button[type=submit]').click();assert.equal(await page.evaluate(()=>state.answers.S1.first[0]),false);
-   await page.locator('[data-review="cell"]').click();assert.equal(await page.evaluate(()=>current().id),'cell');await page.locator('[data-action=return]').click();assert.equal(await page.evaluate(()=>state.feedback),true);await page.locator('[data-action=retry]').click();
-  }
-  if(u.q.type==='mc')await page.locator(`[name=answer][value="${u.q.answer}"]`).check();
-  else if(u.q.type==='text')await page.locator('[name=answer]').fill('  '+u.q.accepted.at(-1).toUpperCase()+'  ');
-  else if(u.q.type==='match'){if(u.q.pairs.length+(u.q.extraChoices?.length||0)>4){for(let i=0;i<u.q.pairs.length;i++)await page.locator(`[data-answer-choice="${i}"]`).dragTo(page.locator(`[data-drop-index="${i}"]`));assert.equal(await page.locator('.drop-slot.filled').count(),6);assert.equal(await page.locator('.answer-chip:not(:disabled)').count(),1)}else{assert.equal(await page.locator('select').count(),0);await page.locator(`[name=answer][value="${u.pair}"]`).check()}}
-  else await page.locator('[name=answer]').fill('The nucleus regulates protein synthesis, controlling which enzymes are made and therefore which chemical reactions occur.');
-  await page.locator('#answerForm button[type=submit]').click();assert.equal(await page.evaluate(()=>state.feedback),true);
-  if(u.q.id==='S1')assert.match(await page.locator('.feedback-status').innerText(),/CORRECTED/);
-  if(u.q.type==='written'){await page.locator('[data-selfcheck="0"]').check();await page.locator('[data-selfcheck="1"]').check()}
+import assert from 'node:assert/strict';import fs from 'node:fs';import {browser,ready,advance,findOnPages} from './browser.mjs';
+const b=await browser(),p=await b.newPage({viewport:{width:1440,height:900}}),errors=[],requests=[];p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(r.url().startsWith('http'))requests.push(r.url())});await ready(p);
+await p.evaluate(()=>{localStorage.clear();state=initial();paint()});assert(await p.locator('[data-action="previous"]').isDisabled());
+const textSeen=new Map();let attempted=0,masked=0;
+while(await p.evaluate(()=>unit().type!=='results')){
+ const u=await p.evaluate(()=>structuredClone(unit()));
+ if(u.type==='teach'){
+  const all=[];while(await p.evaluate(id=>state.unit===id,u.id)){all.push(await p.locator('#slide-body').innerText());await advance(p)}textSeen.set(u.id,all.join(' '));continue;
  }
- await page.locator('[data-action=next]').click();visited++;assert(visited<120);
+ const q=await p.evaluate(()=>structuredClone(question()));
+ if(attempted===0){await p.locator('[data-action="check"]').click();assert(await p.locator('#validation').isVisible());assert.equal(await p.evaluate(()=>Object.keys(state.records).length),0);await p.locator('[data-close="validation"]').click()}
+ if(q.picture){const fig=await findOnPages(p,'.figure-block');assert.equal(await fig.getAttribute('data-covered'),'true');assert(await p.locator('.target-mask').count());const alt=await p.locator('.figure-block img').getAttribute('alt');assert.equal(alt,'Diagram with answer-revealing labels covered.');masked++}
+ if(q.kind==='matching'&&q.choices.length>4){
+  await p.locator('[data-action="check"]').click();assert(await p.locator('#validation').isVisible());await p.locator('[data-close="validation"]').click();
+  for(let i=0;i<q.items.length;i++){const c=await findOnPages(p,`[data-choice="${q.items[i].answer}"]`);await c.click();await(await findOnPages(p,`[data-slot="${i}"]`)).click()}
+ }else{
+  const correct=q.kind==='mcq'?q.correct:q.items[u.item].answer;const chosen=attempted===0?(correct+1)%(q.options||q.choices).length:correct;
+  const radio=await findOnPages(p,`input[value="${chosen}"]`);await radio.check();
+  if(attempted===0){await radio.press('ArrowRight');assert.equal(await p.evaluate(()=>state.unit),u.id);await radio.check()}
+ }
+ await p.locator('[data-action="check"]').click();assert.equal(await p.evaluate(()=>state.phase),'feedback');attempted++;
+ if(attempted===1){
+  assert.equal(await p.evaluate(()=>state.records[unit().id].first[0]),false);
+  const review=await findOnPages(p,'[data-jump]');await review.click();assert(await p.locator('[data-action="return"]').isVisible());await p.locator('[data-action="return"]').click();assert.equal(await p.evaluate(()=>state.unit),u.id);
+  await p.locator('.footer [data-action="retry"]').click();await(await findOnPages(p,`input[value="${q.correct}"]`)).check();await p.locator('[data-action="check"]').click();assert.deepEqual(await p.evaluate(()=>state.records[unit().id].first),[false]);assert.deepEqual(await p.evaluate(()=>state.records[unit().id].current),[true]);
+ }
+ if(q.picture){await findOnPages(p,'.figure-block');assert.equal(await p.locator('.figure-block').getAttribute('data-covered'),'false');assert.equal(await p.locator('.target-mask').count(),0)}
+ while(await p.evaluate(id=>state.unit===id,u.id))await advance(p);
 }
-const result=await page.evaluate(()=>({final:stats(true),practice:stats(false),explored:explored(),checks:state.checks}));assert.equal(result.final.correct,9);assert.equal(result.final.attempted,9);assert.equal(result.practice.correct,15);assert.equal(result.practice.attempted,16);assert.equal(result.practice.corrected,1);assert.equal(result.explored.count,result.explored.total);assert.deepEqual(result.checks,[true,true]);
-await page.reload();assert.equal(await page.evaluate(()=>stats(true).correct),9);assert.equal(await page.evaluate(()=>current().id),'results');
-// Precise answers and navigation after an incorrect attempt.
-await page.evaluate(()=>{jump('S2B');delete state.answers.S2B;delete state.drafts.S2B;render()});await page.locator('[name=answer]').fill('cell membranee');await page.locator('#answerForm button[type=submit]').click();assert.equal(await page.evaluate(()=>state.answers.S2B.current[0]),false);const before=await page.evaluate(()=>state.index);await page.locator('[data-action=next]').click();assert.equal(await page.evaluate(()=>state.index),before+1);
-// All terms are checked together. A spare answer is wrong; corrections do not inflate the first attempt.
-await page.evaluate(()=>{delete state.answers.F1;delete state.dragDrafts.F1;jump('F1')});
-await page.locator('[data-answer-choice="6"]').dragTo(page.locator('[data-drop-index="0"]'));
-await page.locator('#answerForm button[type=submit]').click();assert.match(await page.locator('#answerError').innerText(),/Each term/);assert.equal(await page.evaluate(()=>state.answers.F1),undefined);
-await page.reload();assert.equal(await page.locator('.drop-slot.filled').count(),1);
-for(let i=1;i<6;i++)await page.locator(`[data-answer-choice="${i}"]`).dragTo(page.locator(`[data-drop-index="${i}"]`));
-await page.locator('#answerForm button[type=submit]').click();assert.equal(await page.evaluate(()=>stats(true).correct),8);assert.equal(await page.evaluate(()=>stats(true).attempted),9);assert.equal(await page.locator('.group-feedback-row').count(),6);
-await page.locator('[data-review="nucleus-function"]').click();await page.locator('[data-action=return]').click();assert.equal(await page.evaluate(()=>state.feedback),true);
-await page.locator('[data-action=retry]').click();await page.locator('[data-answer-choice="0"]').dragTo(page.locator('[data-drop-index="0"]'));
-await page.locator('#answerForm button[type=submit]').click();assert.equal(await page.evaluate(()=>stats(true).correct),8);assert.equal(await page.evaluate(()=>stats(true).corrected),1);
-// Original source images and the downloadable complete reference.
-await page.locator('[data-action=reference]').click();for(const i of [2,12]){await page.evaluate(i=>{state.referenceIndex=i;render()},i);await page.waitForFunction(()=>document.querySelector('.reference-diagram img').complete&&document.querySelector('.reference-diagram img').naturalWidth>0)}
-const downloadPromise=page.waitForEvent('download');await page.locator('[data-action=downloadSource]').click();const download=await downloadPromise;await download.saveAs('work/reference-offline.html');const reference=fs.readFileSync('work/reference-offline.html','utf8');assert.equal((reference.match(/src="data:image\/png;base64,/g)||[]).length,2);assert(reference.includes('Amino acids attach to tRNA'));
-assert(!/smooth\s*er|cisternae/i.test(reference));await page.locator('[data-action=closeReference]').click();await page.evaluate(()=>jump('finish'));await page.locator('[data-action=practice]').click();assert.equal(await page.evaluate(()=>stats(false).attempted),0);assert.equal(await page.evaluate(()=>stats(true).corrected),1);
-await page.evaluate(()=>jump('finish'));await page.locator('[data-action=restart]').click();await page.locator('#confirmReset').click();assert.equal(await page.evaluate(()=>Object.keys(state.answers).length),0);
-// Hover/focus/touch outline, no wheel scroll, keyboard navigation and reduced motion.
-const hidden=page.locator('[data-section="3"] .outline-label');assert.equal(await hidden.evaluate(e=>getComputedStyle(e).opacity),'0');await page.locator('[data-section="3"]').focus();await page.waitForTimeout(300);assert.equal(await hidden.evaluate(e=>getComputedStyle(e).opacity),'1');await page.locator('#slideTitle').focus();const idx=await page.evaluate(()=>state.index);await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>state.index),idx+1);
-await page.setViewportSize({width:390,height:844});await page.locator('[data-action=outline]').click();await page.locator('[data-section="4"]').click();assert.equal(await page.evaluate(()=>current().section),4);assert.equal(await page.evaluate(()=>state.outline),false);await page.mouse.wheel(0,1500);assert.equal(await page.evaluate(()=>scrollY),0);assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight),844);
-await page.emulateMedia({reducedMotion:'reduce'});await page.evaluate(()=>jump('nucleus-function'));assert.equal(await page.locator('.function').first().evaluate(e=>getComputedStyle(e).animationName),'none');
-// Check identity of the labelled feature at several aspect ratios.
-for(const viewport of [{width:1440,height:900},{width:390,height:844},{width:375,height:667}]){await page.setViewportSize(viewport);await page.evaluate(()=>jump('nucleus-structure'));const plot=await page.locator('.anatomy-plot').boundingBox(),image=await page.locator('.anatomy img').boundingBox();assert(Math.abs(plot.width/plot.height-(790-32)/(650-345))<.01);assert(Math.abs(plot.width/image.width-(790-32)/1536)<.01);assert.equal(await page.locator('.annotation-label,.quiz-marker').count(),0)}
-// Save clean representative screenshots; app state remains test-only browser data.
-for(const [name,viewport,id] of [['preview',{width:1440,height:900},'nucleus-function'],['mindmap',{width:1440,height:900},'cell-map'],['phone',{width:390,height:844},'nucleus-structure'],['phone-small',{width:375,height:667},'cell-map']]){await page.setViewportSize(viewport);await page.evaluate(id=>{state=blank();deck=makeDeck();jump(id)},id);await page.waitForTimeout(900);await page.screenshot({path:`work/${name}.png`})}
-assert.deepEqual(errors,[]);const report={status:'PASS',teachingSlides:coverage.slides,coveragePoints:coverage.items.length,learningSteps:visited,layoutViewports:layouts.map(l=>l.viewport),result,checks:['All teaching, question, incorrect-feedback, result and reference slides fit without scrolling','Full user journey','Wrong-answer review/return/retry and Next','Whole-board drag matching, spare answer, per-pair scores and retry','Browser persistence','Original reference images and offline source download','Touch/focus outline','Keyboard navigation','Reduced motion','Responsive original-image crop alignment','Practice reset and full restart']};fs.writeFileSync('resources/validation-results.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));await browser.close();
+assert.equal(textSeen.size,53);const stats=await p.evaluate(()=>({practice:resultStats('practice'),final:resultStats('final')}));assert.deepEqual(stats,{practice:{available:14,attempted:14,first:13,corrected:1},final:{available:11,attempted:11,first:11,corrected:0}});assert.equal(masked,8);
+// Every written teaching block survives pagination verbatim (normalise whitespace only).
+const missing=await p.evaluate(seen=>{const normal=s=>s.replace(/\s+/g,' ').trim();return base.filter(u=>u.type==='teach').flatMap(u=>u.blocks.filter(b=>b.type==='text').flatMap(block=>{const d=document.createElement('div');d.innerHTML=block.html;return normal(seen[u.id]).includes(normal(d.textContent))?[]:[u.id+': '+d.textContent]}))},Object.fromEntries(textSeen));assert.deepEqual(missing,[]);
+await p.reload();await p.evaluate(()=>document.fonts.ready);assert.equal(await p.evaluate(()=>state.unit),'R01');assert.deepEqual(await p.evaluate(()=>resultStats('practice')),stats.practice);
+await p.evaluate(()=>visit('R02'));assert((await p.locator('#slide-body').innerText()).includes('Real-micrograph identification was not assessed'));
+await p.evaluate(()=>visit('R06'));await(await findOnPages(p,'[data-action="practice"]')).click();assert.equal(await p.evaluate(()=>resultStats('practice').attempted),0);assert.equal(await p.evaluate(()=>resultStats('final').attempted),11);
+await p.evaluate(()=>visit('R06'));await(await findOnPages(p,'[data-action="restart"]')).click();await p.locator('#reset-now').click();assert.equal(await p.evaluate(()=>state.unit),'T001');assert.equal(await p.evaluate(()=>resultStats('final').attempted),0);
+await p.locator('.outline').hover();assert.equal(await p.locator('.section-name').first().evaluate(e=>getComputedStyle(e).opacity),'1');const clearance=await p.locator('.section').evaluateAll(es=>es.every(e=>e.querySelector('.section-name').getBoundingClientRect().bottom+2<=e.querySelector('.section-line').getBoundingClientRect().top));assert(clearance);
+await p.screenshot({path:'docs/preview.png'});await p.evaluate(()=>visit('T006'));await p.screenshot({path:'docs/mindmap.png'});await p.setViewportSize({width:390,height:844});await p.evaluate(()=>visit('T001'));await p.screenshot({path:'docs/phone.png'});
+assert.deepEqual(errors,[]);assert(requests.every(r=>r==='http://127.0.0.1:4173/'||r.startsWith('data:')||r.endsWith('/favicon.ico')));
+fs.writeFileSync('resources/learning-flow-validation.json',JSON.stringify({passed:true,teaching_units_visited:textSeen.size,question_units_attempted:attempted,image_attempts_checked:masked,scores:stats,source_text_survives_pagination:true,first_attempt_retry_persistence:true,review_returns:true,practice_reset_isolated:true,outline_clearance_at_100_percent:true,errors},null,2)+'\n');await b.close();console.log('Learning journey passed: complete teaching, attempted scores, retries, diagram masks, persistence and resets.');

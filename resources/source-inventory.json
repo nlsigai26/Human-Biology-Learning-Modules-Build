@@ -1,0 +1,642 @@
+{
+  "input_sha256": "dea7daf1f16c5922190f402324e168090bf21626ca16c708a26b3a19542699c4",
+  "authority": "Part B of the current input only",
+  "items": [
+    {
+      "id": "B001",
+      "kind": "outcomes",
+      "context": "",
+      "label": "",
+      "exact": "1.1 recognise cell structures as seen with a light microscope and electron microscope\n(TEM images only), including nucleus, chromosomes, cell membrane, mitochondria,\nendoplasmic reticulum and ribosomes\n1.2 describe the functions of the cell structures:\n• nucleus\n• chromosomes\n• cell membrane\n• mitochondria\n• endoplasmic reticulum\n• ribosomes.",
+      "source_element": "9add22b0-fca7-4a67-9ec3-663680c40935"
+    },
+    {
+      "id": "B002",
+      "kind": "academic",
+      "context": "Cells and organelles",
+      "label": "Cells:",
+      "exact": "Basic units of living organisms.",
+      "source_element": "7bea0828-b36f-4458-9fef-5144cbcb2930"
+    },
+    {
+      "id": "B003",
+      "kind": "academic",
+      "context": "Cells and organelles",
+      "label": "Organelles:",
+      "exact": "Structures inside cells with specific functions.",
+      "source_element": "83c08b60-e9c9-49b9-859f-d14a84d1e841"
+    },
+    {
+      "id": "B004",
+      "kind": "image",
+      "context": "Cells and organelles",
+      "label": "Organelles:",
+      "exact": "Cell%20Structure%20Learning%20Module/image.png",
+      "source_element": "0df9b4e6-1110-42ca-96e3-3492cbe08fad"
+    },
+    {
+      "id": "B005",
+      "kind": "academic",
+      "context": "Cytoplasm",
+      "label": "Structure:",
+      "exact": "Jelly-like material outside the nucleus.",
+      "source_element": "38705483-ed16-471d-af94-ff015a6f9871"
+    },
+    {
+      "id": "B006",
+      "kind": "academic",
+      "context": "Cytoplasm",
+      "label": "Structure:",
+      "exact": "Contains organelles.",
+      "source_element": "635b8fd7-7856-43db-90b4-3daf13ae4679"
+    },
+    {
+      "id": "B007",
+      "kind": "academic",
+      "context": "Cytoplasm",
+      "label": "Function:",
+      "exact": "Site of many chemical reactions, including anaerobic respiration.",
+      "source_element": "3df882b9-8d08-46a6-a43b-e8c75d6023a9"
+    },
+    {
+      "id": "B008",
+      "kind": "academic",
+      "context": "Cell surface membrane",
+      "label": "Cell surface membrane:",
+      "exact": "Structure: partially permeable boundary.",
+      "source_element": "baee01ad-e5d0-46ec-a72b-08e88bab4480"
+    },
+    {
+      "id": "B009",
+      "kind": "academic",
+      "context": "Cell surface membrane",
+      "label": "Cell surface membrane:",
+      "exact": "Function: controls movement into and out of the cell.",
+      "source_element": "224770f9-c637-44b9-919f-d6e87da466c6"
+    },
+    {
+      "id": "B010",
+      "kind": "academic",
+      "context": "Cell surface membrane",
+      "label": "Cell surface membrane:",
+      "exact": "Substances cross by diffusion or through transport proteins.",
+      "source_element": "d978e639-fa3c-4d63-b1a8-8b3f50fdc4fa"
+    },
+    {
+      "id": "B011",
+      "kind": "academic",
+      "context": "Cell surface membrane",
+      "label": "Cell surface membrane:",
+      "exact": "Active transport requires energy.",
+      "source_element": "ae7e4ea4-c9bc-4b1e-96d9-efa6b0edd4c2"
+    },
+    {
+      "id": "B012",
+      "kind": "academic",
+      "context": "Cell surface membrane",
+      "label": "Cell surface membrane:",
+      "exact": "More of this is covered in Unit 2 — Movement of substances into and out of cells",
+      "source_element": "d03770ab-f7ae-486f-9fff-b963ecb52427"
+    },
+    {
+      "id": "B013",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Contains chromosomes.",
+      "source_element": "f9750e8a-8ab3-4d4a-a322-af5332822296"
+    },
+    {
+      "id": "B014",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Chromosomes contain DNA.",
+      "source_element": "7ee476c8-4ad3-4e6f-bcc2-71ce11fcf35b"
+    },
+    {
+      "id": "B015",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Genes are sections of DNA that code for proteins.",
+      "source_element": "e9dd2a4b-9703-4d67-b56b-c21a0ab9f34e"
+    },
+    {
+      "id": "B016",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Which genes are “switched on” determines which proteins are produced.",
+      "source_element": "05aff150-e9a6-4427-88f9-0c745d60dcac"
+    },
+    {
+      "id": "B017",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Some proteins are enzymes.",
+      "source_element": "61417f0b-e761-4f51-80eb-423fd186b904"
+    },
+    {
+      "id": "B018",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Which enzymes are produced determines which chemical reactions can occur.",
+      "source_element": "3db8739e-10e9-4186-acb9-91d2754b860a"
+    },
+    {
+      "id": "B019",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "These chemical reactions determine the activity of the cell.",
+      "source_element": "a32d09e4-7ed1-45c6-a65f-fc63ea0484b9"
+    },
+    {
+      "id": "B020",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nucleus:",
+      "exact": "Thus, the nucleus controls cell activities by controlling which proteins are made.",
+      "source_element": "8d0cf206-91ba-4189-b2fa-2b4ed77baec3"
+    },
+    {
+      "id": "B021",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nuclear envelope:",
+      "exact": "Separates the nucleus from the cytoplasm.",
+      "source_element": "d75e865e-d306-49a5-b556-3d5df699fa0a"
+    },
+    {
+      "id": "B022",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nuclear envelope:",
+      "exact": "Contains nuclear pores.",
+      "source_element": "58d8f81e-efe6-488d-a6e2-c14eacba8c8d"
+    },
+    {
+      "id": "B023",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Nuclear envelope:",
+      "exact": "Regulate passage of substances, including mRNA.",
+      "source_element": "4adeac21-aceb-416d-93df-45bed0fa13e4"
+    },
+    {
+      "id": "B024",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Chromosomes:",
+      "exact": "Contain DNA wrapped around proteins called histones.",
+      "source_element": "ac418189-4283-42d9-94f9-37d707973121"
+    },
+    {
+      "id": "B025",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Chromosomes:",
+      "exact": "The DNA contains genes that code for proteins.",
+      "source_element": "56bcb9d1-b699-4cbd-a353-a41ab15348d2"
+    },
+    {
+      "id": "B026",
+      "kind": "academic",
+      "context": "Nucleus and nuclear envelope",
+      "label": "Chromosomes:",
+      "exact": "We’ll look at chromosome structure in greater detail in the Genes, Chromosomes & DNA section.",
+      "source_element": "198d61ed-9249-4d15-8754-32c4f2837632"
+    },
+    {
+      "id": "B027",
+      "kind": "academic",
+      "context": "Mitochondria",
+      "label": "Function:",
+      "exact": "Site of most stages of aerobic respiration.",
+      "source_element": "9b373642-a14b-4dd9-b033-75cca6e93b58"
+    },
+    {
+      "id": "B028",
+      "kind": "academic",
+      "context": "Mitochondria",
+      "label": "Function:",
+      "exact": "Transfer energy into ATP.",
+      "source_element": "e884103b-8cb5-47a2-afeb-1e51f56172cb"
+    },
+    {
+      "id": "B029",
+      "kind": "academic",
+      "context": "Mitochondria",
+      "label": "Structure:",
+      "exact": "Double membrane.",
+      "source_element": "f395c930-4988-48ab-9496-4d3c76a6f47b"
+    },
+    {
+      "id": "B030",
+      "kind": "supporting",
+      "context": "Mitochondria",
+      "label": "Structure:",
+      "exact": "Example — high energy demand",
+      "source_element": "17994e2a-1094-4a12-a607-e0a1235966b1"
+    },
+    {
+      "id": "B031",
+      "kind": "academic",
+      "context": "Mitochondria",
+      "label": "Structure:",
+      "exact": "Muscle cells and sperm cells contain many mitochondria to supply ATP for contraction or movement.",
+      "source_element": "ac8ad5b3-9e96-44ee-810a-3086615e75c5"
+    },
+    {
+      "id": "B032",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Endoplasmic reticulum (ER):",
+      "exact": "Membrane network of channels and flattened sacs.",
+      "source_element": "dc3e0aca-1f0c-4175-a1b7-329ea2cf307b"
+    },
+    {
+      "id": "B033",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Site of translation.",
+      "source_element": "30ee6465-184a-4a34-afd8-715b80838d9e"
+    },
+    {
+      "id": "B034",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Join amino acids into polypeptides.",
+      "source_element": "383a1ecd-f183-43eb-ae89-29209f9db8f0"
+    },
+    {
+      "id": "B035",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Found free in cytoplasm or attached to rough ER.",
+      "source_element": "053e4ee1-a1a0-4f8f-84cc-8cbecc7c69f5"
+    },
+    {
+      "id": "B036",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Feature",
+      "source_element": "N[Et",
+      "column": "N[Et",
+      "tag": "th"
+    },
+    {
+      "id": "B037",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Rough ER",
+      "source_element": "_TLJ",
+      "column": "_TLJ",
+      "tag": "th"
+    },
+    {
+      "id": "B038",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Smooth ER",
+      "source_element": "VZW\\",
+      "column": "VZW\\",
+      "tag": "th"
+    },
+    {
+      "id": "B039",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Ribosomes",
+      "source_element": "N[Et",
+      "column": "N[Et",
+      "tag": "td"
+    },
+    {
+      "id": "B040",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Attached to its surface",
+      "source_element": "_TLJ",
+      "column": "_TLJ",
+      "tag": "td"
+    },
+    {
+      "id": "B041",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "None attached",
+      "source_element": "VZW\\",
+      "column": "VZW\\",
+      "tag": "td"
+    },
+    {
+      "id": "B042",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Key point here",
+      "source_element": "N[Et",
+      "column": "N[Et",
+      "tag": "td"
+    },
+    {
+      "id": "B043",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Folds/processes proteins for secretion or membranes; transports them in vesicles",
+      "source_element": "_TLJ",
+      "column": "_TLJ",
+      "tag": "td"
+    },
+    {
+      "id": "B044",
+      "kind": "table-cell",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Recognise its lack of ribosomes",
+      "source_element": "VZW\\",
+      "column": "VZW\\",
+      "tag": "td"
+    },
+    {
+      "id": "B045",
+      "kind": "image",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Cell%20Structure%20Learning%20Module/d1617f2e-35ff-463d-86a7-4d5b3301a52d.png",
+      "source_element": "e09e7265-1270-4dfc-987b-8fd15660772b"
+    },
+    {
+      "id": "B046",
+      "kind": "supporting",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Hotspot — organelle functions",
+      "source_element": "10cd6141-8a01-4677-a66c-50969b09a7f7"
+    },
+    {
+      "id": "B047",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Ribosomes make polypeptides; ER processes and transports certain proteins.",
+      "source_element": "43b15da4-5306-4cc9-a156-b3f5cf25ac6e"
+    },
+    {
+      "id": "B048",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Amino acids attach to tRNA in the cytoplasm, not specifically in ER.",
+      "source_element": "184fe1ec-7067-4c4e-903d-22e9bd858dd1"
+    },
+    {
+      "id": "B049",
+      "kind": "academic",
+      "context": "Endoplasmic reticulum and ribosomes",
+      "label": "Ribosomes:",
+      "exact": "Mitochondria transfer energy into ATP; they do not “make energy”.",
+      "source_element": "0d8dabd1-aedc-45f5-beec-32bba4b01d46"
+    },
+    {
+      "id": "B050",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-01",
+      "exact": "nucleus",
+      "source_element": null,
+      "asset": "CS-01",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B051",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-01",
+      "exact": "cytoplasm",
+      "source_element": null,
+      "asset": "CS-01",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B052",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-01",
+      "exact": "ribosomes",
+      "source_element": null,
+      "asset": "CS-01",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B053",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-01",
+      "exact": "mitochondrion",
+      "source_element": null,
+      "asset": "CS-01",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B054",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-01",
+      "exact": "cell surface membrane",
+      "source_element": null,
+      "asset": "CS-01",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B055",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "Endoplasmic reticulum",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B056",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "nucleus",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B057",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "nuclear envelope",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B058",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "nuclear pore",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B059",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "smooth ER",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B060",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "lipid synthesis",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B061",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "detoxification",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B062",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "Ca²⁺ storage",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B063",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "site of protein & lipid synthesis",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B064",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "connected to nuclear envelope",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B065",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "rough ER has ribosomes; smooth ER does not",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B066",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "cisternae (flattened membrane sacs)",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B067",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "rough ER",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B068",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "protein synthesis",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B069",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "modification & transport",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    },
+    {
+      "id": "B070",
+      "kind": "image-annotation",
+      "context": "Image text",
+      "label": "CS-02",
+      "exact": "ribosomes (on rough ER)",
+      "source_element": null,
+      "asset": "CS-02",
+      "location": "Visible printed text in supplied image"
+    }
+  ],
+  "assets": [
+    {
+      "id": "CS-01",
+      "file": "assets/CS-01-original.png",
+      "type": "schematic",
+      "verified_micrograph": false,
+      "original_labels": true
+    },
+    {
+      "id": "CS-02",
+      "file": "assets/CS-02-original.png",
+      "type": "schematic",
+      "verified_micrograph": false,
+      "original_labels": true
+    }
+  ]
+}

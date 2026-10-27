@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "radio_choices": 4,
+  "drag_terms": 4,
+  "answer_choices": 5,
+  "spare_answers": 1,
+  "mouse_drag": true,
+  "touch_drag": true,
+  "keyboard_select_place": true,
+  "phone_continuations": true,
+  "move_swap_return_delete": true,
+  "saved_after_reload": true,
+  "all_terms_required": true
+}

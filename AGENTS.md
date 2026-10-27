@@ -1,18 +1,15 @@
-# Content and image rules
+# Current build authority
 
-These user-defined rules govern future module changes:
+The user requested a complete fresh rebuild using `resources/current-input/academic-pack.zip`. Its Part A defines the current build requirements; its unchanged Part B is the sole academic boundary. The new handoff supersedes older lesson scripts, question banks, coverage decisions and blanket content exclusions. Do not reuse them as academic or assessment authority.
 
-- Scope overrides: exclude cisternae and smooth ER completely from the active module, including teaching, questions, feedback, reference pages/downloads, labels and depicted regions. Preserve original input files only as repository archive resources.
-- Treat the supplied academic pack as the sole authority for learner-facing science. Do not expand, correct, qualify or supplement it with outside knowledge. Omit uncertain additions.
-- Teach facts directly. Avoid attribution lead-ins or commentary about the completeness or accuracy of the academic material.
-- Explain relationships through warm, declarative teaching. Do not assign learners commands to connect, describe or explain concepts. Checkpoint prompts can be phrased as questions; navigation and answer controls remain available.
-- Images with printed labels retain those exact labels and original arrows. Plain rectangular masks cover unrelated labels. Crops may focus the original image while retaining the relevant printed label.
-- Do not redraw names or arrows on already-labelled images. Added labels are permitted only for genuinely unlabelled images and must stay below 15% of image cases. The present module needs none.
-- Assessment figures cover the answer label and retain the biological feature. They do not introduce replacement letter markers.
-- Preserve the full-screen deck, portrait phone layout, source artifacts, accessibility, offline packaging and separation of first attempts from corrected answers.
+Inventory original Part B directly, including all image text. Teach every supplied point in the main lesson, including introductory material. Assess only clear current-outcome content. Supporting material remains taught even when it is not assessed. Record the original source locations and outcome mappings in builder-only records.
 
-Original input files in `resources/source-pack.zip` and the two original PNG images remain unchanged. Rebuild `dist/index.html` after edits, verify the changed content and image masks, and update the existing GitHub repository and private Sites project.
+State content directly without outside additions, corrections, invented examples or mnemonics. Report genuine unresolved input conflicts. Reuse the original images and printed labels; mask unrelated labels reversibly, never redraw labels or anatomy. Before an image attempt, cover every answer-revealing label. Restore the relevant original label after an attempt.
 
-## Matching and outline requirements
+Use a full-viewport presentation with coherent continuation slides, readable text, no page or panel scrolling, and a quiet horizontal outline. Support text enlargement, portrait screens, keyboard/touch, visible focus and reduced motion.
 
-Matching with up to four candidate answers uses clickable radio circles. More than four candidates uses a whole-board drag-and-drop exercise: all question terms and blank answer rectangles appear together, with an answer bank containing one extra in-scope choice. Every term is filled before checking; each pair is graded separately. Support mouse, touch and keyboard, retain first attempts across corrections, and keep the viewport free of page scrolling. Section names and their underlines occupy separate rows with visible clearance at 100% zoom.
+Only automatically marked MCQs, matching and uniquely determined exact-term blanks are permitted. Every MCQ/radio matching item has at least four options and exactly one correct answer. Matching with over four choices uses drag-and-drop with accessible select-and-place and all terms answered before checking. Never use written explanations, unrestricted text entry or self-check grading. Preserve first attempts separately from corrections.
+
+Do not include a reference mode, transcript, appendix, notes gallery or separate image gallery in the learner-facing module. Revisit existing teaching slides instead.
+
+Preserve all current input files and original PNGs unchanged. The module remains a single offline HTML file, saved with all code/assets in the existing GitHub repository and published to the existing owner-private Site. Do not change the Site identity or audience.

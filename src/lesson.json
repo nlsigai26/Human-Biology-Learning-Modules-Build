@@ -1,0 +1,2120 @@
+{
+  "revision": "dea7daf1-fresh",
+  "sections": [
+    "Cells & cytoplasm",
+    "Cell membrane",
+    "Nucleus & DNA",
+    "Mitochondria",
+    "ER & ribosomes",
+    "Diagram practice",
+    "Final check"
+  ],
+  "units": [
+    {
+      "id": "T001",
+      "type": "teach",
+      "section": 0,
+      "title": "Cell structure",
+      "subtitle": "RECOGNITION AND FUNCTION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Cells contain structures with different functions. The nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes are the focus of this lesson.",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "We’ll see how these structures relate to movement into and out of cells, protein production, cell activities and energy transfer into ATP.",
+          "source": [
+            "B009",
+            "B020",
+            "B028",
+            "B034",
+            "B047"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "overview",
+          "source": [
+            "B004",
+            "B050",
+            "B051",
+            "B052",
+            "B053",
+            "B054"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T002",
+      "type": "teach",
+      "section": 0,
+      "title": "Learning outcome 1.1",
+      "subtitle": "STRUCTURE RECOGNITION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "1.1 recognise cell structures as seen with a light microscope and electron microscope",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "(TEM images only), including nucleus, chromosomes, cell membrane, mitochondria,",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "endoplasmic reticulum and ribosomes",
+          "source": [
+            "B001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T003",
+      "type": "teach",
+      "section": 0,
+      "title": "Learning outcome 1.2",
+      "subtitle": "STRUCTURE FUNCTIONS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "1.2 describe the functions of the cell structures:",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "• nucleus",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "• chromosomes",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "• cell membrane",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "• mitochondria",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "• endoplasmic reticulum",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "• ribosomes.",
+          "source": [
+            "B001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T004",
+      "type": "teach",
+      "section": 0,
+      "title": "Cells",
+      "subtitle": "THE BASIC UNITS OF LIVING ORGANISMS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Cells</strong> are the basic units of living organisms.",
+          "source": [
+            "B002"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "overview",
+          "source": [
+            "B004"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T005",
+      "type": "teach",
+      "section": 0,
+      "title": "Organelles",
+      "subtitle": "STRUCTURES WITH SPECIFIC FUNCTIONS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Organelles</strong> are structures inside cells with specific functions.",
+          "source": [
+            "B003"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "The structures inside a cell have different roles. Their functions form the relationships in the learning map.",
+          "source": [
+            "B003",
+            "B009",
+            "B013",
+            "B020",
+            "B027",
+            "B028",
+            "B034",
+            "B047"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T006",
+      "type": "teach",
+      "section": 0,
+      "title": "Cell structure",
+      "subtitle": "A CONNECTED LEARNING MAP",
+      "blocks": [
+        {
+          "type": "map",
+          "source": [
+            "B009",
+            "B013",
+            "B015",
+            "B020",
+            "B027",
+            "B028",
+            "B034",
+            "B047"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T007",
+      "type": "teach",
+      "section": 0,
+      "title": "Cytoplasm",
+      "subtitle": "STRUCTURE AND LOCATION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The <strong>cytoplasm</strong> is jelly-like material outside the nucleus.",
+          "source": [
+            "B005"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "It <span class=\"function\">contains organelles</span>.",
+          "source": [
+            "B006"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "cytoplasm",
+          "source": [
+            "B004",
+            "B051"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T008",
+      "type": "teach",
+      "section": 0,
+      "title": "Cytoplasm",
+      "subtitle": "FUNCTION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The cytoplasm is the <span class=\"function\">site of many chemical reactions</span>, including <strong>anaerobic respiration</strong>.",
+          "source": [
+            "B007"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Cytoplasm",
+            "Many chemical reactions",
+            "Anaerobic respiration"
+          ],
+          "links": [
+            "is the site of",
+            "including"
+          ],
+          "source": [
+            "B007"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T009",
+      "type": "teach",
+      "section": 1,
+      "title": "Cell membrane",
+      "subtitle": "MOVEMENT INTO AND OUT OF THE CELL",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The cell surface membrane controls movement into and out of the cell. This brings its boundary and its function together.",
+          "source": [
+            "B008",
+            "B009"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T010",
+      "type": "teach",
+      "section": 1,
+      "title": "Cell surface membrane",
+      "subtitle": "STRUCTURE",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The cell surface membrane is a <strong>partially permeable boundary</strong>.",
+          "source": [
+            "B008"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "membrane",
+          "source": [
+            "B054"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T011",
+      "type": "teach",
+      "section": 1,
+      "title": "Cell surface membrane",
+      "subtitle": "FUNCTION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The cell surface membrane <span class=\"function\">controls movement into and out of the cell</span>.",
+          "source": [
+            "B009"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Movement into and out of the cell",
+            "Cell surface membrane"
+          ],
+          "links": [
+            "is controlled by the"
+          ],
+          "source": [
+            "B009"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T012",
+      "type": "teach",
+      "section": 1,
+      "title": "Cell membrane",
+      "subtitle": "WAYS SUBSTANCES CROSS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Substances cross by <strong>diffusion</strong> or through <strong>transport proteins</strong>.",
+          "source": [
+            "B010"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Substances",
+            "The cell surface membrane"
+          ],
+          "links": [
+            "cross by diffusion or through transport proteins"
+          ],
+          "source": [
+            "B010"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T013",
+      "type": "teach",
+      "section": 1,
+      "title": "Active transport",
+      "subtitle": "ENERGY REQUIREMENT",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Active transport</strong> <span class=\"function\">requires energy</span>.",
+          "source": [
+            "B011"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T014",
+      "type": "teach",
+      "section": 1,
+      "title": "Movement of substances",
+      "subtitle": "FURTHER CONTEXT",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "More of the movement of substances into and out of cells is covered in Unit 2 — Movement of substances into and out of cells.",
+          "source": [
+            "B012"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P01",
+      "type": "question",
+      "section": 1,
+      "title": "Cell membrane",
+      "question": "P01"
+    },
+    {
+      "id": "T015",
+      "type": "teach",
+      "section": 2,
+      "title": "Nucleus",
+      "subtitle": "CHROMOSOMES AND DNA",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The <strong>nucleus</strong> contains chromosomes. Chromosomes contain <strong>DNA</strong>.",
+          "source": [
+            "B013",
+            "B014"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "nucleus",
+          "source": [
+            "B050",
+            "B056"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Nucleus",
+            "Chromosomes",
+            "DNA"
+          ],
+          "links": [
+            "contains",
+            "contain"
+          ],
+          "source": [
+            "B013",
+            "B014"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T016",
+      "type": "teach",
+      "section": 2,
+      "title": "Genes",
+      "subtitle": "DNA AND PROTEINS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Genes</strong> are sections of DNA that <span class=\"function\">code for proteins</span>.",
+          "source": [
+            "B015"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "DNA",
+            "Genes",
+            "Proteins"
+          ],
+          "links": [
+            "contains",
+            "code for"
+          ],
+          "source": [
+            "B015"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T017",
+      "type": "teach",
+      "section": 2,
+      "title": "Genes",
+      "subtitle": "WHICH PROTEINS ARE PRODUCED",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Which genes are <strong>“switched on”</strong> determines which proteins are produced.",
+          "source": [
+            "B016"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "The proteins produced are therefore linked to which genes are switched on.",
+          "source": [
+            "B016"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Which genes are switched on",
+            "Which proteins are produced"
+          ],
+          "links": [
+            "determines"
+          ],
+          "source": [
+            "B016"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T018",
+      "type": "teach",
+      "section": 2,
+      "title": "Proteins and enzymes",
+      "subtitle": "A LINK IN CELL ACTIVITY",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Some proteins are enzymes</strong>.",
+          "source": [
+            "B017"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Proteins",
+            "Enzymes"
+          ],
+          "links": [
+            "some are"
+          ],
+          "source": [
+            "B017"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T019",
+      "type": "teach",
+      "section": 2,
+      "title": "Enzymes",
+      "subtitle": "CHEMICAL REACTIONS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Which <strong>enzymes</strong> are produced determines which chemical reactions can occur.",
+          "source": [
+            "B018"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Which enzymes are produced",
+            "Which chemical reactions can occur"
+          ],
+          "links": [
+            "determines"
+          ],
+          "source": [
+            "B018"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T020",
+      "type": "teach",
+      "section": 2,
+      "title": "Nucleus",
+      "subtitle": "CONTROL OF CELL ACTIVITIES",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The chemical reactions determine the activity of the cell.",
+          "source": [
+            "B019"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "Thus, the nucleus <span class=\"function\">controls cell activities by controlling which proteins are made</span>.",
+          "source": [
+            "B020"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T021",
+      "type": "teach",
+      "section": 2,
+      "title": "Nucleus",
+      "subtitle": "THE RELATIONSHIP FROM GENES TO ACTIVITY",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Which genes are switched on determines which proteins are produced. Some proteins are enzymes; the enzymes produced determine which reactions can occur. Those reactions determine cell activity.",
+          "source": [
+            "B016",
+            "B017",
+            "B018",
+            "B019"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Genes switched on",
+            "Proteins produced",
+            "Enzymes produced",
+            "Chemical reactions",
+            "Cell activity"
+          ],
+          "links": [
+            "determine",
+            "some proteins are enzymes",
+            "determine which can occur",
+            "determine"
+          ],
+          "source": [
+            "B016",
+            "B017",
+            "B018",
+            "B019",
+            "B020"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "type": "question",
+      "section": 2,
+      "title": "Genes and proteins",
+      "question": "P02"
+    },
+    {
+      "id": "P03",
+      "type": "question",
+      "section": 2,
+      "title": "Nucleus and cell activity",
+      "question": "P03"
+    },
+    {
+      "id": "T022",
+      "type": "teach",
+      "section": 2,
+      "title": "Nuclear envelope",
+      "subtitle": "A BOUNDARY AROUND THE NUCLEUS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The <strong>nuclear envelope</strong> <span class=\"function\">separates the nucleus from the cytoplasm</span>.",
+          "source": [
+            "B021"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "It contains nuclear pores.",
+          "source": [
+            "B022"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "envelope",
+          "source": [
+            "B057"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T023",
+      "type": "teach",
+      "section": 2,
+      "title": "Nuclear pores",
+      "subtitle": "PASSAGE OF SUBSTANCES",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Nuclear pores</strong> <span class=\"function\">regulate passage of substances</span>, including <strong>mRNA</strong>.",
+          "source": [
+            "B023"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "pore",
+          "source": [
+            "B058"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T024",
+      "type": "teach",
+      "section": 2,
+      "title": "Chromosomes",
+      "subtitle": "DNA AND HISTONES",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Chromosomes contain DNA wrapped around proteins called <strong>histones</strong>.",
+          "source": [
+            "B024"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Chromosomes",
+            "DNA",
+            "Histones · proteins"
+          ],
+          "links": [
+            "contain",
+            "is wrapped around"
+          ],
+          "source": [
+            "B024"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T025",
+      "type": "teach",
+      "section": 2,
+      "title": "Chromosomes",
+      "subtitle": "GENES CODING FOR PROTEINS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The DNA contains <strong>genes</strong> that <span class=\"function\">code for proteins</span>.",
+          "source": [
+            "B025"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "DNA",
+            "Genes",
+            "Proteins"
+          ],
+          "links": [
+            "contains",
+            "code for"
+          ],
+          "source": [
+            "B025"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T026",
+      "type": "teach",
+      "section": 2,
+      "title": "Chromosome structure",
+      "subtitle": "FURTHER CONTEXT",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "We’ll look at chromosome structure in greater detail in the Genes, Chromosomes & DNA section.",
+          "source": [
+            "B026"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T027",
+      "type": "teach",
+      "section": 3,
+      "title": "Mitochondria",
+      "subtitle": "DOUBLE MEMBRANE",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Mitochondria have a <strong>double membrane</strong>.",
+          "source": [
+            "B029"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "mitochondrion",
+          "source": [
+            "B053"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T028",
+      "type": "teach",
+      "section": 3,
+      "title": "Mitochondria",
+      "subtitle": "AEROBIC RESPIRATION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Mitochondria are the <span class=\"function\">site of most stages of aerobic respiration</span>.",
+          "source": [
+            "B027"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T029",
+      "type": "teach",
+      "section": 3,
+      "title": "Mitochondria",
+      "subtitle": "ENERGY TRANSFER INTO ATP",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Mitochondria <span class=\"function\">transfer energy into ATP</span>.",
+          "source": [
+            "B028"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Mitochondria",
+            "Energy transferred into ATP"
+          ],
+          "links": [
+            "support"
+          ],
+          "source": [
+            "B028"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T030",
+      "type": "teach",
+      "section": 3,
+      "title": "Mitochondria",
+      "subtitle": "HIGH ENERGY DEMAND",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Muscle cells</strong> and <strong>sperm cells</strong> contain many mitochondria to <span class=\"function\">supply ATP for contraction or movement</span>.",
+          "source": [
+            "B030",
+            "B031"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Many mitochondria in muscle and sperm cells",
+            "ATP supply",
+            "Contraction or movement"
+          ],
+          "links": [
+            "support",
+            "is for"
+          ],
+          "source": [
+            "B031"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T031",
+      "type": "teach",
+      "section": 3,
+      "title": "Mitochondria",
+      "subtitle": "ENERGY TRANSFER",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Mitochondria transfer energy into ATP; they do not “make energy”.",
+          "source": [
+            "B049"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "type": "question",
+      "section": 3,
+      "title": "Mitochondria",
+      "question": "P04"
+    },
+    {
+      "id": "P05",
+      "type": "question",
+      "section": 3,
+      "title": "Mitochondria",
+      "question": "P05"
+    },
+    {
+      "id": "T032",
+      "type": "teach",
+      "section": 4,
+      "title": "Endoplasmic reticulum",
+      "subtitle": "MEMBRANE NETWORK",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The <strong>endoplasmic reticulum (ER)</strong> is a membrane network of channels and flattened sacs.",
+          "source": [
+            "B032"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "rough",
+          "source": [
+            "B045",
+            "B055",
+            "B067"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T033",
+      "type": "teach",
+      "section": 4,
+      "title": "Endoplasmic reticulum",
+      "subtitle": "FLATTENED MEMBRANE SACS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The flattened membrane sacs are named <strong>cisternae</strong>.",
+          "source": [
+            "B066"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "sacs",
+          "source": [
+            "B066"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T034",
+      "type": "teach",
+      "section": 4,
+      "title": "Ribosomes",
+      "subtitle": "TRANSLATION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Ribosomes are the <span class=\"function\">site of translation</span>.",
+          "source": [
+            "B033"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T035",
+      "type": "teach",
+      "section": 4,
+      "title": "Ribosomes",
+      "subtitle": "POLYPEPTIDE PRODUCTION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Ribosomes <span class=\"function\">join amino acids into polypeptides</span>.",
+          "source": [
+            "B034"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Amino acids",
+            "Polypeptides"
+          ],
+          "links": [
+            "are joined by ribosomes into"
+          ],
+          "source": [
+            "B034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T036",
+      "type": "teach",
+      "section": 4,
+      "title": "Ribosomes",
+      "subtitle": "FREE IN THE CYTOPLASM",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Ribosomes are found free in the cytoplasm or attached to rough ER.",
+          "source": [
+            "B035"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "freeRibosomes",
+          "source": [
+            "B052"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T037",
+      "type": "teach",
+      "section": 4,
+      "title": "Ribosomes",
+      "subtitle": "ATTACHED TO ROUGH ER",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Ribosomes can be attached to rough ER. This is one of the two locations described for ribosomes.",
+          "source": [
+            "B035"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "attachedRibosomes",
+          "source": [
+            "B070"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T038",
+      "type": "teach",
+      "section": 4,
+      "title": "Rough ER",
+      "subtitle": "ATTACHED RIBOSOMES",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Rough ER has <strong>ribosomes attached to its surface</strong>.",
+          "source": [
+            "B037",
+            "B039",
+            "B040"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "rough",
+          "source": [
+            "B067"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T039",
+      "type": "teach",
+      "section": 4,
+      "title": "Rough ER",
+      "subtitle": "FOLDING AND PROCESSING",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Rough ER <span class=\"function\">folds/processes proteins</span> for <strong>secretion</strong> or <strong>membranes</strong>.",
+          "source": [
+            "B043"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T040",
+      "type": "teach",
+      "section": 4,
+      "title": "Rough ER",
+      "subtitle": "TRANSPORT IN VESICLES",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Rough ER <span class=\"function\">transports proteins in vesicles</span>.",
+          "source": [
+            "B043"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Proteins",
+            "Vesicles"
+          ],
+          "links": [
+            "are transported by rough ER in"
+          ],
+          "source": [
+            "B043"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T041",
+      "type": "teach",
+      "section": 4,
+      "title": "Endoplasmic reticulum",
+      "subtitle": "CONNECTION WITH THE NUCLEUS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The ER is connected to the nuclear envelope.",
+          "source": [
+            "B064"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "connection",
+          "source": [
+            "B057",
+            "B064"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T042",
+      "type": "teach",
+      "section": 4,
+      "title": "Rough ER",
+      "subtitle": "PROTEIN SYNTHESIS, MODIFICATION AND TRANSPORT",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Rough ER is involved in <span class=\"function\">protein synthesis, modification and transport</span>.",
+          "source": [
+            "B068",
+            "B069"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "roughFunctions",
+          "source": [
+            "B068",
+            "B069"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T043",
+      "type": "teach",
+      "section": 4,
+      "title": "Smooth ER",
+      "subtitle": "NO ATTACHED RIBOSOMES",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<strong>Smooth ER</strong> has no ribosomes attached. Its lack of ribosomes distinguishes it from rough ER.",
+          "source": [
+            "B038",
+            "B041",
+            "B044",
+            "B059"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "smooth",
+          "source": [
+            "B059"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T044",
+      "type": "teach",
+      "section": 4,
+      "title": "Endoplasmic reticulum",
+      "subtitle": "COMPARING RIBOSOMES",
+      "blocks": [
+        {
+          "type": "comparison",
+          "heading": "Ribosomes",
+          "cells": [
+            [
+              "Rough ER",
+              "Attached to its surface"
+            ],
+            [
+              "Smooth ER",
+              "None attached"
+            ]
+          ],
+          "source": [
+            "B036",
+            "B037",
+            "B038",
+            "B039",
+            "B040",
+            "B041",
+            "B065"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T045",
+      "type": "teach",
+      "section": 4,
+      "title": "Endoplasmic reticulum",
+      "subtitle": "COMPARING THE KEY POINTS",
+      "blocks": [
+        {
+          "type": "comparison",
+          "heading": "Key point here",
+          "cells": [
+            [
+              "Rough ER",
+              "Folds/processes proteins for secretion or membranes; transports them in vesicles"
+            ],
+            [
+              "Smooth ER",
+              "No ribosomes attached"
+            ]
+          ],
+          "source": [
+            "B037",
+            "B038",
+            "B042",
+            "B043",
+            "B044"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T046",
+      "type": "teach",
+      "section": 4,
+      "title": "Smooth ER",
+      "subtitle": "LIPID SYNTHESIS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Smooth ER is involved in <span class=\"function\">lipid synthesis</span>.",
+          "source": [
+            "B060"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "smoothLipid",
+          "source": [
+            "B059",
+            "B060"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T047",
+      "type": "teach",
+      "section": 4,
+      "title": "Smooth ER",
+      "subtitle": "DETOXIFICATION",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Smooth ER is involved in <span class=\"function\">detoxification</span>.",
+          "source": [
+            "B061"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "smoothDetox",
+          "source": [
+            "B059",
+            "B061"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T048",
+      "type": "teach",
+      "section": 4,
+      "title": "Smooth ER",
+      "subtitle": "Ca²⁺ STORAGE",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Smooth ER is involved in <span class=\"function\">Ca²⁺ storage</span>.",
+          "source": [
+            "B062"
+          ]
+        },
+        {
+          "type": "picture",
+          "view": "smoothStorage",
+          "source": [
+            "B059",
+            "B062"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T049",
+      "type": "teach",
+      "section": 4,
+      "title": "Endoplasmic reticulum",
+      "subtitle": "PROTEIN AND LIPID SYNTHESIS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The ER is a site of <span class=\"function\">protein and lipid synthesis</span>.",
+          "source": [
+            "B063"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T050",
+      "type": "teach",
+      "section": 4,
+      "title": "Ribosomes and ER",
+      "subtitle": "RELATED FUNCTIONS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Ribosomes <span class=\"function\">make polypeptides</span>; ER <span class=\"function\">processes and transports certain proteins</span>.",
+          "source": [
+            "B046",
+            "B047"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "Ribosomes",
+            "Polypeptides"
+          ],
+          "links": [
+            "make"
+          ],
+          "source": [
+            "B047"
+          ]
+        },
+        {
+          "type": "flow",
+          "nodes": [
+            "ER",
+            "Certain proteins"
+          ],
+          "links": [
+            "processes and transports"
+          ],
+          "source": [
+            "B047"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T051",
+      "type": "teach",
+      "section": 4,
+      "title": "Cytoplasm",
+      "subtitle": "AMINO ACIDS AND tRNA",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "Amino acids <span class=\"function\">attach to tRNA in the cytoplasm</span>, not specifically in ER.",
+          "source": [
+            "B048"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "type": "question",
+      "section": 4,
+      "title": "Protein production",
+      "question": "P06"
+    },
+    {
+      "id": "P07.1",
+      "type": "question",
+      "section": 4,
+      "title": "Structures and functions",
+      "question": "P07",
+      "item": 0
+    },
+    {
+      "id": "P07.2",
+      "type": "question",
+      "section": 4,
+      "title": "Structures and functions",
+      "question": "P07",
+      "item": 1
+    },
+    {
+      "id": "P07.3",
+      "type": "question",
+      "section": 4,
+      "title": "Structures and functions",
+      "question": "P07",
+      "item": 2
+    },
+    {
+      "id": "T052",
+      "type": "teach",
+      "section": 5,
+      "title": "Cell structures",
+      "subtitle": "DIAGRAM PRACTICE",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The next questions practise recognition using the diagrams in this lesson. They do not assess identification in real microscope images.",
+          "source": [
+            "B001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P08",
+      "type": "question",
+      "section": 5,
+      "title": "Cell structures",
+      "question": "P08"
+    },
+    {
+      "id": "P09",
+      "type": "question",
+      "section": 5,
+      "title": "Cell structures",
+      "question": "P09"
+    },
+    {
+      "id": "P10",
+      "type": "question",
+      "section": 5,
+      "title": "Cell structures",
+      "question": "P10"
+    },
+    {
+      "id": "P11",
+      "type": "question",
+      "section": 5,
+      "title": "Cell structures",
+      "question": "P11"
+    },
+    {
+      "id": "P12",
+      "type": "question",
+      "section": 5,
+      "title": "Cell structures",
+      "question": "P12"
+    },
+    {
+      "id": "T053",
+      "type": "teach",
+      "section": 6,
+      "title": "Cell structure",
+      "subtitle": "FINAL CHECK",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "The final check brings together structure recognition and the functions of the six specified structures.",
+          "source": [
+            "B001"
+          ]
+        },
+        {
+          "type": "text",
+          "html": "First-attempt results and later corrections are recorded separately. Diagram questions remain separate from real-micrograph identification.",
+          "source": [
+            "B001"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F01",
+      "type": "question",
+      "section": 6,
+      "title": "Structure–function matching",
+      "question": "F01"
+    },
+    {
+      "id": "F02.1",
+      "type": "question",
+      "section": 6,
+      "title": "Structure–function matching",
+      "question": "F02",
+      "item": 0
+    },
+    {
+      "id": "F02.2",
+      "type": "question",
+      "section": 6,
+      "title": "Structure–function matching",
+      "question": "F02",
+      "item": 1
+    },
+    {
+      "id": "F03",
+      "type": "question",
+      "section": 6,
+      "title": "Cell structures",
+      "question": "F03"
+    },
+    {
+      "id": "F04",
+      "type": "question",
+      "section": 6,
+      "title": "Cell structures",
+      "question": "F04"
+    },
+    {
+      "id": "F05",
+      "type": "question",
+      "section": 6,
+      "title": "Cell structures",
+      "question": "F05"
+    },
+    {
+      "id": "F06",
+      "type": "question",
+      "section": 6,
+      "title": "Nucleus and cell activity",
+      "question": "F06"
+    },
+    {
+      "id": "F07",
+      "type": "question",
+      "section": 6,
+      "title": "Mitochondria",
+      "question": "F07"
+    }
+  ],
+  "questions": [
+    {
+      "id": "P01",
+      "kind": "mcq",
+      "section": 1,
+      "title": "Cell membrane",
+      "prompt": "Which function belongs to the cell surface membrane?",
+      "options": [
+        "Controlling movement into and out of the cell",
+        "Joining amino acids into polypeptides",
+        "Transferring energy into ATP",
+        "Controlling which proteins are made"
+      ],
+      "correct": 0,
+      "feedback": "The cell surface membrane controls movement into and out of the cell.",
+      "review": "T011",
+      "source": [
+        "B009",
+        "B020",
+        "B028",
+        "B034"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P02",
+      "kind": "mcq",
+      "section": 2,
+      "title": "Genes and proteins",
+      "prompt": "Which statement correctly links genes with proteins?",
+      "options": [
+        "Genes are sections of DNA that code for proteins.",
+        "Genes are proteins that code for DNA.",
+        "Genes join amino acids into polypeptides.",
+        "Genes control movement across the cell surface membrane."
+      ],
+      "correct": 0,
+      "feedback": "Genes are sections of DNA that code for proteins.",
+      "review": "T016",
+      "source": [
+        "B009",
+        "B015",
+        "B034"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P03",
+      "kind": "mcq",
+      "section": 2,
+      "title": "Nucleus and cell activity",
+      "prompt": "Which relationship explains how protein production affects cell activity?",
+      "options": [
+        "The enzymes produced determine which chemical reactions can occur.",
+        "The cell membrane produces the genes that code for proteins.",
+        "Ribosomes contain the chromosomes that control cell activities.",
+        "Mitochondria control which genes are switched on."
+      ],
+      "correct": 0,
+      "feedback": "Some proteins are enzymes. Which enzymes are produced determines which chemical reactions can occur, and these reactions determine cell activity.",
+      "review": "T020",
+      "source": [
+        "B013",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B028",
+        "B034"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P04",
+      "kind": "mcq",
+      "section": 3,
+      "title": "Mitochondria",
+      "prompt": "Why do muscle cells and sperm cells contain many mitochondria?",
+      "options": [
+        "To supply ATP for contraction or movement",
+        "To join amino acids into polypeptides",
+        "To control movement into and out of the cell",
+        "To contain genes coding for proteins"
+      ],
+      "correct": 0,
+      "feedback": "Muscle cells and sperm cells contain many mitochondria to supply ATP for contraction or movement.",
+      "review": "T030",
+      "source": [
+        "B009",
+        "B025",
+        "B031",
+        "B034"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P05",
+      "kind": "mcq",
+      "section": 3,
+      "title": "Mitochondria",
+      "prompt": "Which structure has a double membrane and transfers energy into ATP?",
+      "options": [
+        "Mitochondrion",
+        "Ribosome",
+        "Cell surface membrane",
+        "Chromosome"
+      ],
+      "correct": 0,
+      "feedback": "Mitochondria have a double membrane and transfer energy into ATP.",
+      "review": "T027",
+      "source": [
+        "B028",
+        "B029",
+        "B034",
+        "B009",
+        "B025"
+      ],
+      "outcome": "1.1",
+      "skill": "structure",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P06",
+      "kind": "mcq",
+      "section": 4,
+      "title": "Protein production",
+      "prompt": "Which structure joins amino acids into polypeptides?",
+      "options": [
+        "Ribosomes",
+        "Endoplasmic reticulum",
+        "Cell surface membrane",
+        "Nucleus"
+      ],
+      "correct": 0,
+      "feedback": "Ribosomes join amino acids into polypeptides. ER processes and transports certain proteins.",
+      "review": "T035",
+      "source": [
+        "B034",
+        "B047"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P07",
+      "kind": "matching",
+      "section": 4,
+      "title": "Structures and functions",
+      "items": [
+        {
+          "term": "Ribosomes",
+          "answer": 0,
+          "review": "T035"
+        },
+        {
+          "term": "Endoplasmic reticulum",
+          "answer": 1,
+          "review": "T039"
+        },
+        {
+          "term": "Cell surface membrane",
+          "answer": 2,
+          "review": "T011"
+        }
+      ],
+      "choices": [
+        "Join amino acids into polypeptides",
+        "Process and transport certain proteins",
+        "Control movement into and out of the cell",
+        "Transfer energy into ATP"
+      ],
+      "feedback": "Each structure has a distinct function in the cell.",
+      "source": [
+        "B009",
+        "B028",
+        "B034",
+        "B047"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "practice",
+      "term_source": "B001"
+    },
+    {
+      "id": "P08",
+      "kind": "mcq",
+      "section": 5,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Nucleus",
+        "Ribosomes",
+        "Mitochondrion",
+        "Cell surface membrane"
+      ],
+      "correct": 3,
+      "feedback": "The cell surface membrane controls movement into and out of the cell.",
+      "review": "T010",
+      "source": [
+        "B054",
+        "B009"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "practice",
+      "picture": "membrane",
+      "term_source": "B001"
+    },
+    {
+      "id": "P09",
+      "kind": "mcq",
+      "section": 5,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Nucleus",
+        "Ribosomes",
+        "Mitochondrion",
+        "Cell surface membrane"
+      ],
+      "correct": 0,
+      "feedback": "The nucleus contains chromosomes.",
+      "review": "T015",
+      "source": [
+        "B050",
+        "B013"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "practice",
+      "picture": "nucleus",
+      "term_source": "B001"
+    },
+    {
+      "id": "P10",
+      "kind": "mcq",
+      "section": 5,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Nucleus",
+        "Ribosomes",
+        "Mitochondrion",
+        "Cell surface membrane"
+      ],
+      "correct": 2,
+      "feedback": "A mitochondrion has a double membrane.",
+      "review": "T027",
+      "source": [
+        "B053",
+        "B029"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "practice",
+      "picture": "mitochondrion",
+      "term_source": "B001"
+    },
+    {
+      "id": "P11",
+      "kind": "mcq",
+      "section": 5,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Nucleus",
+        "Ribosomes",
+        "Mitochondrion",
+        "Cell surface membrane"
+      ],
+      "correct": 1,
+      "feedback": "Ribosomes join amino acids into polypeptides.",
+      "review": "T035",
+      "source": [
+        "B070",
+        "B034"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "practice",
+      "picture": "attachedRibosomes",
+      "term_source": "B001"
+    },
+    {
+      "id": "P12",
+      "kind": "mcq",
+      "section": 5,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Rough ER",
+        "Nucleus",
+        "Ribosomes",
+        "Cell surface membrane"
+      ],
+      "correct": 0,
+      "feedback": "Rough ER has ribosomes attached to its surface.",
+      "review": "T038",
+      "source": [
+        "B067",
+        "B040"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "practice",
+      "picture": "rough",
+      "term_source": "B001"
+    },
+    {
+      "id": "F01",
+      "kind": "matching",
+      "section": 6,
+      "title": "Structure–function matching",
+      "items": [
+        {
+          "term": "Nucleus",
+          "answer": 0,
+          "review": "T020"
+        },
+        {
+          "term": "Chromosomes",
+          "answer": 1,
+          "review": "T025"
+        },
+        {
+          "term": "Mitochondria",
+          "answer": 2,
+          "review": "T028"
+        },
+        {
+          "term": "Ribosomes",
+          "answer": 3,
+          "review": "T035"
+        }
+      ],
+      "choices": [
+        "Controls which proteins are made",
+        "Contains genes coding for proteins",
+        "Transfers energy into ATP",
+        "Joins amino acids into polypeptides",
+        "Controls movement into and out of the cell"
+      ],
+      "feedback": "The functions belong to different structures: exchange, cell control, polypeptide production and energy transfer.",
+      "source": [
+        "B009",
+        "B020",
+        "B025",
+        "B028",
+        "B034"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "final",
+      "term_source": "B001"
+    },
+    {
+      "id": "F02",
+      "kind": "matching",
+      "section": 6,
+      "title": "Structure–function matching",
+      "items": [
+        {
+          "term": "Cell surface membrane",
+          "answer": 0,
+          "review": "T011"
+        },
+        {
+          "term": "Endoplasmic reticulum",
+          "answer": 1,
+          "review": "T039"
+        }
+      ],
+      "choices": [
+        "Control movement into and out of the cell",
+        "Process and transport certain proteins",
+        "Control which proteins are made",
+        "Transfer energy into ATP"
+      ],
+      "feedback": "The cell surface membrane controls movement into and out of the cell. ER processes and transports certain proteins.",
+      "source": [
+        "B009",
+        "B025",
+        "B028",
+        "B047"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "final",
+      "term_source": "B001"
+    },
+    {
+      "id": "F03",
+      "kind": "mcq",
+      "section": 6,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Rough ER",
+        "Cell surface membrane",
+        "Nucleus",
+        "Ribosomes"
+      ],
+      "correct": 1,
+      "feedback": "The cell surface membrane controls movement into and out of the cell.",
+      "review": "T010",
+      "source": [
+        "B054",
+        "B009"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "final",
+      "picture": "membrane",
+      "term_source": "B001"
+    },
+    {
+      "id": "F04",
+      "kind": "mcq",
+      "section": 6,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Rough ER",
+        "Cell surface membrane",
+        "Nucleus",
+        "Ribosomes"
+      ],
+      "correct": 2,
+      "feedback": "The nucleus contains chromosomes.",
+      "review": "T015",
+      "source": [
+        "B050",
+        "B013"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "final",
+      "picture": "nucleus",
+      "term_source": "B001"
+    },
+    {
+      "id": "F05",
+      "kind": "mcq",
+      "section": 6,
+      "title": "Cell structures",
+      "prompt": "Which name belongs to the covered label?",
+      "options": [
+        "Rough ER",
+        "Cell surface membrane",
+        "Nucleus",
+        "Ribosomes"
+      ],
+      "correct": 0,
+      "feedback": "Rough ER has ribosomes attached to its surface.",
+      "review": "T038",
+      "source": [
+        "B067",
+        "B040"
+      ],
+      "outcome": "1.1",
+      "skill": "diagram",
+      "mode": "final",
+      "picture": "rough",
+      "term_source": "B001"
+    },
+    {
+      "id": "F06",
+      "kind": "mcq",
+      "section": 6,
+      "title": "Nucleus and cell activity",
+      "prompt": "What links the enzymes produced with cell activity?",
+      "options": [
+        "The enzymes determine which chemical reactions can occur.",
+        "The enzymes form the cell surface membrane.",
+        "The enzymes contain the genes that code for proteins.",
+        "The enzymes join amino acids at rough ER."
+      ],
+      "correct": 0,
+      "feedback": "Which enzymes are produced determines which chemical reactions can occur. Those reactions determine cell activity.",
+      "review": "T020",
+      "source": [
+        "B018",
+        "B019",
+        "B020",
+        "B034"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "final",
+      "term_source": "B001"
+    },
+    {
+      "id": "F07",
+      "kind": "mcq",
+      "section": 6,
+      "title": "Mitochondria",
+      "prompt": "Which statement describes the role of mitochondria?",
+      "options": [
+        "They transfer energy into ATP.",
+        "They make energy.",
+        "They join amino acids into polypeptides.",
+        "They control which genes are switched on."
+      ],
+      "correct": 0,
+      "feedback": "Mitochondria transfer energy into ATP; they do not “make energy”.",
+      "review": "T028",
+      "source": [
+        "B016",
+        "B028",
+        "B034",
+        "B049"
+      ],
+      "outcome": "1.2",
+      "skill": "function",
+      "mode": "final",
+      "term_source": "B001"
+    }
+  ],
+  "outcomes": "1.1 recognise cell structures as seen with a light microscope and electron microscope\n(TEM images only), including nucleus, chromosomes, cell membrane, mitochondria,\nendoplasmic reticulum and ribosomes\n1.2 describe the functions of the cell structures:\n• nucleus\n• chromosomes\n• cell membrane\n• mitochondria\n• endoplasmic reticulum\n• ribosomes.",
+  "images": {
+    "cell": {
+      "asset": "CS-01-original.png"
+    },
+    "er": {
+      "asset": "CS-02-original.png"
+    }
+  }
+}

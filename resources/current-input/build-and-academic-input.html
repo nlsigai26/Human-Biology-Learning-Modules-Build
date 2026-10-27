@@ -1,0 +1,797 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cell Structure Learning Module</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="cef4132c-c81a-4379-bd46-b8ba5bff3c68" class="page sans"><header><h1 class="page-title" dir="auto">Cell Structure Learning Module</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="680cad00-c4f7-45bf-b3d5-5a2c724efa71" class="" dir="auto">Part A — Prompt and build brief</h1><h2 id="7c6ee380-335c-4375-a574-13bbc86896b8" class="" dir="auto">Deliverable and division of responsibilities</h2><p id="8fd89249-883c-4c60-bc12-f5181487d592" class="" dir="auto">Build the Cell Structure Learn Mode module as one self-contained interactive HTML file using the full academic input and actual supplied image blocks in Part B. This page is the complete standalone build handoff. No separate skill page, source page, linked chapter or previous conversation is needed. Deliver the actual HTML file when this prompt is executed; do not replace this Notion page with the HTML.</p><p id="d5fc5456-3850-4ad7-a674-0ddb49a08ae9" class="" dir="auto">Part A supplies procedural, pedagogical, interface and quality requirements only. It deliberately supplies no ready-made lesson, compressed academic digest, fixed slide sequence, completed coverage map, predetermined eligibility list or question/answer bank. You, the building model, own those decisions and must derive them directly from the complete Part B. Do not reconstruct or rely on earlier generated scripts, slide IDs, assessment decisions or questions.</p><p id="465ca4c4-19cb-4c24-8a4e-1c83fcd47cdd" class="" dir="auto">Part B is the creator&#x27;s unchanged academic input, not a pre-compressed lesson script. Leave it untouched. Independently choose the detailed structure, pacing, learner-facing explanations, image activities and assessments within the requirements below. Preserve depth and completeness; do not mistake permission to organise for permission to omit or enrich.</p><h2 id="9b5f8dfb-c14d-4911-9127-858ef39a7f45" class="" dir="auto">Builder ownership and academic authority</h2><ul id="ae29553e-7d1c-42a3-a05d-9810f5325c6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Independently design the module from the complete, unmodified academic input in Part B. Decide the section structure, order, pacing, slide count, teaching explanations, relationships, checkpoint placement, questions, answer options and feedback yourself. No prewritten lesson, compressed content digest, approved-copy script or predetermined question bank is supplied or required.</li></ul><ul id="fbb9b0a8-03f7-4933-877d-fd783840fd5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use Part B as the sole academic authority and closed content boundary. Follow its stated level, wording, distinctions, simplifications and qualifications. Do not correct, qualify, enrich or replace it with outside sources, broader subject knowledge or model recall. Freedom to design the lesson is not permission to add academic facts.</li></ul><ul id="2a76d97f-4e12-48a4-9d25-80282c83f2c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Preserve Part B and its original image files unchanged. Build the learner-facing lesson separately. You may organise and explain supported relationships in warm, clear language, but must retain every academic meaning, detail and qualification. Do not reduce the lesson to shortened notes, headline facts or compressed summaries.</li></ul><ul id="c89415ff-59cc-4236-9d7c-59a011b1c09b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Trace every academic claim, relationship, term, example, diagram label, question, answer option and feedback statement to Part B. Use only supplied examples and memory devices; do not invent enrichment, additional mechanisms, mnemonics or terminology. Distractors may recombine supplied terms and relationships incorrectly for assessment, but must not introduce outside academic material or create more than one defensibly correct answer.</li></ul><ul id="87a635a1-4852-489e-a3b5-2ab9bccd4150" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Teach directly in the module&#x27;s own voice. Avoid source-distancing phrases such as “the source says”, “according to the material”, “at this level”, “technically” or “in reality”. Do not add unsolicited scientific corrections or completeness caveats. Preserve qualifications actually present in Part B.</li></ul><ul id="91bbbf8b-45ba-4852-8ec3-5bcb93207345" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Inspect the academic input, including image text, yourself. If passages or image annotations conflict, or an ambiguity prevents faithful teaching, report the exact issue for the creator to resolve. Do not silently resolve it through outside knowledge, change Part B, infer a new authority hierarchy or insert a learner-facing correction. Do not let an image label authorise an unsupported explanation.</li></ul><ul id="e18c1059-3bcb-46ff-a123-d25bfc0090b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Treat substantive academic cross-references as supplied context, not dependencies or permission to retrieve other chapters. Do not browse other pages, look up the skill or rely on prior chats. If an essential input is inaccessible, report the specific blocker rather than substituting material.</li></ul><h2 id="64c18c63-4562-4204-b6d6-ef536b08f4cb" class="" dir="auto">Builder planning and complete teaching coverage</h2><ul id="906a7435-0fd6-43e3-9164-8f10e10a387e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Before drafting the actual lesson, inspect all of Part B and create your own complete source-content inventory. Include every specification point and its exact numbering/wording, definition, mechanism, qualification, example, comparison, equation, unit, table entry, caption, diagram key, hotspot and supporting detail. Derive this from the original input, not an intermediate summary.</li></ul><ul id="b7e7b68e-7a04-4b06-8fea-a1afcce3ead6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Then determine the pedagogical structure and create your own coverage map linking source locations to teaching slide IDs, supported image use and any eligible assessment. These are builder-created planning/QA records, not a learner-facing transcript or a replacement for Part B.</li></ul><ul id="f8e8b49c-cd1e-4277-a161-97f53c161a7c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Teach every supplied academic point in the normal Previous/Next sequence, including material that is introductory and not assessed. Do not drop supporting detail as “not core”, hide untaught content in optional expansions or count a recap, raw transcript or reference section as teaching.</li></ul><ul id="8686cfdc-9a86-4e39-8949-8d425b837737" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Chunk rather than compress. Use as many focused slides and explanations as needed. Do not impose a fixed slide count, sentence limit or word budget that forces omissions. Preserve the connections and distinctions when splitting processes, tables or comparisons across slides.</li></ul><ul id="514c5cb1-9112-43cf-a893-2e04f940b65b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Independently choose how to explain each supported relationship so learners understand it. Do not substitute a command to “connect”, “explain” or “identify” for the teaching explanation itself. Use direct task instructions only in genuine checkpoints.</li></ul><ul id="68aed847-e504-4b4e-bdfc-b85142077d44" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Audit in both directions: every source item must be taught, and every generated academic statement must be supported by the original input. Remove unsupported additions rather than labelling them “extra”. Flag unresolved conflicts rather than claiming complete coverage.</li></ul><h2 id="4815f27f-80b5-46e9-a79f-93469262db79" class="" dir="auto">Pedagogy, hierarchy and presentation</h2><ul id="c776b967-30ca-461d-ac99-2c35b9e3454a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use Context → Teach → Checkpoint as a sequential teaching approach, not three competing panels. Decide the detailed sequence yourself: introduce what will be learned and how it relates; teach one manageable idea at a time; then assess eligible content after teaching with post-attempt feedback. Use supplied examples after the relevant teaching and supplied memory devices where appropriate.</li></ul><ul id="7c181747-978f-4ec1-9e4b-b405d11ec0bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Create one continuous presentation within a self-contained HTML file, not a scrolling article, dashboard or PowerPoint file. Display exactly one slide at a time at full available viewport width and height (100vw and 100dvh with a compatible fallback).</li></ul><ul id="c6fcaa3f-fc1a-444d-b3ac-463a89fd7285" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provide persistent Previous and Next controls, position and navigation-boundary states, and review access to teaching slides. Support keyboard navigation without intercepting keys while learners type or select answers. Keep all content and controls reachable.</li></ul><ul id="e1f543f9-0b14-49d4-a483-682842d82d05" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Require no page scrolling, nested panel scrolling or swipe-to-scroll to reach content. Fit responsively at narrow widths and enlarged text sizes. Add coherent continuation slides instead of clipping, hiding detail or shrinking text to illegibility.</li></ul><ul id="e96213ac-a71b-4ae2-88f1-5f9407cc0532" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Choose a small horizontal section outline that reflects your own lesson structure. Keep it subdued but legible at rest, prominent on hover/focus, and deliberately accessible through a tap control on touch devices. Indicate the current section and allow intentional navigation. Remove unrelated app chrome, sidebars, large menus and competing panels.</li></ul><ul id="697548d5-0f12-443c-a40e-d42d54d6d74b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Give teaching slides precise academic concept, structure, term or process titles, with continuation subtitles when useful. Write a specific opening overview, not a generic slogan. Use warm, explanatory language without decorative copy displacing academic content.</li></ul><ul id="a3300c8c-a6bc-4286-81eb-51beb0b1f495" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Make key academic terms prominent through consistent restrained emphasis. Emphasise the exact function clause in structure–function teaching, preferably with a restrained underline reveal and a static reduced-motion equivalent. Do not animate everything at once.</li></ul><ul id="7212b876-a970-44fb-b3c4-bbb91d6e156c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Create a meaningful connected text/HTML flowchart or mind map for the topic outline, using supported relationship labels, arrow directions and grouping. Do not use unrelated tiles or invent causal links merely to connect the layout. Interface connectors and text relationship maps are permitted; they are not permission to draw new academic illustrations.</li></ul><ul id="8fa8a402-43be-4c92-b697-d24651fb133d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provide readable contrast, visible focus, non-colour-only cues, keyboard/touch operation and accessible feedback. Keep assets and logic local without sign-in or a backend.</li></ul><h2 id="816952a6-f2a6-49ef-871a-5f0fb518c33e" class="" dir="auto">Supplied images only</h2><ul id="bc6db573-2689-4c1f-9ce7-5fa78edbe883" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Assume you cannot generate images. Use only the actual images supplied in Part B. Do not search for, download, hotlink or generate replacements. Do not draw new scientific/anatomical illustrations with SVG, canvas, CSS or other code.</li></ul><ul id="93851ce4-33d9-433e-a221-0e67b0e92260" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Inspect each image before deciding its role, targets, labels or type. Create your own asset inventory and reveal/mask plan during the build. Do not claim a schematic is a micrograph, infer microscope type, or claim to assess real-micrograph identification without suitable supplied assets. Preserve original scale bars and essential captions.</li></ul><ul id="5a169ca5-a342-4e43-9403-8e8d0bf9eab9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">On already-labelled images, reuse original labels and pointers during teaching. Reveal the relevant original label; reversibly mask unrelated text where helpful. Do not duplicate, replace, reword or add labels, arrows or letter/number systems to these images.</li></ul><ul id="33021d91-4841-42bb-a3d0-3f9444aee2f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Only on a wholly unlabelled supplied image may you add an anchored name label and pointer, and only for a reliably targeted feature explicitly supported by Part B. A highlight alone does not name the feature.</li></ul><ul id="7f7fc3df-1cfe-49e9-998f-fd5df3db7c7f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Permit reuse, cropping, resizing, zooming and reversible HTML overlays for emphasis or label redaction. Never redraw features or obscure identifying structures, essential captions or scale bars.</li></ul><ul id="ea59e30f-08b8-48a1-8f07-e67a1a60580f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In label quizzes, hide the target label and every other answer-revealing label, caption or duplicate text before the attempt. Preserve useful original pointers where they do not reveal the answer. Restore appropriate original labels and source-supported feedback after an attempt. Test masks at every supported viewport and text size.</li></ul><ul id="fa390bdc-7843-4a2c-a99d-654fa8bb2927" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Design activities around reliably usable supplied assets. If a feature cannot be targeted, design a complete MCQ, matching or exact-word blank alternative from eligible supplied content. Do not use missing-image placeholders or request outside replacement imagery. Report honestly which recognition skills were and were not assessed.</li></ul><ul id="2a16c0e0-b69a-4094-a872-e0858bee4bcb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Embed the supplied image data where accessible for offline operation; internal Notion attachment references are not portable HTML image URLs. If files are inaccessible, report that blocker and request those same source files. Do not silently replace broken attachments. Do not create a separate image-reference gallery.</li></ul><h2 id="c4aae865-e407-4f7c-a8a4-5b63039fc197" class="" dir="auto">Checkpoint rules — all topics and chapters</h2><h3 id="2a9afbb1-f30f-4d90-92d6-7ffc42db4013" class="" dir="auto">Only automatically assessable formats</h3><ul id="2706c11d-fc56-4168-9554-a4cbc6a8a1d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use only MCQ, matching, or fill in the blank with an exact term, uniquely determined set of exact terms or exact phrase checked automatically by word matching.</li></ul><ul id="a54480b3-4022-461c-a781-d00d2a36704c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Never generate open-ended, short-answer, “explain,” “describe” or unrestricted free-text checkpoint questions, including ungraded written self-checks. Recast such assessment into a permitted format. Constrained exact-word blanks are the only permitted typed responses; an outcome&#x27;s “describe” or “explain” verb does not authorise free-text assessment.</li></ul><ul id="16b8f622-9145-4327-ae76-67ddc0c3e5de" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Give every MCQ at least four options and exactly one correct answer. Make distractors plausible but unambiguously wrong in context, never so close that multiple answers could be correct.</li></ul><ul id="d6339108-a880-4c88-93e9-0d26f1a7d167" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Design every blank to admit only one correct answer using the exact wording taught. Do not create blanks that could correctly take synonyms or different phrasings. If reliable exact-word marking is not possible, use MCQ or matching. Case and leading/trailing-space normalisation may be used without admitting different academic answers.</li></ul><ul id="42496367-d21c-4bf9-8f19-4e34f8597b27" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Do not use numerical calculation blanks or significant-figure tolerance. Assess calculations through a permitted format such as MCQ. A units blank is permitted only if it satisfies the exact-term rules.</li></ul><h3 id="89a0fc1f-e9d9-4770-bc5b-11ac5efe414a" class="" dir="auto">Matching interactions</h3><ul id="cabc5860-baae-4c32-913f-816dc662e656" class="bulleted-list" dir="auto"><li style="list-style-type:disc">For four or fewer answer choices, use MCQ-style matching with clickable circles/radio buttons per question term, never dropdowns. Every item presented as an MCQ must still have at least four options.</li></ul><ul id="6a6f97c2-84e8-4a53-ac7e-86c9aed0467d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">For more than four answer choices in matching, use drag and drop: question terms on the left, corresponding blank rectangular slots on the right, and draggable answer choices for learners to place in those slots. Require every term to be answered before checking the set; five terms require five placed answers. Do not apply this matching threshold to standalone MCQs.</li></ul><ul id="d204e945-763a-4a7b-8223-d2651d24dac8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Support moving/replacing answers and keyboard/touch select-and-place as an accessible equivalent of dragging; do not substitute dropdowns.</li></ul><h3 id="b16dfae1-18b0-4910-8523-fd0f7a67ac25" class="" dir="auto">Eligibility and explicit overrides</h3><ul id="0159b12e-f346-4e6e-8927-da31592fadef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Decide assessment eligibility yourself by checking the current chapter&#x27;s specific learning outcomes in Part B, not later chapters&#x27; outcomes or how prominent the content appears.</li></ul><ul id="dc8db9ae-7d08-4b6a-9d4a-65d1e8c856b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Concepts clearly covered by a current-chapter outcome can be assessed. Content outside those outcomes that is supplied only as groundwork for a later chapter must still be taught, but not assessed.</li></ul><ul id="21cad576-d5d6-45b1-9c4a-5fd3dda478de" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When unsure, compare the concept with the outcomes word by word. If it still does not clearly map to a current-chapter outcome, leave it out of checkpoints. Do not confuse complete teaching coverage with a requirement to test every detail.</li></ul><ul id="16390838-a3db-4bdd-b41d-3491fd6d6aec" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Follow an override only when the academic material clearly and directly states that a concept normally treated as introduction only must be assessed here, or otherwise explicitly changes its handling. Never infer an override from tone, emphasis, a heading or the space devoted to it. Overrides are occasional (less than half of chapters), not a default or a quota. Without an explicit statement, the current chapter&#x27;s outcomes decide.</li></ul><ul id="85dc42d4-bbfe-4deb-9b65-bafa3723adc5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Record your outcome mapping or exact explicit override in your builder-created coverage map. Do not treat any prior generated eligibility list, script or question bank as authoritative.</li></ul><h3 id="1fdc892e-21fe-4a5a-910e-032864364c0f" class="" dir="auto">Feedback, scoring and completion</h3><ul id="58cc13c6-b5be-4122-bf8e-fb70c1ee3f79" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Require an attempt before revealing answers, labels or explanations. Provide source-supported explanatory feedback and retries without permanently locking lesson navigation. Keep shuffling and answer keys aligned.</li></ul><ul id="14333401-3e65-42af-ab7f-e18a6cae7657" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Distinguish first-attempt success from corrections. Track actual correct/attempted counts and separate practice/final results and different assessed skill types where applicable. Do not inflate scores with retries, unavailable tasks or participation.</li></ul><ul id="1be311e3-54b5-46e7-a1a6-08a946b1085a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provide targeted links to existing teaching slides, a concise pedagogical recap, and clear practice/restart/reset behaviour. Do not claim mastery or full outcome assessment without evidence.</li></ul><h2 id="2f21e138-cc92-4bce-83d4-5d1d3eb2261c" class="" dir="auto">Builder input is not a reference mode</h2><p id="a4aa60ec-bd5e-4a8a-8fab-b2e609e4f1e1" class="" dir="auto">Part B is builder input only. Use it to create the teaching sequence and assessments. Do not reproduce Part B as a separate reference, appendix, source transcript, bibliography, full-length notes section or reference mode in the finished HTML. Do not add reference slides, a Reference navigation item or a reference-view button unless the creator explicitly requests one.</p><p id="3cf1444b-7fbc-43d9-9a6d-51477bba50bd" class="" dir="auto">Preserve completeness through teaching and focused continuation slides. Concise recaps and revisiting existing teaching slides are permitted; a disguised second full-length copy is not.</p><h2 id="6761f360-e88c-4ca9-9660-02676c521eb1" class="" dir="auto">Builder acceptance tests</h2><ul id="9543b92a-3d89-467c-bb8a-5bc3292e6e79" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Verify complete source-to-teaching coverage against original Part B, not an intermediate digest; preserve exact specification wording/numbering, all supporting details, tables, qualifications and supplied examples. Verify introductory content is taught even when not assessed.</li></ul><ul id="3e6b9d23-1c4c-427c-a275-e836a495ce21" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Audit teaching, outline relationships, labels, examples, checkpoints, distractors and feedback against the closed academic boundary. Reject unsupported additions, outside corrections, source-distancing phrases or task commands substituted for teaching.</li></ul><ul id="1f10cf9e-7a43-40fd-baf7-a4fc27788900" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Audit each checkpoint&#x27;s current-chapter outcome mapping or explicit override. Test only the three permitted formats, four-or-more-option MCQs with one correct answer, uniquely determined exact-word blanks, the prescribed matching interactions and post-attempt feedback. No open-ended or written self-check tasks.</li></ul><ul id="51e73fb6-9029-48ed-bad0-9d7a93c5f4b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Verify supplied assets load, original files remain unchanged, original labels are reused appropriately, quiz answers do not leak, annotations target reliable features and no replacement scientific imagery was generated. Report inaccessible assets and unassessed recognition outcomes honestly.</li></ul><ul id="4da4319d-7864-4a44-a9f7-81b0511cacec" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Test full-viewport single-slide display, Previous/Next, position/boundary states, keyboard/touch operation, and the subdued outline with hover/focus/tap access. Test narrow screens and text enlargement with no scrolling, clipping, inaccessible overflow or illegible shrinking. Add slides rather than remove content.</li></ul><ul id="36a47041-3d3c-4a1c-a152-8818dfa2b2a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Test precise academic titles, key-term/function emphasis, reduced motion, meaningful connected schematics, accessible interactions, grading/shuffling, score denominators, retries and progress resets.</li></ul><ul id="99612d75-c25c-4af1-bc3f-3b73c3cde997" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Verify no separate full-length reference, appendix, transcript, bibliography, notes mode or reference navigation exists unless explicitly requested. Verify the single HTML runs offline with embedded accessible supplied assets, no sign-in/backend and no external academic dependencies.</li></ul><ul id="201e319a-58ab-4150-8ee8-fbf378e8ef9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Perform these checks on the actual implementation after building it. A prompt or plan is not evidence that an HTML build passed. Report unresolved blockers accurately.</li></ul><h1 id="0af3c10f-0dbc-423a-b6a5-48d27aacd9f3" class="" dir="auto">Part B — Supplied academic content and images (builder input only)</h1><aside class="block-color-yellow_background callout" data-notion-callout="" data-notion-callout-icon="📋" data-notion-callout-background="yellow_background" style="white-space:pre-wrap;display:flex" id="2669fa2b-606e-4f44-b1d8-ee60539834d7" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📋"></span></div><div style="width:100%"><p id="9add22b0-fca7-4a67-9ec3-663680c40935" class="" dir="auto">1.1 recognise cell structures as seen with a light microscope and electron microscope<br/>(TEM images only), including nucleus, chromosomes, cell membrane, mitochondria,<br/>endoplasmic reticulum and ribosomes<br/>1.2 describe the functions of the cell structures:<br/>• nucleus<br/>• chromosomes<br/>• cell membrane<br/>• mitochondria<br/>• endoplasmic reticulum<br/>• ribosomes.</p></div></aside><h3 id="94705d5d-6942-43a4-83bd-742c94783004" class="" dir="auto"><strong>Cells and organelles</strong></h3><p id="2b0b77a0-3d0d-4e53-90df-3e9277fc80eb" class="" dir="auto"><strong>Cells:</strong></p><ul id="7bea0828-b36f-4458-9fef-5144cbcb2930" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Basic units of living organisms.</li></ul><p id="0232f727-6eab-4627-a6cf-c2daf7fcb4ed" class="" dir="auto"><strong>Organelles:</strong></p><ul id="83c08b60-e9c9-49b9-859f-d14a84d1e841" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Structures inside cells with specific functions.</li></ul><figure id="0df9b4e6-1110-42ca-96e3-3492cbe08fad" class="image" data-notion-image="Cell%20Structure%20Learning%20Module/image.png" dir="ltr"><a href="Cell%20Structure%20Learning%20Module/image.png"><img src="Cell%20Structure%20Learning%20Module/image.png"/></a></figure><h3 id="8b4e17da-06ae-41b1-9897-0431daf5a2b4" class="" dir="auto"><strong>Cytoplasm</strong></h3><p id="a87969c4-a2e1-4281-9f14-d8c9eaa112a6" class="" dir="auto"><strong>Cytoplasm:</strong></p><ul id="55de5745-c7ba-4426-a972-bfd7d1c8fa77" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Structure:</strong><ul id="38705483-ed16-471d-af94-ff015a6f9871" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Jelly-like material outside the nucleus.</li></ul><ul id="635b8fd7-7856-43db-90b4-3daf13ae4679" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Contains organelles.</li></ul></li></ul><ul id="b6062ec7-901d-4649-9713-a4d699781a9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Function:</strong><ul id="3df882b9-8d08-46a6-a43b-e8c75d6023a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Site of many chemical reactions, including anaerobic respiration.</li></ul></li></ul><h3 id="ba6ee543-86d0-4d8b-a9a9-eb974354b90d" class="" dir="auto"><strong>Cell surface membrane</strong></h3><p id="d01465ad-48f8-4693-80e9-af52c7496b30" class="" dir="auto"><strong>Cell surface membrane:</strong></p><ul id="baee01ad-e5d0-46ec-a72b-08e88bab4480" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Structure:</strong> partially permeable boundary.</li></ul><ul id="224770f9-c637-44b9-919f-d6e87da466c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Function:</strong> controls movement into and out of the cell.<ul id="d978e639-fa3c-4d63-b1a8-8b3f50fdc4fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Substances cross by diffusion or through transport proteins.</li></ul><ul id="ae7e4ea4-c9bc-4b1e-96d9-efa6b0edd4c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Active transport requires energy</strong>.</li></ul><ul id="d03770ab-f7ae-486f-9fff-b963ecb52427" class="bulleted-list" dir="auto"><li style="list-style-type:circle">More of this is covered in Unit 2 — Movement of substances into and out of cells</li></ul></li></ul><h3 id="1f19f805-bc58-4c59-a40a-0e51a055d89e" class="" dir="auto"><strong>Nucleus and nuclear envelope</strong></h3><p id="e41bb07b-52ee-4b23-9f6d-dfa2ebf2a74a" class="" dir="auto"><strong>Nucleus:</strong></p><ul id="f9750e8a-8ab3-4d4a-a322-af5332822296" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Contains <strong>chromosomes</strong>.</li></ul><ul id="7ee476c8-4ad3-4e6f-bcc2-71ce11fcf35b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Chromosomes contain <strong>DNA</strong>.</li></ul><ul id="e9dd2a4b-9703-4d67-b56b-c21a0ab9f34e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Genes</strong> are sections of DNA that code for proteins.</li></ul><ul id="05aff150-e9a6-4427-88f9-0c745d60dcac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Which genes are <strong>“switched on”</strong> determines which proteins are produced.</li></ul><ul id="61417f0b-e761-4f51-80eb-423fd186b904" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Some proteins are <strong>enzymes</strong>.</li></ul><ul id="3db8739e-10e9-4186-acb9-91d2754b860a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Which enzymes are produced determines which <strong>chemical reactions</strong> can occur.</li></ul><ul id="a32d09e4-7ed1-45c6-a65f-fc63ea0484b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">These chemical reactions determine the <strong>activity of the cell</strong>.</li></ul><p id="8d0cf206-91ba-4189-b2fa-2b4ed77baec3" class="" dir="auto"><strong>Thus, the nucleus controls cell activities by controlling which proteins are made.</strong></p><p id="fb6b7861-c59e-41ff-bf9d-7a10474d5d6a" class="" dir="auto"><strong>Nuclear envelope:</strong></p><ul id="d75e865e-d306-49a5-b556-3d5df699fa0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Separates the nucleus from the cytoplasm.</li></ul><ul id="58d8f81e-efe6-488d-a6e2-c14eacba8c8d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Contains <strong>nuclear pores</strong>.<ul id="4adeac21-aceb-416d-93df-45bed0fa13e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Regulate passage of substances, including mRNA.</li></ul></li></ul><p id="bd1df1dd-f5cb-40db-846b-92e3c0cf648d" class="" dir="auto"><strong>Chromosomes:</strong></p><ul id="ac418189-4283-42d9-94f9-37d707973121" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Contain <strong>DNA wrapped around proteins called histones</strong>.</li></ul><ul id="56bcb9d1-b699-4cbd-a353-a41ab15348d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The DNA contains <strong>genes</strong> that code for proteins.</li></ul><ul id="198d61ed-9249-4d15-8754-32c4f2837632" class="bulleted-list" dir="auto"><li style="list-style-type:disc">We’ll look at chromosome structure in greater detail in the <strong>Genes, Chromosomes &amp; DNA</strong> section.</li></ul><h3 id="2329f961-d90f-407f-9c0b-1eeb0a8bcfb4" class="" dir="auto"><strong>Mitochondria</strong></h3><p id="95267d65-4529-4e98-9785-93c71637276d" class="" dir="auto"><strong>Mitochondria:</strong></p><ul id="f1e35123-9fd6-4d38-b286-7238e2fabaa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Function:</strong><ul id="9b373642-a14b-4dd9-b033-75cca6e93b58" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Site of most stages of <strong>aerobic respiration</strong>.</li></ul><ul id="e884103b-8cb5-47a2-afeb-1e51f56172cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Transfer energy into <strong>ATP</strong>.</li></ul></li></ul><ul id="b0bb1592-7a4b-4e72-9991-37c5054b6b4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Structure:</strong><ul id="f395c930-4988-48ab-9496-4d3c76a6f47b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Double membrane.</li></ul></li></ul><aside class="block-color-teal_background callout" data-notion-callout="" data-notion-callout-icon="🧪" data-notion-callout-background="teal_background" style="white-space:pre-wrap;display:flex" id="234ab11e-5328-4bbc-a333-399e31134712" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🧪"></span></div><div style="width:100%"><p id="17994e2a-1094-4a12-a607-e0a1235966b1" class="" dir="auto"><strong>Example — high energy demand</strong></p><ul id="ac8ad5b3-9e96-44ee-810a-3086615e75c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Muscle cells and sperm cells contain many mitochondria to supply ATP for contraction or movement.</li></ul></div></aside><h3 id="d5a1f072-b0ba-4e2b-9398-7fbd04f9bb85" class="" dir="auto"><strong>Endoplasmic reticulum and ribosomes</strong></h3><p id="370adb87-76fd-41ba-b14e-4681d43b662a" class="" dir="auto"><strong>Endoplasmic reticulum (ER):</strong></p><ul id="dc3e0aca-1f0c-4175-a1b7-329ea2cf307b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Membrane network of channels and flattened sacs.</li></ul><p id="a5aa431c-68d9-4601-9303-2eaaa69f0fcc" class="" dir="auto"><strong>Ribosomes:</strong></p><ul id="30ee6465-184a-4a34-afd8-715b80838d9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Site of <strong>translation</strong>.<ul id="383a1ecd-f183-43eb-ae89-29209f9db8f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Join amino acids into polypeptides.</li></ul></li></ul><ul id="053e4ee1-a1a0-4f8f-84cc-8cbecc7c69f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Found free in cytoplasm or attached to rough ER.</li></ul><table id="d0964188-1570-4f2a-8b8a-5f36bb7999f9" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="3e7c211c-9660-4eba-b875-f6a93f43b899" dir="ltr"><th id="N[Et" class="simple-table-header-color simple-table-header">Feature</th><th id="_TLJ" class="simple-table-header-color simple-table-header">Rough ER</th><th id="VZW\" class="simple-table-header-color simple-table-header">Smooth ER</th></tr></thead><tbody><tr id="f832e59f-0e0c-45fc-9d89-c94a3b9ebf48" dir="ltr"><td id="N[Et" class="">Ribosomes</td><td id="_TLJ" class="">Attached to its surface</td><td id="VZW\" class="">None attached</td></tr><tr id="faffe7a7-a229-4bb1-9e2e-e6f68d6c1c44" dir="ltr"><td id="N[Et" class="">Key point here</td><td id="_TLJ" class="">Folds/processes proteins for secretion or membranes; transports them in vesicles</td><td id="VZW\" class="">Recognise its lack of ribosomes</td></tr></tbody></table><figure id="e09e7265-1270-4dfc-987b-8fd15660772b" class="image" data-notion-image="Cell%20Structure%20Learning%20Module/d1617f2e-35ff-463d-86a7-4d5b3301a52d.png" dir="ltr"><a href="Cell%20Structure%20Learning%20Module/d1617f2e-35ff-463d-86a7-4d5b3301a52d.png"><img src="Cell%20Structure%20Learning%20Module/d1617f2e-35ff-463d-86a7-4d5b3301a52d.png"/></a></figure><aside class="block-color-red_background callout" data-notion-callout="" data-notion-callout-icon="⚠️" data-notion-callout-background="red_background" style="white-space:pre-wrap;display:flex" id="b8440ca8-1cf5-41c6-aea1-60c04947c680" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="⚠️"></span></div><div style="width:100%"><p id="10cd6141-8a01-4677-a66c-50969b09a7f7" class="" dir="auto"><strong>Hotspot — organelle functions</strong></p><ul id="43b15da4-5306-4cc9-a156-b3f5cf25ac6e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ribosomes make polypeptides</strong>; ER processes and transports certain proteins.</li></ul><ul id="184fe1ec-7067-4c4e-903d-22e9bd858dd1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Amino acids attach to tRNA in the <strong>cytoplasm</strong>, not specifically in ER.</li></ul><ul id="0d8dabd1-aedc-45f5-beec-32bba4b01d46" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mitochondria <strong>transfer energy into ATP</strong>; they do not “make energy”.</li></ul></div></aside></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

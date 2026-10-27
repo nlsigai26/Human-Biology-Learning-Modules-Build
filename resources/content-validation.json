@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "source_sha256": "dea7daf1f16c5922190f402324e168090bf21626ca16c708a26b3a19542699c4",
+  "unchanged_originals": true,
+  "inventory_items": 70,
+  "teaching_units": 53,
+  "assessment_designs": 19,
+  "auto_marked_points": {
+    "practice": 14,
+    "final": 11
+  },
+  "all_source_items_mapped": true,
+  "introductory_targets_excluded": true,
+  "no_reference_or_written_tasks": true
+}
