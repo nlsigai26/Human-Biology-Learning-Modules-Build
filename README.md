@@ -1,48 +1,69 @@
 # Cell Structure · Learn
 
-A standalone Human Biology Learn module styled after the supplied 2.0 UI. Seven stages, 20 teaching cards, 18 checkpoint screens, 16 practice points and 9 auto-marked final-check points. The written explanation is self-checked separately.
+A full-screen presentation for Human Biology. It has 43 focused teaching slides, integrated checkpoints, feedback and results. Desktop slides use a wide layout; phones use a vertical portrait layout. The module occupies the viewport with no page scrolling. Previous/Next buttons and arrow keys move between slides.
 
-![Learn module preview](docs/preview.png)
+![Desktop presentation](docs/preview.png)
 
-## Open the module
+[Portrait phone preview](docs/phone.png) · [Connected learning map](docs/mindmap.png)
 
-Open **`dist/index.html`** in a modern browser. It contains the complete application, images, reference transcript, styles and fonts. It needs no internet connection, account, backend or package installation. Progress is saved in that browser where local storage is available; if storage is blocked, the lesson continues for the current session. Browser handling of storage for local files varies; serve the file from one stable origin for consistent persistence.
+## Open
 
-For a local server, run `python3 -m http.server 4173 --directory dist`, then visit `http://localhost:4173`. No build step is needed to use the committed version.
+Open **`dist/index.html`** in a modern browser, or run `python3 -m http.server 4173 --directory dist` and visit `http://localhost:4173`. The committed HTML embeds all biology images, fonts, styles, lesson content, accepted answers and reference material. No account, backend, installation or network connection is needed to use the standalone HTML.
+
+Progress is stored in the current browser when local storage is available. A stable web origin provides the most consistent persistence; browsers vary in how they handle local-file storage. Existing version-1 checkpoint answers are migrated into the new presentation without changing their first-attempt results. The new slide progress starts with the revised sequence.
+
+## Learning experience
+
+- Organelle names are slide titles; structure, function and recognition appear on separate slides.
+- Key terms are emphasised. Function statements have an animated underline, shown immediately when reduced motion is enabled.
+- Teaching figures reveal the relevant label and a leader arrow. Assessment figures hide answer labels. All biology images are supplied originals or crops; connecting lines and labels are interface annotations.
+- A connected cell mindmap and labelled relationship chains explain structure–function links.
+- The horizontal outline stays quiet until hover or keyboard focus. On phones, “Sections” reveals the same outline for touch navigation.
+- The original question bank is retained. Matching questions use one pair per slide, with independently shuffled pair order and descriptions. Scores remain one point per pair.
+- Incorrect attempts reveal feedback and the relevant teaching point. Students can review and return, retry, or select Next. First attempts and corrected answers remain separate.
+- Practice has 16 available auto-marked points. The final check has 9, unaffected by practice retries. The written response has a separate model answer and two self-check statements.
+- Results report actual correct/attempted counts by skill and provide teaching-slide links based on errors.
+- The complete academic reference is available as 14 paginated screens, including both original images and the original comparison table. “Download source” exports the original transcript with both images embedded.
+
+Both supplied images are **schematics**. Real-micrograph identification is not assessed; outcome 1.1 is only partially assessed. Recognition knowledge, schematic identification and structure–function performance are reported separately.
+
+## Academic coverage
+
+`resources/content-coverage.json` maps 63 coverage entries to the 43 teaching slides. Every point in the Part B transcript appears in the teaching sequence, including nuclear pores and mRNA, the chromosome-organisation cross-reference, vesicle transport and protein destinations, the high-energy-demand example, tRNA attachment in the cytoplasm and the energy-transfer clarification.
+
+Additional details printed in the supplied ER image are taught as source context: cisternae, the connection with the nuclear envelope, lipid synthesis, detoxification, Ca²⁺ storage and the image’s broad protein/lipid synthesis labels. The distinction between ribosomal polypeptide assembly and ER processing/transport is explicit. The original assessment scope remains unchanged.
+
+`src/reference.html` is the unchanged original Part B transcript. `resources/source-pack.zip` preserves the original supplied archive. Both complete original images remain unchanged in `assets/`.
 
 ## Edit and rebuild
 
-- `src/content.js`: stage sequence, teaching copy, questions, accepted answers and feedback.
-- `src/app.js`: navigation, grading, retries, progress, self-check and results.
-- `src/styles.css`: layout, colour and typography.
-- `src/index.html`: application shell and dialogs.
-- `src/reference.html`: complete original Part B academic transcript, including its comparison table and callouts.
-- `assets/`: both untouched original schematics, teaching/assessment crops, embedded font sources and font licences.
-- `resources/source-pack.zip`: the original supplied content pack, unchanged.
-- `build.py`: standard-library Python builder. Run `python3 build.py` after editing. The output is `dist/index.html`.
+| File | Purpose |
+| --- | --- |
+| `src/content.js` | Teaching slides, question bank, reference pages and coverage IDs |
+| `src/app.js` | Deck, annotations, grading, feedback, results and saved progress |
+| `src/styles.css` | Full-viewport layouts, portrait layouts, typography and motion |
+| `src/index.html` | Application shell, source-reference template and dialogs |
+| `src/reference.html` | Complete original Part B academic transcript |
+| `assets/` | Original images, crops, fonts and licences |
+| `resources/` | Original source pack, content coverage and validation results |
+| `build.py` | Standard-library Python builder for the single-file module |
 
-No content-management service or external asset host is required. Keep `assets/`, `src/`, `resources/` and `build.py` together in Git. Commit the rebuilt `dist/index.html` too so the module can be used directly from a checkout.
+Run `python3 build.py` after editing, then commit the updated `dist/index.html` along with source changes. The runtime has no JavaScript package dependencies.
 
-## Design and content decisions
+Newsreader and Hanken Grotesk are bundled with their SIL Open Font Licences. Hanken Grotesk substitutes for the supplied “Hansen Grotesk” name; exact Hansen font files were not supplied.
 
-Newsreader is bundled for serif headings and italic emphasis. Hanken Grotesk is the bundled sans-serif substitute for the supplied name “Hansen Grotesk”; exact Hansen font files were not supplied. Both bundled fonts include their SIL Open Font Licences. All fonts are embedded in the built HTML.
+New crops: the nucleus crop uses CS-01 coordinates `(480,360)–(790,650)`; the smooth-ER crop uses CS-02 coordinates `(595,245)–(875,555)`. Existing cell/ER crops remove peripheral labels in otherwise blank margins. No replacement biological illustrations are generated.
 
-Both biology images are supplied schematics, not verified light-microscope or TEM images. No external or generated biological images are used. Crops preserve the original orientation; white masks remove label fragments in otherwise blank outer margins, without removing biological features. Interface markers identify targets, with a leader line keeping the small ribosome target visible. Both complete original images are preserved in the reference and assets directory. The original ER schematic includes additional material outside the specification; teaching crops exclude those labels, and the full image remains in the reference with a scope note.
+## Integration and hosting
 
-Outcome 1.1 retains its exact wording but is only partially assessed. Results explicitly separate recognition knowledge, schematic identification and structure–function performance. Real-micrograph identification is not assessed. No mastery claim is inferred from participation.
+Use the HTML as its own route or in a viewport-sized iframe. When extracting the source into an existing application, scope the CSS and provide the `ASSETS` map with bundled/local image imports. The current storage key is `learn-cell-structure-deck-v2`; use separate learner keys if adding account-based persistence. No student data leaves the browser.
 
-First attempts and corrected responses are separate. Matching awards one point per pair, with per-pair feedback. Practice retries never inflate the final-check score. “Practise again” clears practice attempts and retains the final check. “Restart module” explicitly confirms that it clears all stored progress and responses. Written responses are not exact-string graded.
-
-## Integration
-
-Use the complete HTML as an iframe/module route, or move `content.js`, `app.js` and the styles into the host application. Supply the `ASSETS` object from local asset imports if splitting the file. Prefix or scope CSS when integrating into an existing app. The browser storage key is `learn-cell-structure-v1`; use a different version/key for a new schema or learner context. No student data leaves the browser.
-
-`.openai/hosting.json` identifies the separate private Sites preview. It does not configure GitHub hosting. To host elsewhere, serve the committed `dist/` directory as static files. Set `dist/index.html` as the entry page.
+Serve `dist/` on any static host. `.openai/hosting.json` preserves the private Sites project identity. GitHub and Sites receive the same committed source state.
 
 ## Validation
 
-The browser suite covers the full 38-step journey, blank attempts, first-attempt vs corrected scores, accepted case/space variants, rejection of unlisted spellings, independently shuffled matching rows/options, per-pair scores, saved progress on reload, all original images, mobile overflow, marker alignment, self-check, practice reset and full restart.
+Install the test dependencies with `npm install`, install Chromium with `npx playwright install chromium`, serve `dist/` on port 4173, and run `npm test`. `PLAYWRIGHT_MODULE`, `CHROMIUM_PATH` and `TEST_URL` optionally select existing installations and a different test origin. Tests use isolated browser contexts and write screenshots to ignored `work/`.
 
-Install Playwright (`npm install`) and its Chromium browser (`npx playwright install chromium`), serve `dist/` on port 4173, then run `npm test`. In a preconfigured environment, `PLAYWRIGHT_MODULE` and `CHROMIUM_PATH` may select an existing Playwright installation and Chromium executable. Screenshots are written to ignored `work/`.
+The suite checks the entire lesson journey, all slide types at five desktop/portrait viewport sizes, feedback after incorrect attempts, exact-answer rules, per-pair first attempts, persistence, review-and-return navigation, touch/focus outline, arrow keys, reduced motion, annotation alignment, original-image loading, the offline reference download, practice reset and full restart. `resources/validation-results.json` records the latest result.
 
-The application itself has no JavaScript package dependencies. Rights to the supplied academic content and illustrations remain with their respective owners; no additional licence is asserted over them.
+Rights to supplied academic content and illustrations remain with their respective owners. No additional licence is asserted over them.

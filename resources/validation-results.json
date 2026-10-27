@@ -1,28 +1,63 @@
 {
   "status": "PASS",
-  "steps": 38,
-  "stats": {
+  "teachingSlides": 43,
+  "coveragePoints": 63,
+  "learningSteps": 69,
+  "layoutViewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 375,
+      "height": 667
+    },
+    {
+      "width": 360,
+      "height": 740
+    }
+  ],
+  "result": {
     "final": {
       "total": 9,
-      "tried": 9,
+      "attempted": 9,
       "correct": 9,
       "corrected": 0
     },
     "practice": {
       "total": 16,
-      "tried": 16,
+      "attempted": 16,
       "correct": 15,
       "corrected": 1
     },
-    "p": {
-      "count": 38,
-      "total": 38,
-      "pct": 100
+    "explored": {
+      "total": 69,
+      "count": 69
     },
-    "written": [
+    "checks": [
       true,
       true
     ]
   },
-  "checks": "Full journey, blank attempt, wrong answer, retries, case/space handling, strict answers, matching per-pair score, browser persistence, reference assets, mobile layout, marker alignment, practice reset, full restart."
+  "checks": [
+    "All teaching, question, incorrect-feedback, result and reference slides fit without scrolling",
+    "Full user journey",
+    "Wrong-answer review/return/retry and Next",
+    "Partial matching and per-pair first attempts",
+    "Browser persistence",
+    "Original reference images and offline source download",
+    "Touch/focus outline",
+    "Keyboard navigation",
+    "Reduced motion",
+    "Responsive annotation alignment",
+    "Practice reset and full restart"
+  ]
 }
