@@ -2,6 +2,7 @@
 
 These user-defined rules govern future module changes:
 
+- Scope overrides: exclude cisternae and smooth ER completely from the active module, including teaching, questions, feedback, reference pages/downloads, labels and depicted regions. Preserve original input files only as repository archive resources.
 - Treat the supplied academic pack as the sole authority for learner-facing science. Do not expand, correct, qualify or supplement it with outside knowledge. Omit uncertain additions.
 - Teach facts directly. Avoid attribution lead-ins or commentary about the completeness or accuracy of the academic material.
 - Explain relationships through warm, declarative teaching. Do not assign learners commands to connect, describe or explain concepts. Checkpoint prompts can be phrased as questions; navigation and answer controls remain available.
@@ -11,3 +12,7 @@ These user-defined rules govern future module changes:
 - Preserve the full-screen deck, portrait phone layout, source artifacts, accessibility, offline packaging and separation of first attempts from corrected answers.
 
 Original input files in `resources/source-pack.zip` and the two original PNG images remain unchanged. Rebuild `dist/index.html` after edits, verify the changed content and image masks, and update the existing GitHub repository and private Sites project.
+
+## Matching and outline requirements
+
+Matching with up to four candidate answers uses clickable radio circles. More than four candidates uses a whole-board drag-and-drop exercise: all question terms and blank answer rectangles appear together, with an answer bank containing one extra in-scope choice. Every term is filled before checking; each pair is graded separately. Support mouse, touch and keyboard, retain first attempts across corrections, and keep the viewport free of page scrolling. Section names and their underlines occupy separate rows with visible clearance at 100% zoom.

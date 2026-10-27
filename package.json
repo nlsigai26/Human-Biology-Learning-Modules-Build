@@ -7,8 +7,9 @@
   "scripts": {
     "build": "python3 build.py",
     "dev": "python3 -m http.server 4173 --directory dist",
-    "test": "node tests/learning-flow.mjs",
-    "test:content": "node tests/content-rules.mjs"
+    "test": "node tests/content-rules.mjs && node tests/learning-flow.mjs && node tests/matching-ui.mjs",
+    "test:content": "node tests/content-rules.mjs",
+    "test:matching": "node tests/matching-ui.mjs"
   },
   "devDependencies": {
     "playwright": "1.57.0"

@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "teachingSlides": 43,
-  "coveragePoints": 60,
-  "learningSteps": 69,
+  "teachingSlides": 39,
+  "coveragePoints": 55,
+  "learningSteps": 60,
   "layoutViewports": [
     {
       "width": 1440,
@@ -39,8 +39,8 @@
       "corrected": 1
     },
     "explored": {
-      "total": 69,
-      "count": 69
+      "total": 60,
+      "count": 60
     },
     "checks": [
       true,
@@ -51,7 +51,7 @@
     "All teaching, question, incorrect-feedback, result and reference slides fit without scrolling",
     "Full user journey",
     "Wrong-answer review/return/retry and Next",
-    "Partial matching and per-pair first attempts",
+    "Whole-board drag matching, spare answer, per-pair scores and retry",
     "Browser persistence",
     "Original reference images and offline source download",
     "Touch/focus outline",

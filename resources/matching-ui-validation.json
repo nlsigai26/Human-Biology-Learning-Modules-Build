@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "terms": 6,
+  "answers": 7,
+  "shortMatching": "radio buttons",
+  "dragMatching": "six terms checked together",
+  "views": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "minOutlineGap": 4,
+      "cardsFit": true
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "minOutlineGap": 4,
+      "cardsFit": true
+    },
+    {
+      "viewport": {
+        "width": 1100,
+        "height": 768
+      },
+      "minOutlineGap": 4,
+      "cardsFit": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "minOutlineGap": 4,
+      "cardsFit": true
+    },
+    {
+      "viewport": {
+        "width": 375,
+        "height": 667
+      },
+      "minOutlineGap": 4,
+      "cardsFit": true
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "minOutlineGap": 4,
+      "cardsFit": true
+    }
+  ],
+  "checks": [
+    "No card text clipping",
+    "Section labels clear their underlines at 100% zoom",
+    "Mouse drag and occupied-slot swaps",
+    "Return to bank",
+    "Keyboard placement and clearing",
+    "Touch drag and tap-to-place",
+    "Previous first attempts and corrected grades retained",
+    "Excluded content absent from all presentation and reference pages"
+  ]
+}

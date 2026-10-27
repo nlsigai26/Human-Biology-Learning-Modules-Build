@@ -5,9 +5,7 @@ ROOT = Path(__file__).resolve().parent
 def uri(name, mime):
     return f'data:{mime};base64,'+base64.b64encode((ROOT/'assets'/name).read_bytes()).decode()
 assets = {key:uri(name,'image/png') for key,name in {
-    'cell':'cell-crop.png','mito':'mitochondrion-crop.png','er':'er-crop.png',
-    'originalCell':'CS-01-original.png','originalER':'CS-02-original.png',
-    'nucleus':'nucleus-crop.png','smoothER':'smooth-er-crop.png'}.items()}
+    'originalCell':'CS-01-original.png','originalER':'CS-02-original.png'}.items()}
 fonts=''
 for filename,family,style in [('Newsreader.ttf','Newsreader','normal'),('Newsreader-Italic.ttf','Newsreader','italic'),('HankenGrotesk.ttf','Hanken Grotesk','normal')]:
     fonts+=f"@font-face{{font-family:'{family}';font-style:{style};font-weight:100 900;font-display:swap;src:url('{uri(filename,'font/ttf')}') format('truetype');}}\n"

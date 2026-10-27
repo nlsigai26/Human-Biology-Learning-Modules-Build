@@ -1,7 +1,7 @@
 {
-  "description": "Academic points mapped to teaching slides. Content is limited to the supplied pack and printed diagrams; image labels are preserved and masked selectively.",
+  "description": "Specification-scoped academic content mapped to the teaching deck. Excluded topics are absent from active learning and reference views.",
   "source": "resources/source-pack.zip",
-  "sourceTranscript": "src/reference.html",
+  "scopedReference": "src/reference.html",
   "slides": [
     {
       "slide": "scope",
@@ -341,12 +341,11 @@
       "title": "Endoplasmic reticulum",
       "section": "ER & ribosomes",
       "sourcePoints": [
-        "er-network",
-        "er-cisternae"
+        "er-network"
       ],
       "teachingText": [
         "The endoplasmic reticulum (ER) is a membrane network of channels and flattened sacs.",
-        "The flattened membrane sacs are called cisternae."
+        "Rough ER has ribosomes attached to its surface."
       ]
     },
     {
@@ -389,29 +388,6 @@
       ]
     },
     {
-      "slide": "smooth-er",
-      "title": "Smooth ER",
-      "section": "ER & ribosomes",
-      "sourcePoints": [
-        "smooth-no-ribosomes"
-      ],
-      "teachingText": [
-        "Smooth ER has no ribosomes attached.",
-        "Rough ER has ribosomes attached to its surface. This gives the two forms of ER their different appearance."
-      ]
-    },
-    {
-      "slide": "er-comparison",
-      "title": "Endoplasmic reticulum",
-      "section": "ER & ribosomes",
-      "sourcePoints": [
-        "er-table"
-      ],
-      "teachingText": [
-        "The key visible distinction is the presence or absence of attached ribosomes."
-      ]
-    },
-    {
       "slide": "er-envelope-connection",
       "title": "Endoplasmic reticulum",
       "section": "ER & ribosomes",
@@ -421,30 +397,6 @@
       "teachingText": [
         "The ER is connected to the nuclear envelope.",
         "The nuclear envelope separates the nucleus from the cytoplasm; the ER is a membrane network of channels and flattened sacs."
-      ]
-    },
-    {
-      "slide": "smooth-er-context",
-      "title": "Smooth ER",
-      "section": "ER & ribosomes",
-      "sourcePoints": [
-        "image-smooth-functions"
-      ],
-      "teachingText": [
-        "Smooth ER is involved in lipid synthesis, detoxification and Ca²⁺ storage.",
-        "It has no ribosomes attached."
-      ]
-    },
-    {
-      "slide": "er-synthesis-context",
-      "title": "Endoplasmic reticulum",
-      "section": "ER & ribosomes",
-      "sourcePoints": [
-        "image-er-summary"
-      ],
-      "teachingText": [
-        "ER is a site of protein and lipid synthesis. Rough ER is involved in protein synthesis, modification and transport.",
-        "Ribosomes join amino acids into polypeptides. ER processes and transports certain proteins."
       ]
     },
     {

@@ -1,4 +1,4 @@
-// Content is restricted to the supplied Cell Structure pack.
+// Only specification content appears in the learning module.
 const term=s=>`<strong class="term">${s}</strong>`;
 const fn=s=>`<span class="function">${s}</span>`;
 const sections = [
@@ -640,7 +640,7 @@ const lessonSlides = [
     "subtitle": "STRUCTURE",
     "body": [
       "The <strong class=\"term\">endoplasmic reticulum (ER)</strong> is a <strong class=\"term\">membrane network of channels and flattened sacs</strong>.",
-      "The flattened membrane sacs are called <strong class=\"term\">cisternae</strong>."
+      "Rough ER has <strong class=\"term\">ribosomes attached to its surface</strong>."
     ],
     "visual": {
       "type": "image",
@@ -648,8 +648,7 @@ const lessonSlides = [
       "focus": "er"
     },
     "coverage": [
-      "er-network",
-      "er-cisternae"
+      "er-network"
     ]
   },
   {
@@ -729,41 +728,6 @@ const lessonSlides = [
     ]
   },
   {
-    "id": "smooth-er",
-    "kind": "teach",
-    "section": 4,
-    "title": "Smooth ER",
-    "subtitle": "STRUCTURE & RECOGNITION",
-    "body": [
-      "<strong class=\"term\">Smooth ER</strong> has <strong class=\"term\">no ribosomes attached</strong>.",
-      "Rough ER has ribosomes attached to its surface. This gives the two forms of ER their different appearance."
-    ],
-    "visual": {
-      "type": "image",
-      "asset": "smoothER",
-      "focus": "smoothER"
-    },
-    "coverage": [
-      "smooth-no-ribosomes"
-    ]
-  },
-  {
-    "id": "er-comparison",
-    "kind": "teach",
-    "section": 4,
-    "title": "Endoplasmic reticulum",
-    "subtitle": "ROUGH ER & SMOOTH ER",
-    "body": [
-      "The key visible distinction is the <strong class=\"term\">presence or absence of attached ribosomes</strong>."
-    ],
-    "visual": {
-      "type": "comparison"
-    },
-    "coverage": [
-      "er-table"
-    ]
-  },
-  {
     "id": "er-envelope-connection",
     "kind": "teach",
     "section": 4,
@@ -780,42 +744,6 @@ const lessonSlides = [
     },
     "coverage": [
       "image-er-connected"
-    ]
-  },
-  {
-    "id": "smooth-er-context",
-    "kind": "teach",
-    "section": 4,
-    "title": "Smooth ER",
-    "subtitle": "FUNCTION",
-    "body": [
-      "Smooth ER is involved in <span class=\"function\">lipid synthesis</span>, <span class=\"function\">detoxification</span> and <span class=\"function\">Ca²⁺ storage</span>.",
-      "It has <strong class=\"term\">no ribosomes attached</strong>."
-    ],
-    "visual": {
-      "type": "image",
-      "asset": "smoothER",
-      "focus": "smoothER"
-    },
-    "coverage": [
-      "image-smooth-functions"
-    ]
-  },
-  {
-    "id": "er-synthesis-context",
-    "kind": "teach",
-    "section": 4,
-    "title": "Endoplasmic reticulum",
-    "subtitle": "FUNCTION",
-    "body": [
-      "ER is a site of <strong class=\"term\">protein and lipid synthesis</strong>. Rough ER is involved in <span class=\"function\">protein synthesis, modification and transport</span>.",
-      "Ribosomes <span class=\"function\">join amino acids into polypeptides</span>. ER <span class=\"function\">processes and transports certain proteins</span>."
-    ],
-    "visual": {
-      "type": "synthesis"
-    },
-    "coverage": [
-      "image-er-summary"
     ]
   },
   {
@@ -1045,7 +973,10 @@ const questions = [
       ],
       "feedback": "The nucleus contains chromosomes, chromosomes carry genes, and the cell membrane controls exchange.",
       "skill": "function",
-      "review": 1
+      "review": 1,
+      "extraChoices": [
+        "Join amino acids into polypeptides."
+      ]
     },
     {
       "id": "S3B",
@@ -1111,15 +1042,15 @@ const questions = [
     {
       "id": "S5B",
       "type": "mc",
-      "q": "Which feature distinguishes rough ER from smooth ER?",
+      "q": "Which is a feature of rough ER?",
       "options": [
-        "Rough ER has attached ribosomes.",
-        "Smooth ER contains chromosomes.",
-        "Rough ER is the cell’s outer boundary.",
-        "Smooth ER always has more ribosomes."
+        "Ribosomes attached to its surface",
+        "Genes coding for proteins",
+        "The boundary around the whole cell",
+        "Most stages of aerobic respiration"
       ],
       "answer": 0,
-      "feedback": "Attached ribosomes give rough ER its rough appearance. Smooth ER has no ribosomes attached.",
+      "feedback": "Rough ER has ribosomes attached to its surface.",
       "skill": "recognition",
       "review": 1
     },
@@ -1140,7 +1071,10 @@ const questions = [
       "feedback": "Rough ER is a membrane network. Ribosomes are attached to its surface.",
       "skill": "diagram",
       "review": 1,
-      "image": "erQuiz"
+      "image": "erQuiz",
+      "extraChoices": [
+        "Cell membrane"
+      ]
     }
   ],
   [
@@ -1223,7 +1157,19 @@ const questions = [
       ],
       "feedback": "Each structure contributes a different job to a working cell.",
       "skill": "function",
-      "review": 0
+      "review": 0,
+      "extraChoices": [
+        "Site of many chemical reactions, including anaerobic respiration."
+      ],
+      "choiceLabels": [
+        "Regulates protein synthesis.",
+        "Carries genes coding for proteins.",
+        "Controls movement into and out of the cell.",
+        "Most stages of aerobic respiration; ATP supply.",
+        "Processes and transports certain proteins.",
+        "Joins amino acids into polypeptides.",
+        "Site of anaerobic respiration."
+      ]
     },
     {
       "id": "F2",
@@ -1407,8 +1353,11 @@ const referenceSlides = [
     ]
   },
   {
-    "title": "Rough ER and smooth ER",
-    "comparison": true
+    "title": "Rough ER",
+    "body": [
+      "Ribosomes attached to its surface.",
+      "Folds/processes proteins for secretion or membranes; transports them in vesicles."
+    ]
   },
   {
     "title": "Endoplasmic reticulum and ribosomes",
@@ -1425,3 +1374,178 @@ const referenceSlides = [
 ];
 
 const outcomes = "1.1 recognise cell structures as seen with a light microscope and electron microscope (TEM images only), including nucleus, chromosomes, cell membrane, mitochondria, endoplasmic reticulum and ribosomes\n\n1.2 describe the functions of the cell structures:\n• nucleus\n• chromosomes\n• cell membrane\n• mitochondria\n• endoplasmic reticulum\n• ribosomes.";
+
+const legacySlideMap = [
+  {
+    "section": 0,
+    "id": "scope"
+  },
+  {
+    "section": 0,
+    "id": "cell"
+  },
+  {
+    "section": 0,
+    "id": "cell-map"
+  },
+  {
+    "section": 0,
+    "id": "cytoplasm-structure"
+  },
+  {
+    "section": 0,
+    "id": "cytoplasm-function"
+  },
+  {
+    "section": 1,
+    "id": "membrane-structure"
+  },
+  {
+    "section": 1,
+    "id": "membrane-function"
+  },
+  {
+    "section": 1,
+    "id": "membrane-transport"
+  },
+  {
+    "section": 1,
+    "id": "membrane-active"
+  },
+  {
+    "section": 1,
+    "id": "membrane-recognition"
+  },
+  {
+    "section": 2,
+    "id": "nucleus-structure"
+  },
+  {
+    "section": 2,
+    "id": "nucleus-function"
+  },
+  {
+    "section": 2,
+    "id": "nucleus-enzymes"
+  },
+  {
+    "section": 2,
+    "id": "nucleus-recognition"
+  },
+  {
+    "section": 2,
+    "id": "envelope"
+  },
+  {
+    "section": 2,
+    "id": "pores"
+  },
+  {
+    "section": 2,
+    "id": "chromosome-composition"
+  },
+  {
+    "section": 2,
+    "id": "chromosome-function"
+  },
+  {
+    "section": 2,
+    "id": "chromosome-recognition"
+  },
+  {
+    "section": 2,
+    "id": "chromosome-context"
+  },
+  {
+    "section": 3,
+    "id": "mito-structure"
+  },
+  {
+    "section": 3,
+    "id": "mito-recognition"
+  },
+  {
+    "section": 3,
+    "id": "mito-function"
+  },
+  {
+    "section": 3,
+    "id": "mito-transfer"
+  },
+  {
+    "section": 3,
+    "id": "mito-demand"
+  },
+  {
+    "section": 4,
+    "id": "ribosome-location"
+  },
+  {
+    "section": 4,
+    "id": "ribosome-function"
+  },
+  {
+    "section": 4,
+    "id": "er-structure"
+  },
+  {
+    "section": 4,
+    "id": "rough-er-structure"
+  },
+  {
+    "section": 4,
+    "id": "rough-er-function"
+  },
+  {
+    "section": 4,
+    "id": "rough-er-transport"
+  },
+  {
+    "section": 4,
+    "id": null
+  },
+  {
+    "section": 4,
+    "id": null
+  },
+  {
+    "section": 4,
+    "id": "er-envelope-connection"
+  },
+  {
+    "section": 4,
+    "id": null
+  },
+  {
+    "section": 4,
+    "id": null
+  },
+  {
+    "section": 4,
+    "id": "trna"
+  },
+  {
+    "section": 4,
+    "id": "ribosome-resolution"
+  },
+  {
+    "section": 5,
+    "id": "light-microscopy"
+  },
+  {
+    "section": 5,
+    "id": "tem"
+  },
+  {
+    "section": 5,
+    "id": "evidence"
+  },
+  {
+    "section": 5,
+    "id": "microscopy-limit"
+  },
+  {
+    "section": 6,
+    "id": "final-context"
+  }
+];
